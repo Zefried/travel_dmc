@@ -1,0 +1,773 @@
+/* =====================================================
+   ACTIVITIES
+===================================================== */
+
+.act-container{
+
+    width:100%;
+
+    background:#ffffff;
+
+    border:1px solid #e7edf5;
+
+    border-radius:22px;
+
+    padding:clamp(18px,2vw,32px);
+
+    box-shadow:
+        0 12px 40px rgba(15,23,42,.06);
+
+    transition:
+        .3s ease;
+
+}
+
+.act-container:hover{
+
+    box-shadow:
+        0 18px 50px rgba(15,23,42,.08);
+
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.act-header{
+
+    margin-bottom:30px;
+
+}
+
+.act-title{
+
+    margin:0;
+
+    color:#0f172a;
+
+    font-size:clamp(24px,2vw,32px);
+
+    font-weight:700;
+
+}
+
+.act-subtitle{
+
+    margin-top:8px;
+
+    color:#64748b;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.act-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap:22px;
+
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.act-card{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    border:1px solid #e7edf5;
+
+    background:#ffffff;
+
+    cursor:pointer;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+
+}
+
+.act-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#2563eb;
+
+    box-shadow:
+        0 18px 40px rgba(37,99,235,.10);
+
+}
+
+.act-card-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.act-icon{
+
+    width:54px;
+
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    flex-shrink:0;
+
+}
+
+.act-icon svg{
+
+    width:24px;
+
+    height:24px;
+
+}
+
+/* =====================================================
+   SELECTED CHECK
+===================================================== */
+
+.act-check{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#16a34a;
+
+}
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.act-name{
+
+    margin:0 0 18px;
+
+    color:#0f172a;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    line-height:1.4;
+
+}
+
+/* =====================================================
+   META
+===================================================== */
+
+.act-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin-bottom:18px;
+
+    flex-wrap:wrap;
+
+}
+
+/* =====================================================
+   NIGHT BADGE
+===================================================== */
+
+.act-night{
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:#f1f5f9;
+
+    color:#475569;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/* =====================================================
+   PRICE BADGE
+===================================================== */
+
+.act-price{
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.act-description{
+
+    margin:0;
+
+    color:#64748b;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    flex:1;
+
+}
+
+/* =====================================================
+   SELECTED CARD
+===================================================== */
+
+.act-selected{
+
+    border-color:#2563eb;
+
+    background:#f8fbff;
+
+    box-shadow:
+        0 16px 40px rgba(37,99,235,.12);
+
+}
+
+.act-selected .act-icon{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+}
+
+.act-selected .act-name{
+
+    color:#2563eb;
+
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.act-button{
+
+    margin-top:22px;
+
+    width:100%;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+        background .25s ease,
+        transform .2s ease,
+        box-shadow .25s ease;
+
+}
+
+.act-button:hover{
+
+    background:#1d4ed8;
+
+    box-shadow:
+        0 12px 24px rgba(37,99,235,.25);
+
+}
+
+.act-button:active{
+
+    transform:scale(.98);
+
+}
+
+.act-selected .act-button{
+
+    background:#16a34a;
+
+}
+
+.act-selected .act-button:hover{
+
+    background:#15803d;
+
+}
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.act-empty{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    min-height:220px;
+
+    padding:32px;
+
+    border:2px dashed #dbe4ef;
+
+    border-radius:18px;
+
+    background:#f8fafc;
+
+}
+
+.act-empty p{
+
+    margin:0;
+
+    color:#64748b;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+}
+
+/* =====================================================
+   TRANSITIONS
+===================================================== */
+
+.act-card,
+.act-card *,
+.act-button{
+
+    transition:
+        background-color .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+
+}
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+.act-card:focus-within{
+
+    outline:none;
+
+    border-color:#2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+/* =====================================================
+   LARGE TABLETS
+===================================================== */
+
+@media (max-width:1024px){
+
+    .act-container{
+
+        padding:24px;
+
+    }
+
+    .act-grid{
+
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+    }
+
+}
+
+/* =====================================================
+   TABLETS
+===================================================== */
+
+@media (max-width:768px){
+
+    .act-container{
+
+        padding:20px;
+
+        border-radius:18px;
+
+    }
+
+    .act-header{
+
+        margin-bottom:24px;
+
+    }
+
+    .act-title{
+
+        font-size:26px;
+
+    }
+
+    .act-subtitle{
+
+        font-size:14px;
+
+    }
+
+    .act-grid{
+
+        grid-template-columns:1fr;
+
+        gap:18px;
+
+    }
+
+    .act-card{
+
+        padding:20px;
+
+    }
+
+    .act-name{
+
+        font-size:18px;
+
+    }
+
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width:576px){
+
+    .act-container{
+
+        padding:18px;
+
+        border-radius:16px;
+
+    }
+
+    .act-title{
+
+        font-size:22px;
+
+    }
+
+    .act-subtitle{
+
+        font-size:13px;
+
+    }
+
+    .act-card{
+
+        padding:18px;
+
+    }
+
+    .act-card-top{
+
+        margin-bottom:16px;
+
+    }
+
+    .act-icon{
+
+        width:48px;
+
+        height:48px;
+
+    }
+
+    .act-name{
+
+        font-size:17px;
+
+        margin-bottom:14px;
+
+    }
+
+    .act-meta{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+    .act-button{
+
+        height:46px;
+
+        font-size:14px;
+
+    }
+
+}
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width:420px){
+
+    .act-container{
+
+        padding:16px;
+
+    }
+
+    .act-title{
+
+        font-size:20px;
+
+    }
+
+    .act-card{
+
+        padding:16px;
+
+    }
+
+    .act-icon{
+
+        width:44px;
+
+        height:44px;
+
+    }
+
+    .act-icon svg{
+
+        width:20px;
+
+        height:20px;
+
+    }
+
+    .act-name{
+
+        font-size:16px;
+
+    }
+
+    .act-description{
+
+        font-size:13px;
+
+    }
+
+    .act-night,
+    .act-price{
+
+        font-size:12px;
+
+        padding:7px 12px;
+
+    }
+
+}
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+@media (prefers-color-scheme:dark){
+
+    .act-container{
+
+        background:#111827;
+
+        border-color:#1f2937;
+
+        box-shadow:none;
+
+    }
+
+    .act-card{
+
+        background:#1f2937;
+
+        border-color:#334155;
+
+    }
+
+    .act-card:hover{
+
+        border-color:#3b82f6;
+
+    }
+
+    .act-title,
+    .act-name{
+
+        color:#f8fafc;
+
+    }
+
+    .act-subtitle,
+    .act-description{
+
+        color:#cbd5e1;
+
+    }
+
+    .act-night{
+
+        background:#334155;
+
+        color:#e2e8f0;
+
+    }
+
+    .act-price{
+
+        background:#14532d;
+
+        color:#bbf7d0;
+
+    }
+
+    .act-icon{
+
+        background:#1e3a8a;
+
+        color:#ffffff;
+
+    }
+
+    .act-selected{
+
+        background:#172554;
+
+        border-color:#3b82f6;
+
+    }
+
+    .act-empty{
+
+        background:#1f2937;
+
+        border-color:#334155;
+
+    }
+
+    .act-empty p{
+
+        color:#cbd5e1;
+
+    }
+
+}
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .act-card,
+    .act-button,
+    .act-container{
+
+        transition:none;
+
+    }
+
+}
+
+/* =====================================================
+   SMOOTH TRANSITIONS
+===================================================== */
+
+.act-container *,
+.act-container *::before,
+.act-container *::after{
+
+    transition:
+        background-color .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+
+}

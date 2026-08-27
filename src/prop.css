@@ -1,0 +1,311 @@
+/* =====================================================
+   PROPERTIES
+===================================================== */
+
+.adp-properties-container {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.adp-properties-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.adp-properties-title {
+    margin: 0;
+    color: #111827;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.adp-properties-subtitle {
+    margin: 5px 0 0;
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   ADD PROPERTY
+===================================================== */
+
+.adp-properties-add {
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid #2563eb;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.adp-properties-add:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+
+/* =====================================================
+   PROPERTY LIST
+===================================================== */
+
+.adp-properties-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/* =====================================================
+   PROPERTY ITEM
+===================================================== */
+
+.adp-property-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 24px;
+
+    padding: 18px 20px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+
+    box-sizing: border-box;
+}
+
+.adp-property-item:hover {
+    border-color: #d1d5db;
+    background: #fafafa;
+}
+
+
+/* =====================================================
+   PROPERTY INFORMATION
+===================================================== */
+
+.adp-property-info {
+    min-width: 0;
+}
+
+.adp-property-name {
+    margin: 0 0 8px;
+
+    color: #111827;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.adp-property-location {
+    margin: 8px 0 3px;
+
+    color: #4b5563;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.adp-property-contact {
+    margin: 0;
+
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   PROPERTY META
+===================================================== */
+
+.adp-property-meta {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.adp-property-type,
+.adp-property-rating {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px 9px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.adp-property-type {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.adp-property-rating {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    color: #4b5563;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.adp-property-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 62px;
+    padding: 5px 10px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.adp-property-status-active {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.adp-property-status-inactive {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.adp-property-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.adp-property-action {
+    height: 34px;
+    padding: 0 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+
+    background: #ffffff;
+    color: #374151;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.adp-property-action:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .adp-property-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 14px;
+    }
+
+    .adp-property-meta {
+        grid-column: 1;
+    }
+
+    .adp-property-status {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .adp-property-actions {
+        grid-column: 2;
+        grid-row: 2;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .adp-properties-container {
+        padding: 18px;
+        border-radius: 10px;
+    }
+
+    .adp-properties-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .adp-properties-title {
+        font-size: 23px;
+    }
+
+    .adp-properties-add {
+        width: 100%;
+    }
+
+    .adp-property-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .adp-property-meta,
+    .adp-property-status,
+    .adp-property-actions {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .adp-property-meta {
+        flex-wrap: wrap;
+    }
+
+    .adp-property-status {
+        justify-self: flex-start;
+    }
+
+    .adp-property-actions {
+        width: 100%;
+    }
+
+    .adp-property-action {
+        flex: 1;
+    }
+}

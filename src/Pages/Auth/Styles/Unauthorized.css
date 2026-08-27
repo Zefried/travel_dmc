@@ -1,0 +1,160 @@
+.unauth-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===== floating glow background ===== */
+.unauth-page::before,
+.unauth-page::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #7c3aed55, transparent);
+  filter: blur(80px);
+  animation: floatBg 10s ease-in-out infinite;
+}
+
+.unauth-page::before {
+  top: -100px;
+  left: -100px;
+}
+
+.unauth-page::after {
+  bottom: -100px;
+  right: -100px;
+  animation-delay: 5s;
+}
+
+@keyframes floatBg {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(40px, 40px);
+  }
+}
+
+/* ===== CARD ===== */
+.unauth-card {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 50px 60px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  animation: fadeIn 0.6s ease;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== FLOATING 403 ===== */
+.floating-403 {
+  position: absolute;
+  font-size: 120px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #bdb8cb, #7d649e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  opacity: 0.12;
+
+  animation: roam403 12s linear infinite;
+}
+
+/* moves across screen */
+@keyframes roam403 {
+  0% {
+    top: 10%;
+    left: 10%;
+  }
+  25% {
+    top: 10%;
+    left: 80%;
+  }
+  50% {
+    top: 70%;
+    left: 75%;
+  }
+  75% {
+    top: 80%;
+    left: 15%;
+  }
+  100% {
+    top: 10%;
+    left: 10%;
+  }
+}
+
+/* ===== TYPEWRITER ===== */
+.typewriter {
+  font-size: 26px;
+  margin-bottom: 10px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255,255,255,0.7);
+  width: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  animation: typing 2s steps(20, end) forwards,
+             blink 0.7s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent }
+  50% { border-color: white }
+}
+
+/* ===== TEXT ===== */
+.unauth-card p {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+/* ===== BUTTON ===== */
+.unauth-card button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+}
+
+.unauth-card button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(124, 58, 237, 0.6);
+}
+
+.unauth-card button:active {
+  transform: scale(0.97);
+}
