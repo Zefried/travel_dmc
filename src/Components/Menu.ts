@@ -67,12 +67,12 @@ export const menus: Record<Role, MenuItem[]> = {
         {
           name: "States",
           icon: MapPin,
-          path: "/dashboard/admin/states",
+          path: "/dashboard/add-state",
         },
         {
           name: "Cities",
           icon: Building2,
-          path: "/dashboard/admin/cities",
+          path: "/dashboard/add-city",
         },
       ],
     },
@@ -82,9 +82,9 @@ export const menus: Record<Role, MenuItem[]> = {
       icon: Hotel,
       children: [
         {
-          name: "All Properties",
+          name: "Add Properties",
           icon: Hotel,
-          path: "/dashboard/admin/properties",
+          path: "/dashboard/add-property",
         },
         {
           name: "Room Types",

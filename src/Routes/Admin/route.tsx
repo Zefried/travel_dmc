@@ -4,6 +4,8 @@ import AdminPanel from "../../Pages/Panels/AdminPanel";
 import AddProperty from "../../Pages/Admin/Property/Add/AddProperty";
 import AddCountry from "../../Pages/Admin/Locations/Country/Add/AddCountry";
 import AddState from "../../Pages/Admin/Locations/State/Add/AddState";
+import AddCity from "../../Pages/Admin/Locations/City/Add/AddCity";
+import AddTeam from "../../Pages/Admin/Team/Add/AddTeam";
 
 
 export const adminRoutes = [
@@ -43,7 +45,39 @@ export const adminRoutes = [
           </ProtectedRoute>
         ),
       },
+      {
+        path: "add-city", // this becomes dashboard home for admin users
+        element: (
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AddCity />
+          </ProtectedRoute>
+        ),
+      },
       // location root ends here
+
+      // Property routes
+      {
+        path: "add-property", // this becomes dashboard home for admin users
+        element: (
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AddProperty />
+          </ProtectedRoute>
+        ),
+      },
+     
+      // Property root ends here
+
+      // Manage team routes
+      {
+        path: "add-team", // this becomes dashboard home for admin users
+        element: (
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AddTeam />
+          </ProtectedRoute>
+        ),
+      },
+
+      // Team routes ends here
      
     ],
   },
