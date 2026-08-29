@@ -62,7 +62,7 @@ export const menus: Record<Role, MenuItem[]> = {
         {
           name: "Countries",
           icon: Globe,
-          path: "/dashboard/admin/countries",
+          path: "/dashboard/add-country",
         },
         {
           name: "States",
