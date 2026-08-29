@@ -39,13 +39,13 @@ export const Sidebar = ({
       <div className="sidebar-brand">
         <div className="brand-logo">
           <img
-            src="https://images.openai.com/static-rsc-4/bHfA1xSaSFi-hs0IdLhAHgtWkdUM6W9tWZQ5DczOyPH4mEXq9L7uqg-YA98dO04MKtL_HGnqJPSgQrL4M6jjHaDkhhksZaRlguTFq07Zf8R8MfY98V039EqnbF8RfBwy147y5FFxPuIg4x3aN4FA-oqUt3xLn57ZzOXfwhTP3RnqRV_qqLszuXp4I5gZeEI5?purpose=fullsize"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4sx1djhRtPuYnY0Gs8PvJniTTyufmWxJwLYh95oWRCpD4-WW-at5aivUS&s=10"
             alt="Fixo Logo"
           />
         </div>
 
         {sidebarOpen && (
-          <span className="brand-name">CCTV Dashboard</span>
+          <span className="brand-name">ASIAN HOLIDAYS</span>
         )}
       </div>
 
