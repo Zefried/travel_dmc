@@ -1,0 +1,1036 @@
+/* =========================================================
+   TRIP PROPOSAL PAGE
+   ========================================================= */
+
+.agentsearch-proposal-page {
+    min-height: 100vh;
+    background: #f3f6f8;
+    color: #1f2937;
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.agentsearch-proposal-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.agentsearch-proposal-header-inner {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+
+    min-height: 92px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+}
+
+
+.agentsearch-proposal-eyebrow {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #64748b;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+
+.agentsearch-proposal-title {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+
+.agentsearch-proposal-meta {
+    margin: 6px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.agentsearch-proposal-header-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.agentsearch-proposal-back,
+.agentsearch-update-button {
+    height: 36px;
+
+    padding: 0 13px;
+
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.agentsearch-proposal-back {
+    border: 1px solid #dce3ea;
+
+    background: #ffffff;
+
+    color: #475569;
+}
+
+
+.agentsearch-update-button {
+    border: 1px solid #315b82;
+
+    background: #315b82;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.agentsearch-proposal-layout {
+    width: min(1180px, calc(100% - 32px));
+    margin: 24px auto 50px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+
+    gap: 20px;
+
+    align-items: start;
+}
+
+
+.agentsearch-proposal-main {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.agentsearch-proposal-sidebar {
+    position: sticky;
+    top: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   COMMON CARD
+   ========================================================= */
+
+.agentsearch-proposal-card,
+.agentsearch-summary-card,
+.agentsearch-day-card {
+    background: #ffffff;
+
+    border: 1px solid #e3e8ed;
+    border-radius: 9px;
+
+    box-shadow:
+        0 2px 8px rgba(15, 23, 42, 0.035);
+}
+
+
+.agentsearch-proposal-card {
+    padding: 20px;
+}
+
+
+.agentsearch-card-heading {
+    margin-bottom: 17px;
+}
+
+
+.agentsearch-card-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #64748b;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+
+.agentsearch-card-heading h2,
+.agentsearch-itinerary-heading h2 {
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   HOTEL
+   ========================================================= */
+
+.agentsearch-hotel-card {
+    display: grid;
+
+    grid-template-columns: 145px minmax(0, 1fr);
+
+    gap: 18px;
+
+    padding: 14px;
+
+    border: 1px solid #e8edf1;
+    border-radius: 8px;
+
+    background: #fafbfc;
+}
+
+
+.agentsearch-hotel-image {
+    min-height: 170px;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dce7ef,
+            #b7c8d6
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.agentsearch-hotel-placeholder {
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+
+    opacity: 0.8;
+}
+
+
+.agentsearch-hotel-content {
+    min-width: 0;
+}
+
+
+.agentsearch-hotel-rating {
+    margin-bottom: 3px;
+
+    color: #48a868;
+
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+
+.agentsearch-hotel-content h3 {
+    margin: 0;
+
+    color: #1f2937;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+.agentsearch-hotel-address {
+    margin: 4px 0 12px;
+
+    color: #7b8794;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-hotel-score {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 13px;
+}
+
+
+.agentsearch-hotel-score strong {
+    width: 34px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 5px;
+
+    background: #315b82;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.agentsearch-hotel-score div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.agentsearch-hotel-score span {
+    color: #334155;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.agentsearch-hotel-score small {
+    margin-top: 1px;
+
+    color: #94a3b8;
+
+    font-size: 9px;
+}
+
+
+.agentsearch-hotel-dates {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-top: 1px solid #e6ebef;
+    border-bottom: 1px solid #e6ebef;
+}
+
+
+.agentsearch-hotel-dates div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.agentsearch-hotel-dates span {
+    color: #94a3b8;
+
+    font-size: 9px;
+}
+
+
+.agentsearch-hotel-dates strong {
+    color: #475569;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-hotel-features {
+    margin: 11px 0;
+}
+
+
+.agentsearch-hotel-features p {
+    margin: 4px 0;
+
+    color: #4b6357;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-secondary-button {
+    height: 30px;
+
+    margin-right: 7px;
+    padding: 0 11px;
+
+    border: 1px solid #dce3ea;
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #315b82;
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.agentsearch-secondary-button:hover {
+    background: #f4f7f9;
+}
+
+
+/* =========================================================
+   ITINERARY
+   ========================================================= */
+
+.agentsearch-itinerary {
+    display: flex;
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+
+.agentsearch-itinerary-heading {
+    padding: 4px 3px 5px;
+}
+
+
+.agentsearch-itinerary-heading p {
+    margin: 5px 0 0;
+
+    color: #7b8794;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   DAY CARD
+   ========================================================= */
+
+.agentsearch-day-card {
+    overflow: hidden;
+}
+
+
+.agentsearch-day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 15px 18px;
+
+    border-bottom: 1px solid #e8edf1;
+
+    background: #fafbfc;
+}
+
+
+.agentsearch-day-number {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #315b82;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+
+.agentsearch-day-header h3 {
+    margin: 0;
+
+    color: #263445;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.agentsearch-day-header p {
+    margin: 3px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-change-day {
+    height: 30px;
+
+    padding: 0 10px;
+
+    border: 1px solid #dce3ea;
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #52677b;
+
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.agentsearch-day-content {
+    padding: 17px 18px;
+}
+
+
+.agentsearch-day-description {
+    margin: 0 0 15px;
+
+    color: #596575;
+
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   ACTIVITY PERIODS
+   ========================================================= */
+
+.agentsearch-activities {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-bottom: 16px;
+
+    border: 1px solid #e1e8ee;
+    border-radius: 6px;
+
+    overflow: hidden;
+}
+
+
+.agentsearch-activity-period {
+    min-height: 39px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 6px;
+
+    padding: 5px 8px;
+
+    background: #f7fafc;
+
+    border-right: 1px solid #e1e8ee;
+}
+
+
+.agentsearch-activity-period:last-child {
+    border-right: 0;
+}
+
+
+.agentsearch-activity-period span {
+    color: #64748b;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+
+.agentsearch-activity-period button {
+    padding: 4px 6px;
+
+    border: 0;
+    border-radius: 4px;
+
+    background: #4d9a63;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 8px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ACTIVITIES
+   ========================================================= */
+
+.agentsearch-day-activities {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    margin-bottom: 15px;
+}
+
+
+.agentsearch-activity {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #4b5563;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-check {
+    width: 17px;
+    height: 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #e7f5ec;
+
+    color: #3c9860;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TRANSFER
+   ========================================================= */
+
+.agentsearch-transfer {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 11px;
+
+    margin-bottom: 14px;
+
+    border: 1px solid #e2e9ef;
+    border-radius: 6px;
+
+    background: #f8fafc;
+}
+
+
+.agentsearch-transfer-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 5px;
+
+    background: #e7eef5;
+
+    color: #315b82;
+
+    font-size: 12px;
+}
+
+
+.agentsearch-transfer strong {
+    display: block;
+
+    color: #405164;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-transfer p {
+    margin: 3px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   MEALS
+   ========================================================= */
+
+.agentsearch-meals {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 12px 0;
+
+    border-top: 1px solid #edf0f3;
+    border-bottom: 1px solid #edf0f3;
+}
+
+
+.agentsearch-meals > div {
+    display: flex;
+    align-items: center;
+
+    color: #64748b;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-meals > div > span {
+    margin-right: 6px;
+
+    color: #94a3b8;
+}
+
+
+.agentsearch-meals strong {
+    margin-left: 4px;
+
+    color: #475569;
+
+    font-weight: 600;
+}
+
+
+.agentsearch-meals button {
+    margin-left: auto;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #315b82;
+
+    font-family: inherit;
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+
+.agentsearch-meals button:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   OVERNIGHT
+   ========================================================= */
+
+.agentsearch-overnight {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 13px;
+    padding: 5px 8px;
+
+    border-radius: 4px;
+
+    background: #f1f5f7;
+
+    color: #64748b;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.agentsearch-summary-card {
+    padding: 18px;
+}
+
+
+.agentsearch-summary-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+
+.agentsearch-summary-icon {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #dce3ea;
+    border-radius: 5px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.agentsearch-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #edf0f3;
+}
+
+
+.agentsearch-summary-row span {
+    color: #7b8794;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-summary-row strong {
+    color: #52606f;
+
+    font-size: 10px;
+}
+
+
+.agentsearch-summary-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 13px 0;
+}
+
+
+.agentsearch-summary-total span {
+    color: #475569;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.agentsearch-summary-total strong {
+    color: #263445;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.agentsearch-save-button {
+    width: 100%;
+    height: 38px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: #315b82;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+
+.agentsearch-save-button:hover {
+    background: #274d70;
+}
+
+
+/* =========================================================
+   TRIP SUMMARY
+   ========================================================= */
+
+.agentsearch-summary-card h2 {
+    margin: 7px 0 13px;
+
+    color: #263445;
+
+    font-size: 15px;
+}
+
+
+.agentsearch-trip-summary {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin: 0;
+    padding-left: 17px;
+}
+
+
+.agentsearch-trip-summary li {
+    color: #64748b;
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .agentsearch-proposal-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .agentsearch-proposal-sidebar {
+        position: static;
+
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 640px) {
+
+    .agentsearch-proposal-header-inner {
+        width: min(100% - 24px, 1180px);
+
+        min-height: auto;
+
+        padding: 18px 0;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .agentsearch-proposal-header-actions {
+        width: 100%;
+    }
+
+
+    .agentsearch-proposal-back,
+    .agentsearch-update-button {
+        flex: 1;
+    }
+
+
+    .agentsearch-proposal-layout {
+        width: calc(100% - 24px);
+
+        margin-top: 14px;
+    }
+
+
+    .agentsearch-hotel-card {
+        grid-template-columns: 1fr;
+    }
+
+
+    .agentsearch-hotel-image {
+        min-height: 150px;
+    }
+
+
+    .agentsearch-hotel-dates {
+        grid-template-columns: 1fr;
+    }
+
+
+    .agentsearch-activities {
+        grid-template-columns: 1fr;
+    }
+
+
+    .agentsearch-activity-period {
+        border-right: 0;
+        border-bottom: 1px solid #e1e8ee;
+    }
+
+
+    .agentsearch-activity-period:last-child {
+        border-bottom: 0;
+    }
+
+
+    .agentsearch-proposal-sidebar {
+        display: flex;
+    }
+
+
+    .agentsearch-day-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .agentsearch-change-day {
+        width: 100%;
+    }
+
+}

@@ -6,8 +6,9 @@ import { Unauthorized } from "../Pages/Auth/Unauthorized";
 import { DashboardHome } from "../Pages/Panels/DashboardHome";
 import { departmentRoutes } from "./Department/route";
 import { adminRoutes } from "./Admin/route";
-import Home from "../Pages/Website/Home/Home";
 import PackageBuilderPage from "../Pages/Website/PackageBuilder/PackageBuilderPage";
+import AgentSearch from "../Pages/Website/Home/AgentSearch";
+import TripProposal from "../Pages/Website/Home/TripProposal";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <Home />,
+    element: <AgentSearch />,
+  },
+  {
+    path: "/trip-proposal",
+    element: <TripProposal />,
   },
   {
     path: "/package-builder",
