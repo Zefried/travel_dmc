@@ -132,9 +132,9 @@ export const menus: Record<Role, MenuItem[]> = {
     icon: Users,
     children: [
       {
-        name: "Manage Team",
+        name: "Add Team",
         icon: Users,
-        path: "/dashboard/admin/team",
+        path: "/dashboard/add-team",
       },
       {
         name: "Team Types",
