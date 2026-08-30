@@ -8,6 +8,9 @@ import AddCity from "../../Pages/Admin/Locations/City/Add/AddCity";
 import AddTeam from "../../Pages/Admin/Team/Add/AddTeam";
 import AddRoomType from "../../Pages/Admin/RoomType/Add/AddRoomType";
 import AddRoom from "../../Pages/Admin/Rooms/Add/AddRoom";
+import AddAmenity from "../../Pages/Admin/Amenity/Add/AddAmenity";
+import ViewAmenities from "../../Pages/Admin/Amenity/View/ViewAmenities";
+import AssignToProperty from "../../Pages/Admin/AssignAmenities/AssignToProperty/AssignToProperty";
 
 
 export const adminRoutes = [
@@ -89,6 +92,36 @@ export const adminRoutes = [
         ),
       },
       // Room root ends here
+
+      // Amenity routes
+      {
+        path: "add-amenity", // this becomes dashboard home for admin users
+        element: (
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AddAmenity />
+          </ProtectedRoute>
+        ),
+      },
+      {
+          path: "amenities",
+          element: (
+            <ProtectedRoute allowedRoles={['admin']}>
+                <ViewAmenities />
+            </ProtectedRoute>
+          ),
+      },
+      // Amenity routes ends here
+
+      // Amenity Assigning routes
+      {
+        path: "assign-property-amenities", // this becomes dashboard home for admin users
+        element: (
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AssignToProperty />
+          </ProtectedRoute>
+        ),
+      },
+      // Amenity Assigning routes ends here
 
       // Manage team routes
       {

@@ -104,17 +104,34 @@ export const menus: Record<Role, MenuItem[]> = {
       icon: Sparkles,
       children: [
         {
-          name: "Amenities",
+          name: "Add Amenities",
           icon: List,
-          path: "/dashboard/admin/amenities",
+          path: "/dashboard/add-amenity",
         },
         {
-          name: "Property Amenities",
-          icon: Building,
-          path: "/dashboard/admin/property-amenities",
+          name: "Amenities",
+          icon: List,
+          path: "/dashboard/amenities",
         },
       ],
     },
+
+    {
+  name: "Setup",
+  icon: Settings,
+  children: [
+    {
+      name: "Assign Amenities to Property",
+      icon: List,
+      path: "/dashboard/assign-property-amenities",
+    },
+    {
+      name: "Assign Amenities to Room Type",
+      icon: List,
+      path: "/dashboard/assign-room-type-amenities",
+    },
+  ],
+},
 
     {
       name: "Bookings",
