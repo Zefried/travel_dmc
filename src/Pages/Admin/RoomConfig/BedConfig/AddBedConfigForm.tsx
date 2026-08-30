@@ -27,19 +27,18 @@ type RoomType = {
 };
 
 
-type AddMealConfigFormProps = {
+type AddBedConfigFormProps = {
     selectedRoomType: RoomType;
 };
 
 
-const AddMealConfigForm = ({
+const AddBedConfigForm = ({
     selectedRoomType,
-}: AddMealConfigFormProps) => {
+}: AddBedConfigFormProps) => {
 
     // Step 2 — state
 
     const [name, setName] = useState("");
-    const [mealCode, setMealCode] = useState("RO");
     const [description, setDescription] = useState("");
     const [extraPrice, setExtraPrice] = useState("");
     const [status, setStatus] = useState("active");
@@ -70,9 +69,9 @@ const AddMealConfigForm = ({
                 "/hotel/room-configurations",
                 {
                     room_type_id: selectedRoomType.id,
-                    type: "meal",
+                    type: "bed",
                     name,
-                    meal_code: mealCode,
+                    meal_code: null,
                     description: description || null,
                     extra_price: extraPrice
                         ? Number(extraPrice)
@@ -81,13 +80,14 @@ const AddMealConfigForm = ({
                 }
             );
 
+
             setMessage(
                 response.data?.message ||
-                "Meal configuration created successfully."
+                "Bed configuration created successfully."
             );
 
+
             setName("");
-            setMealCode("RO");
             setDescription("");
             setExtraPrice("");
             setStatus("active");
@@ -96,7 +96,7 @@ const AddMealConfigForm = ({
 
             setError(
                 error?.response?.data?.message ||
-                "Failed to create meal configuration."
+                "Failed to create bed configuration."
             );
 
         } finally {
@@ -109,22 +109,22 @@ const AddMealConfigForm = ({
     // Step 5 — return()
 
     return (
-        <div className="amc-container">
+        <div className="abc-container">
 
-            <div className="amc-header">
+            <div className="abc-header">
 
-                <h2 className="amc-title">
-                    Add Meal Configuration
+                <h2 className="abc-title">
+                    Add Bed Configuration
                 </h2>
 
-                <p className="amc-subtitle">
-                    Add a meal configuration for the selected room type.
+                <p className="abc-subtitle">
+                    Add a bed configuration for the selected room type.
                 </p>
 
             </div>
 
 
-            <div className="amc-room-type">
+            <div className="abc-room-type">
 
                 <strong>
                     Room Type:
@@ -138,32 +138,34 @@ const AddMealConfigForm = ({
                     {selectedRoomType.bedroom} BHK
                 </span>
 
+              
+
             </div>
 
 
             <form
-                className="amc-form"
+                className="abc-form"
                 onSubmit={handleSubmit}
             >
 
-                <div className="amc-field">
+                <div className="abc-field">
 
                     <label
-                        className="amc-label"
-                        htmlFor="amc-name"
+                        className="abc-label"
+                        htmlFor="abc-name"
                     >
                         Configuration Name
                     </label>
 
                     <input
-                        id="amc-name"
+                        id="abc-name"
                         type="text"
-                        className="amc-input"
+                        className="abc-input"
                         value={name}
                         onChange={(e) =>
                             setName(e.target.value)
                         }
-                        placeholder="e.g. Breakfast Plan"
+                        placeholder="e.g. 2 King Beds"
                         maxLength={150}
                         required
                     />
@@ -171,82 +173,43 @@ const AddMealConfigForm = ({
                 </div>
 
 
-                <div className="amc-field">
+                <div className="abc-field">
 
                     <label
-                        className="amc-label"
-                        htmlFor="amc-meal-code"
-                    >
-                        Meal Plan
-                    </label>
-
-                    <select
-                        id="amc-meal-code"
-                        className="amc-select"
-                        value={mealCode}
-                        onChange={(e) =>
-                            setMealCode(e.target.value)
-                        }
-                    >
-
-                        <option value="RO">
-                            Room Only
-                        </option>
-
-                        <option value="HB">
-                            Half Board
-                        </option>
-
-                        <option value="FB">
-                            Full Board
-                        </option>
-
-                        <option value="AI">
-                            All Inclusive
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div className="amc-field">
-
-                    <label
-                        className="amc-label"
-                        htmlFor="amc-description"
+                        className="abc-label"
+                        htmlFor="abc-description"
                     >
                         Description
                     </label>
 
                     <textarea
-                        id="amc-description"
-                        className="amc-textarea"
+                        id="abc-description"
+                        className="abc-textarea"
                         value={description}
                         onChange={(e) =>
                             setDescription(e.target.value)
                         }
-                        placeholder="Describe the meal configuration"
+                        placeholder="Describe the bed configuration"
                     />
 
                 </div>
 
 
-                <div className="amc-field">
+                <div className="abc-field">
 
                     <label
-                        className="amc-label"
-                        htmlFor="amc-extra-price"
+                        className="abc-label"
+                        htmlFor="abc-extra-price"
                     >
                         Extra Price
                     </label>
 
                     <input
-                        id="amc-extra-price"
+                        id="abc-extra-price"
                         type="number"
                         min="0"
                         step="0.01"
-                        className="amc-input"
+                        className="abc-input"
                         value={extraPrice}
                         onChange={(e) =>
                             setExtraPrice(e.target.value)
@@ -257,18 +220,18 @@ const AddMealConfigForm = ({
                 </div>
 
 
-                <div className="amc-field">
+                <div className="abc-field">
 
                     <label
-                        className="amc-label"
-                        htmlFor="amc-status"
+                        className="abc-label"
+                        htmlFor="abc-status"
                     >
                         Status
                     </label>
 
                     <select
-                        id="amc-status"
-                        className="amc-select"
+                        id="abc-status"
+                        className="abc-select"
                         value={status}
                         onChange={(e) =>
                             setStatus(e.target.value)
@@ -289,14 +252,14 @@ const AddMealConfigForm = ({
 
 
                 {message && (
-                    <div className="amc-success">
+                    <div className="abc-success">
                         {message}
                     </div>
                 )}
 
 
                 {error && (
-                    <div className="amc-error">
+                    <div className="abc-error">
                         {error}
                     </div>
                 )}
@@ -304,12 +267,12 @@ const AddMealConfigForm = ({
 
                 <button
                     type="submit"
-                    className="amc-submit"
+                    className="abc-submit"
                     disabled={loading}
                 >
                     {loading
                         ? "Creating..."
-                        : "Create Meal Configuration"}
+                        : "Create Bed Configuration"}
                 </button>
 
             </form>
@@ -319,4 +282,4 @@ const AddMealConfigForm = ({
 };
 
 
-export default AddMealConfigForm;
+export default AddBedConfigForm;
