@@ -6,6 +6,8 @@ import AddCountry from "../../Pages/Admin/Locations/Country/Add/AddCountry";
 import AddState from "../../Pages/Admin/Locations/State/Add/AddState";
 import AddCity from "../../Pages/Admin/Locations/City/Add/AddCity";
 import AddTeam from "../../Pages/Admin/Team/Add/AddTeam";
+import AddRoomType from "../../Pages/Admin/RoomType/Add/AddRoomType";
+import AddRoom from "../../Pages/Admin/Rooms/Add/AddRoom";
 
 
 export const adminRoutes = [
@@ -64,8 +66,29 @@ export const adminRoutes = [
           </ProtectedRoute>
         ),
       },
-     
       // Property root ends here
+
+      // RoomType routes
+      {
+        path: "add-room-type", // this becomes dashboard home for admin users
+        element: (
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AddRoomType />
+          </ProtectedRoute>
+        ),
+      },
+      // RoomType root ends here
+
+       // Rooms routes
+      {
+        path: "add-room", // this becomes dashboard home for admin users
+        element: (
+          <ProtectedRoute allowedRoles={['admin']}>
+            <AddRoom />
+          </ProtectedRoute>
+        ),
+      },
+      // Room root ends here
 
       // Manage team routes
       {
@@ -76,7 +99,6 @@ export const adminRoutes = [
           </ProtectedRoute>
         ),
       },
-
       // Team routes ends here
      
     ],

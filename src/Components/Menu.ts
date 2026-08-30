@@ -89,12 +89,12 @@ export const menus: Record<Role, MenuItem[]> = {
         {
           name: "Room Types",
           icon: BedDouble,
-          path: "/dashboard/admin/room-types",
+          path: "/dashboard/add-room-type",
         },
         {
           name: "Rooms",
           icon: DoorOpen,
-          path: "/dashboard/admin/rooms",
+          path: "/dashboard/add-room",
         },
       ],
     },
