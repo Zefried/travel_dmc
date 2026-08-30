@@ -52,25 +52,6 @@ const AssignToProperty = () => {
 
     // Step 3 — functions
 
-    const assignAmenities = async () => {
-
-        if (!selectedProperty || selectedAmenities.length === 0) {
-            return;
-        }
-
-        const response = await api.post(
-            "/hotel/amenity-configs",
-            {
-                property_id: selectedProperty.id,
-                property_amenity_ids: selectedAmenities.map(
-                    (amenity) => amenity.id
-                ),
-            }
-        );
-
-        return response.data;
-    };
-
 
     // Step 4 — handlers
 
@@ -124,7 +105,7 @@ const AssignToProperty = () => {
     };
 
 
-    const handleAmenityRemove = (
+    const handleAmenityUnselect = (
         amenityId: number
     ) => {
 
@@ -139,15 +120,32 @@ const AssignToProperty = () => {
     };
 
 
-    const handleAssign = async () => {
+    const handleExistingAmenityRemove = (
+        amenityId: number
+    ) => {
+
+        setSelectedAmenities((current) =>
+            current.filter(
+                (amenity) => amenity.id !== amenityId
+            )
+        );
+
+        setMessage("");
+        setError("");
+    };
+
+
+    const handleSave = async () => {
 
         if (!selectedProperty) {
+
             setError("Please select a property.");
 
             return;
         }
 
         if (selectedAmenities.length === 0) {
+
             setError("Please select at least one amenity.");
 
             return;
@@ -159,40 +157,29 @@ const AssignToProperty = () => {
 
         try {
 
-            const data = await assignAmenities();
+            const response = await api.post(
+                "/hotel/amenity-configs",
+                {
+                    target_type: "property",
+                    property_id: selectedProperty.id,
+                    property_amenity_ids:
+                        selectedAmenities.map(
+                            (amenity) => amenity.id
+                        ),
+                }
+            );
 
             setMessage(
-                data.message ||
-                "Amenities assigned successfully."
+                response.data?.message ||
+                "Amenities saved successfully."
             );
 
         } catch (error: any) {
 
-            const responseData = error?.response?.data;
-
-            if (responseData?.errors) {
-
-                const firstError = Object.values(
-                    responseData.errors
-                )
-                    .flat()
-                    .find(Boolean);
-
-                setError(
-                    String(
-                        firstError ||
-                        responseData.message ||
-                        "Validation failed."
-                    )
-                );
-
-            } else {
-
-                setError(
-                    responseData?.message ||
-                    "Something went wrong."
-                );
-            }
+            setError(
+                error?.response?.data?.message ||
+                "Failed to save amenities."
+            );
 
         } finally {
 
@@ -219,7 +206,10 @@ const AssignToProperty = () => {
                     selectedAmenities={selectedAmenities}
                     onSetSelected={handleSetSelectedAmenities}
                     onSelect={handleAmenitySelect}
-                    onRemove={handleAmenityRemove}
+                    onUnselect={handleAmenityUnselect}
+                    onExistingRemove={
+                        handleExistingAmenityRemove
+                    }
                 />
             )}
 
@@ -241,7 +231,7 @@ const AssignToProperty = () => {
             {selectedProperty && (
                 <button
                     type="button"
-                    onClick={handleAssign}
+                    onClick={handleSave}
                     disabled={
                         loading ||
                         selectedAmenities.length === 0

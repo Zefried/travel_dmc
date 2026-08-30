@@ -117,21 +117,26 @@ export const menus: Record<Role, MenuItem[]> = {
     },
 
     {
-  name: "Setup",
-  icon: Settings,
-  children: [
-    {
-      name: "Assign Amenities to Property",
-      icon: List,
-      path: "/dashboard/assign-property-amenities",
+      name: "Setup",
+      icon: Settings,
+      children: [
+        {
+          name: "Assign Amenities to Property",
+          icon: List,
+          path: "/dashboard/assign-property-amenities",
+        },
+        {
+          name: "Assign Amenities to Room Type",
+          icon: List,
+          path: "/dashboard/assign-room-type-amenities",
+        },
+          {
+      name: "Add Room Configuration",
+      icon: Settings,
+      path: "/dashboard/add-room-configuration",
     },
-    {
-      name: "Assign Amenities to Room Type",
-      icon: List,
-      path: "/dashboard/assign-room-type-amenities",
+      ],
     },
-  ],
-},
 
     {
       name: "Bookings",

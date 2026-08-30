@@ -13,28 +13,42 @@ type Amenity = {
 };
 
 
+type ExistingAmenity = Amenity & {
+    config_id: number;
+};
+
+
 type SelectAmenitiesProps = {
-    propertyId: number;
+    propertyId?: number;
+    roomTypeId?: number;
+
     selectedAmenities: Amenity[];
+
     onSetSelected: (amenities: Amenity[]) => void;
     onSelect: (amenity: Amenity) => void;
-    onRemove: (amenityId: number) => void;
+    onUnselect: (amenityId: number) => void;
+    onExistingRemove: (amenityId: number) => void;
 };
 
 
 const SelectAmenities = ({
     propertyId,
+    roomTypeId,
     selectedAmenities,
     onSetSelected,
     onSelect,
-    onRemove,
+    onUnselect,
+    onExistingRemove,
 }: SelectAmenitiesProps) => {
 
     // Step 2 — state
 
     const [amenities, setAmenities] = useState<Amenity[]>([]);
+    const [existingAmenityConfigIds, setExistingAmenityConfigIds] =
+        useState<Record<number, number>>({});
 
     const [loading, setLoading] = useState(false);
+    const [removingId, setRemovingId] = useState<number | null>(null);
     const [error, setError] = useState("");
 
 
@@ -52,11 +66,27 @@ const SelectAmenities = ({
 
     const fetchExistingAmenities = async () => {
 
-        const response = await api.get(
-            `/hotel/properties/${propertyId}/amenities`
-        );
+        if (propertyId) {
 
-        return response.data.data;
+            const response = await api.get(
+                `/hotel/properties/${propertyId}/amenities`
+            );
+
+            return response.data.data;
+        }
+
+
+        if (roomTypeId) {
+
+            const response = await api.get(
+                `/hotel/room-types/${roomTypeId}/amenities`
+            );
+
+            return response.data.data;
+        }
+
+
+        return [];
     };
 
 
@@ -67,6 +97,14 @@ const SelectAmenities = ({
         return selectedAmenities.some(
             (amenity) => amenity.id === amenityId
         );
+    };
+
+
+    const isExisting = (
+        amenityId: number
+    ) => {
+
+        return existingAmenityConfigIds[amenityId] !== undefined;
     };
 
 
@@ -82,18 +120,33 @@ const SelectAmenities = ({
                 const [
                     allAmenities,
                     existingAmenities,
+                ]: [
+                    Amenity[],
+                    ExistingAmenity[]
                 ] = await Promise.all([
                     fetchAmenities(),
                     fetchExistingAmenities(),
                 ]);
 
+
+                const configMap: Record<number, number> = {};
+
+                existingAmenities.forEach((amenity) => {
+
+                    configMap[amenity.id] = amenity.config_id;
+
+                });
+
+
                 setAmenities(allAmenities);
+                setExistingAmenityConfigIds(configMap);
 
                 onSetSelected(existingAmenities);
 
             } catch (error: any) {
 
                 setAmenities([]);
+                setExistingAmenityConfigIds({});
                 onSetSelected([]);
 
                 setError(
@@ -107,9 +160,10 @@ const SelectAmenities = ({
             }
         };
 
+
         loadAmenities();
 
-    }, [propertyId]);
+    }, [propertyId, roomTypeId]);
 
 
     // Step 4 — handlers
@@ -126,11 +180,56 @@ const SelectAmenities = ({
     };
 
 
-    const handleRemove = (
+    const handleUnselect = (
         amenityId: number
     ) => {
 
-        onRemove(amenityId);
+        onUnselect(amenityId);
+    };
+
+
+    const handleExistingRemove = async (
+        amenityId: number
+    ) => {
+
+        const configId =
+            existingAmenityConfigIds[amenityId];
+
+        if (!configId) {
+            return;
+        }
+
+        setRemovingId(amenityId);
+        setError("");
+
+        try {
+
+            await api.delete(
+                `/hotel/amenity-configs/${configId}`
+            );
+
+            setExistingAmenityConfigIds((current) => {
+
+                const updated = { ...current };
+
+                delete updated[amenityId];
+
+                return updated;
+            });
+
+            onExistingRemove(amenityId);
+
+        } catch (error: any) {
+
+            setError(
+                error?.response?.data?.message ||
+                "Failed to remove amenity."
+            );
+
+        } finally {
+
+            setRemovingId(null);
+        }
     };
 
 
@@ -146,7 +245,7 @@ const SelectAmenities = ({
                 </h2>
 
                 <p className="sa-subtitle">
-                    Select one or more amenities for the property.
+                    Select one or more amenities.
                 </p>
 
             </div>
@@ -166,15 +265,6 @@ const SelectAmenities = ({
             )}
 
 
-            {!loading &&
-                !error &&
-                amenities.length === 0 && (
-                    <div className="sa-empty">
-                        No amenities found.
-                    </div>
-                )}
-
-
             {selectedAmenities.length > 0 && (
                 <div className="sa-selected">
 
@@ -185,39 +275,70 @@ const SelectAmenities = ({
 
                     <div className="sa-selected-list">
 
-                        {selectedAmenities.map((amenity) => (
+                        {selectedAmenities.map((amenity) => {
 
-                            <div
-                                key={amenity.id}
-                                className="sa-selected-item"
-                            >
+                            const existing =
+                                isExisting(amenity.id);
 
-                                <div className="sa-selected-info">
+                            return (
+                                <div
+                                    key={amenity.id}
+                                    className="sa-selected-item"
+                                >
 
-                                    <strong className="sa-name">
-                                        {amenity.name}
-                                    </strong>
+                                    <div className="sa-selected-info">
 
-                                    <span className="sa-category">
-                                        {amenity.category}
-                                    </span>
+                                        <strong className="sa-name">
+                                            {amenity.name}
+                                        </strong>
+
+                                        <span className="sa-category">
+                                            {amenity.category}
+                                        </span>
+
+                                    </div>
+
+
+                                    {existing ? (
+
+                                        <button
+                                            type="button"
+                                            className="sa-remove-button"
+                                            onClick={() =>
+                                                handleExistingRemove(
+                                                    amenity.id
+                                                )
+                                            }
+                                            disabled={
+                                                removingId ===
+                                                amenity.id
+                                            }
+                                        >
+                                            {removingId ===
+                                            amenity.id
+                                                ? "Removing..."
+                                                : "Remove"}
+                                        </button>
+
+                                    ) : (
+
+                                        <button
+                                            type="button"
+                                            className="sa-unselect-button"
+                                            onClick={() =>
+                                                handleUnselect(
+                                                    amenity.id
+                                                )
+                                            }
+                                        >
+                                            Unselect
+                                        </button>
+
+                                    )}
 
                                 </div>
-
-
-                                <button
-                                    type="button"
-                                    className="sa-remove-button"
-                                    onClick={() =>
-                                        handleRemove(amenity.id)
-                                    }
-                                >
-                                    Remove
-                                </button>
-
-                            </div>
-
-                        ))}
+                            );
+                        })}
 
                     </div>
 
@@ -227,51 +348,69 @@ const SelectAmenities = ({
 
             {!loading &&
                 !error &&
+                amenities.length === 0 && (
+                    <div className="sa-empty">
+                        No amenities found.
+                    </div>
+                )}
+
+
+            {!loading &&
+                !error &&
                 amenities.length > 0 && (
                     <div className="sa-list">
 
-                        {amenities.map((amenity) => (
+                        {amenities.map((amenity) => {
 
-                            <div
-                                key={amenity.id}
-                                className="sa-item"
-                            >
+                            const selected =
+                                isSelected(amenity.id);
 
-                                <div className="sa-info">
+                            return (
+                                <div
+                                    key={amenity.id}
+                                    className="sa-item"
+                                >
 
-                                    <h3 className="sa-name">
-                                        {amenity.name}
-                                    </h3>
+                                    <div className="sa-info">
 
-                                    <p className="sa-category">
-                                        {amenity.category}
-                                    </p>
+                                        <h3 className="sa-name">
+                                            {amenity.name}
+                                        </h3>
 
-                                    {amenity.description && (
-                                        <p className="sa-description">
-                                            {amenity.description}
+                                        <p className="sa-category">
+                                            {amenity.category}
                                         </p>
-                                    )}
+
+                                        {amenity.description && (
+                                            <p className="sa-description">
+                                                {amenity.description}
+                                            </p>
+                                        )}
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        className="sa-select-button"
+                                        onClick={() =>
+                                            selected
+                                                ? handleUnselect(
+                                                      amenity.id
+                                                  )
+                                                : handleSelect(
+                                                      amenity
+                                                  )
+                                        }
+                                    >
+                                        {selected
+                                            ? "Selected"
+                                            : "Select"}
+                                    </button>
 
                                 </div>
-
-
-                                <button
-                                    type="button"
-                                    className="sa-select-button"
-                                    onClick={() =>
-                                        handleSelect(amenity)
-                                    }
-                                    disabled={isSelected(amenity.id)}
-                                >
-                                    {isSelected(amenity.id)
-                                        ? "Selected"
-                                        : "Select"}
-                                </button>
-
-                            </div>
-
-                        ))}
+                            );
+                        })}
 
                     </div>
                 )}
