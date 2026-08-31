@@ -4,6 +4,7 @@ import { useState } from "react";
 import SelectProperty from "./SelectProperty";
 import SelectAmenities from "./SelectAmenities";
 import api from "../../../../api/axios";
+import './Styles/SelectAmenitiesAST.css';
 
 
 type Property = {
@@ -231,6 +232,7 @@ const AssignToProperty = () => {
             {selectedProperty && (
                 <button
                     type="button"
+                    className="sa-save-button"
                     onClick={handleSave}
                     disabled={
                         loading ||

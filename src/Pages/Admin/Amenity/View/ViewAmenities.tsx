@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import api from "../../../../api/axios";
+import '../Styles/ViewAmenities.css';
 
 
 type Amenity = {

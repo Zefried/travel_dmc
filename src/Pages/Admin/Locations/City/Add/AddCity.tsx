@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import api from "../../../../../api/axios";
-// import "./AddCity.css";
+import '../../Styles/City.css';
 
 
 const AddCity = () => {
@@ -130,169 +130,173 @@ const AddCity = () => {
 
     // Step 5 — return()
 
+  
     return (
-        <div className="adc-container">
+    <div className="acy-container">
 
-            <div className="adc-header">
+        <div className="acy-header">
 
-                <h1 className="adc-title">
-                    Add City
-                </h1>
+            <h1 className="acy-title">
+                Add City
+            </h1>
 
-                <p className="adc-subtitle">
-                    Add a new city to the location master.
-                </p>
+            <p className="acy-subtitle">
+                Add a new city to the location master.
+            </p>
+
+        </div>
+
+
+        <form
+            className="acy-form"
+            onSubmit={adcHandleSubmit}
+        >
+
+            <div className="acy-field">
+
+                <label
+                    className="acy-label"
+                    htmlFor="acy-state-id"
+                >
+                    State
+                </label>
+
+                <select
+                    id="acy-state-id"
+                    className="acy-select"
+                    value={adcStateId}
+                    onChange={(e) =>
+                        setAdcStateId(e.target.value)
+                    }
+                    required
+                >
+
+                    <option value="">
+                        Select State
+                    </option>
+
+                    {adcStates.map((state) => (
+                        <option
+                            key={state.id}
+                            value={state.id}
+                        >
+                            {state.name}
+                        </option>
+                    ))}
+
+                </select>
 
             </div>
 
 
-            <form
-                className="adc-form"
-                onSubmit={adcHandleSubmit}
-            >
+            <div className="acy-field">
 
-                <div className="adc-field">
-
-                    <label
-                        className="adc-label"
-                        htmlFor="adc-state-id"
-                    >
-                        State
-                    </label>
-
-                    <select
-                        id="adc-state-id"
-                        className="adc-select"
-                        value={adcStateId}
-                        onChange={(e) =>
-                            setAdcStateId(e.target.value)
-                        }
-                        required
-                    >
-
-                        <option value="">
-                            Select State
-                        </option>
-
-                        {adcStates.map((state) => (
-                            <option
-                                key={state.id}
-                                value={state.id}
-                            >
-                                {state.name}
-                            </option>
-                        ))}
-
-                    </select>
-
-                </div>
-
-
-                <div className="adc-field">
-
-                    <label
-                        className="adc-label"
-                        htmlFor="adc-name"
-                    >
-                        City Name
-                    </label>
-
-                    <input
-                        id="adc-name"
-                        type="text"
-                        className="adc-input"
-                        value={adcName}
-                        onChange={(e) =>
-                            setAdcName(e.target.value)
-                        }
-                        placeholder="e.g. Guwahati"
-                        required
-                    />
-
-                </div>
-
-
-                <div className="adc-field">
-
-                    <label
-                        className="adc-label"
-                        htmlFor="adc-code"
-                    >
-                        City Code
-                    </label>
-
-                    <input
-                        id="adc-code"
-                        type="text"
-                        className="adc-input"
-                        value={adcCode}
-                        onChange={(e) =>
-                            setAdcCode(e.target.value)
-                        }
-                        placeholder="e.g. GHY"
-                        maxLength={20}
-                    />
-
-                </div>
-
-
-                <div className="adc-field">
-
-                    <label
-                        className="adc-label"
-                        htmlFor="adc-status"
-                    >
-                        Status
-                    </label>
-
-                    <select
-                        id="adc-status"
-                        className="adc-select"
-                        value={adcStatus}
-                        onChange={(e) =>
-                            setAdcStatus(e.target.value)
-                        }
-                    >
-                        <option value="active">
-                            Active
-                        </option>
-
-                        <option value="inactive">
-                            Inactive
-                        </option>
-                    </select>
-
-                </div>
-
-
-                {adcMessage && (
-                    <div className="adc-success">
-                        {adcMessage}
-                    </div>
-                )}
-
-
-                {adcError && (
-                    <div className="adc-error">
-                        {adcError}
-                    </div>
-                )}
-
-
-                <button
-                    type="submit"
-                    className="adc-submit"
-                    disabled={adcLoading}
+                <label
+                    className="acy-label"
+                    htmlFor="acy-name"
                 >
-                    {adcLoading
-                        ? "Creating..."
-                        : "Create City"}
-                </button>
+                    City Name
+                </label>
 
-            </form>
+                <input
+                    id="acy-name"
+                    type="text"
+                    className="acy-input"
+                    value={adcName}
+                    onChange={(e) =>
+                        setAdcName(e.target.value)
+                    }
+                    placeholder="e.g. Guwahati"
+                    required
+                />
 
-        </div>
-    );
+            </div>
+
+
+            <div className="acy-field">
+
+                <label
+                    className="acy-label"
+                    htmlFor="acy-code"
+                >
+                    City Code
+                </label>
+
+                <input
+                    id="acy-code"
+                    type="text"
+                    className="acy-input"
+                    value={adcCode}
+                    onChange={(e) =>
+                        setAdcCode(e.target.value)
+                    }
+                    placeholder="e.g. GHY"
+                    maxLength={20}
+                />
+
+            </div>
+
+
+            <div className="acy-field">
+
+                <label
+                    className="acy-label"
+                    htmlFor="acy-status"
+                >
+                    Status
+                </label>
+
+                <select
+                    id="acy-status"
+                    className="acy-select"
+                    value={adcStatus}
+                    onChange={(e) =>
+                        setAdcStatus(e.target.value)
+                    }
+                >
+
+                    <option value="active">
+                        Active
+                    </option>
+
+                    <option value="inactive">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            {adcMessage && (
+                <div className="acy-success">
+                    {adcMessage}
+                </div>
+            )}
+
+
+            {adcError && (
+                <div className="acy-error">
+                    {adcError}
+                </div>
+            )}
+
+
+            <button
+                type="submit"
+                className="acy-submit"
+                disabled={adcLoading}
+            >
+                {adcLoading
+                    ? "Creating..."
+                    : "Create City"}
+            </button>
+
+        </form>
+
+    </div>
+);
+
 };
 
 

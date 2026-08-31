@@ -1,0 +1,292 @@
+/* ================================
+   ADD COUNTRY
+   ================================ */
+
+.adc-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+
+/* HEADER */
+
+.adc-header {
+    margin-bottom: 24px;
+}
+
+.adc-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+    color: #171717;
+}
+
+.adc-subtitle {
+    margin: 6px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6b7280;
+}
+
+
+/* FORM */
+
+.adc-form {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 24px;
+}
+
+
+/* FIELD */
+
+.adc-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.adc-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* INPUTS */
+
+.adc-input,
+.adc-select {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #111827;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.adc-input::placeholder {
+    color: #9ca3af;
+}
+
+.adc-input:hover,
+.adc-select:hover {
+    border-color: #b8bec8;
+}
+
+.adc-input:focus,
+.adc-select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+
+/* MESSAGES */
+
+.adc-success,
+.adc-error {
+    padding: 11px 13px;
+    margin-bottom: 18px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.adc-success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+}
+
+.adc-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+
+/* SUBMIT */
+
+.adc-submit {
+    width: 100%;
+    min-height: 43px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #111827;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.adc-submit:hover:not(:disabled) {
+    background: #1f2937;
+}
+
+.adc-submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.adc-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+/* ================================
+   DARK MODE
+   ================================ */
+
+.dark .adc-container {
+    color: #f9fafb;
+}
+
+.dark .adc-title {
+    color: #f9fafb;
+}
+
+.dark .adc-subtitle {
+    color: #9ca3af;
+}
+
+.dark .adc-form {
+    background: #111827;
+    border-color: #1f2937;
+}
+
+.dark .adc-label {
+    color: #d1d5db;
+}
+
+.dark .adc-input,
+.dark .adc-select {
+    background: #0f172a;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark .adc-input::placeholder {
+    color: #6b7280;
+}
+
+.dark .adc-input:hover,
+.dark .adc-select:hover {
+    border-color: #4b5563;
+}
+
+.dark .adc-input:focus,
+.dark .adc-select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.dark .adc-success {
+    background: #052e16;
+    border-color: #166534;
+    color: #86efac;
+}
+
+.dark .adc-error {
+    background: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+
+.dark .adc-submit {
+    background: #f9fafb;
+    color: #111827;
+}
+
+.dark .adc-submit:hover:not(:disabled) {
+    background: #e5e7eb;
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 767px) {
+
+    .adc-container {
+        padding: 16px;
+    }
+
+    .adc-header {
+        margin-bottom: 18px;
+    }
+
+    .adc-title {
+        font-size: 21px;
+    }
+
+    .adc-subtitle {
+        font-size: 13px;
+    }
+
+    .adc-form {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .adc-field {
+        margin-bottom: 16px;
+    }
+
+    .adc-input,
+    .adc-select {
+        min-height: 44px;
+    }
+
+    .adc-submit {
+        min-height: 44px;
+    }
+}
+
+
+.adc-select {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #111827;
+}
+
+.dark .adc-select {
+    background: #0f172a;
+    border-color: #374151;
+    color: #f9fafb;
+}

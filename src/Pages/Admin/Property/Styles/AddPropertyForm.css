@@ -1,0 +1,363 @@
+/* ================================
+   ADD PROPERTY FORM
+   ================================ */
+
+.adpf-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+
+/* HEADER */
+
+.adpf-header {
+    margin-bottom: 24px;
+}
+
+.adpf-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+    color: #171717;
+}
+
+.adpf-subtitle {
+    margin: 6px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6b7280;
+}
+
+
+/* SELECTED HOTEL ADMIN */
+
+.adpf-selected-admin {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 16px;
+    padding: 12px 14px;
+
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    font-size: 13px;
+    color: #374151;
+}
+
+.adpf-selected-admin strong {
+    font-weight: 600;
+    color: #111827;
+}
+
+
+/* FORM */
+
+.adpf-form {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 18px;
+    row-gap: 0;
+
+    padding: 24px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+
+/* FIELD */
+
+.adpf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.adpf-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* FULL WIDTH FIELDS */
+
+.adpf-field:nth-child(4),
+.adpf-field:nth-child(5),
+.adpf-field:nth-child(9),
+.adpf-field:nth-child(10),
+.adpf-field:nth-child(11),
+.adpf-field:nth-child(12) {
+    grid-column: 1 / -1;
+}
+
+
+/* INPUT / SELECT / TEXTAREA */
+
+.adpf-input,
+.adpf-select,
+.adpf-textarea {
+    width: 100%;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #111827;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.adpf-input,
+.adpf-select {
+    min-height: 42px;
+    padding: 9px 12px;
+}
+
+.adpf-textarea {
+    min-height: 92px;
+    padding: 10px 12px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.adpf-input::placeholder,
+.adpf-textarea::placeholder {
+    color: #9ca3af;
+}
+
+.adpf-input:hover,
+.adpf-select:hover,
+.adpf-textarea:hover {
+    border-color: #b8bec8;
+}
+
+.adpf-input:focus,
+.adpf-select:focus,
+.adpf-textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+
+/* MESSAGES */
+
+.adpf-success,
+.adpf-error {
+    grid-column: 1 / -1;
+
+    padding: 11px 13px;
+    margin-bottom: 18px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.adpf-success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+}
+
+.adpf-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+
+/* SUBMIT */
+
+.adpf-submit {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    min-height: 43px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #111827;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.adpf-submit:hover:not(:disabled) {
+    background: #1f2937;
+}
+
+.adpf-submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.adpf-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+/* ================================
+   DARK MODE
+   ================================ */
+
+.dark .adpf-title {
+    color: #f9fafb;
+}
+
+.dark .adpf-subtitle {
+    color: #9ca3af;
+}
+
+.dark .adpf-selected-admin {
+    background: #0f172a;
+    border-color: #1f2937;
+    color: #d1d5db;
+}
+
+.dark .adpf-selected-admin strong {
+    color: #f9fafb;
+}
+
+.dark .adpf-form {
+    background: #111827;
+    border-color: #1f2937;
+}
+
+.dark .adpf-label {
+    color: #d1d5db;
+}
+
+.dark .adpf-input,
+.dark .adpf-select,
+.dark .adpf-textarea {
+    background: #0f172a;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark .adpf-input::placeholder,
+.dark .adpf-textarea::placeholder {
+    color: #6b7280;
+}
+
+.dark .adpf-input:hover,
+.dark .adpf-select:hover,
+.dark .adpf-textarea:hover {
+    border-color: #4b5563;
+}
+
+.dark .adpf-input:focus,
+.dark .adpf-select:focus,
+.dark .adpf-textarea:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.dark .adpf-success {
+    background: #052e16;
+    border-color: #166534;
+    color: #86efac;
+}
+
+.dark .adpf-error {
+    background: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+
+.dark .adpf-submit {
+    background: #f9fafb;
+    color: #111827;
+}
+
+.dark .adpf-submit:hover:not(:disabled) {
+    background: #e5e7eb;
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 767px) {
+
+    .adpf-container {
+        padding: 16px;
+    }
+
+    .adpf-header {
+        margin-bottom: 18px;
+    }
+
+    .adpf-title {
+        font-size: 21px;
+    }
+
+    .adpf-subtitle {
+        font-size: 13px;
+    }
+
+    .adpf-selected-admin {
+        flex-wrap: wrap;
+        padding: 11px 12px;
+    }
+
+    .adpf-form {
+        grid-template-columns: 1fr;
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .adpf-field,
+    .adpf-field:nth-child(4),
+    .adpf-field:nth-child(5),
+    .adpf-field:nth-child(9),
+    .adpf-field:nth-child(10),
+    .adpf-field:nth-child(11),
+    .adpf-field:nth-child(12) {
+        grid-column: 1;
+    }
+
+    .adpf-input,
+    .adpf-select {
+        min-height: 44px;
+    }
+
+    .adpf-textarea {
+        min-height: 100px;
+    }
+
+    .adpf-submit {
+        min-height: 44px;
+    }
+}

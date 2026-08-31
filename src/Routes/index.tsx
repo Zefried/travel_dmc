@@ -8,7 +8,7 @@ import { departmentRoutes } from "./Department/route";
 import { adminRoutes } from "./Admin/route";
 import PackageBuilderPage from "../Pages/Website/PackageBuilder/PackageBuilderPage";
 import AgentSearch from "../Pages/Website/Home/AgentSearch";
-import TripProposal from "../Pages/Website/Home/TripProposal";
+
 
 const router = createBrowserRouter([
   {
@@ -23,10 +23,7 @@ const router = createBrowserRouter([
     path: "/home",
     element: <AgentSearch />,
   },
-  {
-    path: "/trip-proposal",
-    element: <TripProposal />,
-  },
+ 
   {
     path: "/package-builder",
     element: <PackageBuilderPage />,

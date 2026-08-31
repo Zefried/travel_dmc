@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import api from "../../../../../api/axios";
-// import "./AddState.css";
+import '../../Styles/State.css';
 
 
 const AddState = () => {
@@ -131,168 +131,172 @@ const AddState = () => {
     // Step 5 — return()
 
     return (
-        <div className="ads-container">
+    <div className="ads-container">
 
-            <div className="ads-header">
+        <div className="ads-header">
 
-                <h1 className="ads-title">
-                    Add State
-                </h1>
+            <h1 className="ads-title">
+                Add State
+            </h1>
 
-                <p className="ads-subtitle">
-                    Add a new state to the location master.
-                </p>
+            <p className="ads-subtitle">
+                Add a new state to the location master.
+            </p>
+
+        </div>
+
+
+        <form
+            className="ads-form"
+            onSubmit={adsHandleSubmit}
+        >
+
+            <div className="ads-field">
+
+                <label
+                    className="ads-label"
+                    htmlFor="ads-country-id"
+                >
+                    Country
+                </label>
+
+                <select
+                    id="ads-country-id"
+                    className="ads-select"
+                    value={adsCountryId}
+                    onChange={(e) =>
+                        setAdsCountryId(e.target.value)
+                    }
+                    required
+                >
+
+                    <option value="">
+                        Select Country
+                    </option>
+
+                    {adsCountries.map((country) => (
+                        <option
+                            key={country.id}
+                            value={country.id}
+                        >
+                            {country.name}
+                        </option>
+                    ))}
+
+                </select>
 
             </div>
 
 
-            <form
-                className="ads-form"
-                onSubmit={adsHandleSubmit}
-            >
+            <div className="ads-field">
 
-                <div className="ads-field">
-
-                    <label
-                        className="ads-label"
-                        htmlFor="ads-country-id"
-                    >
-                        Country
-                    </label>
-
-                    <select
-                        id="ads-country-id"
-                        className="ads-select"
-                        value={adsCountryId}
-                        onChange={(e) =>
-                            setAdsCountryId(e.target.value)
-                        }
-                        required
-                    >
-
-                        <option value="">
-                            Select Country
-                        </option>
-
-                        {adsCountries.map((country) => (
-                            <option
-                                key={country.id}
-                                value={country.id}
-                            >
-                                {country.name}
-                            </option>
-                        ))}
-
-                    </select>
-
-                </div>
-
-
-                <div className="ads-field">
-
-                    <label
-                        className="ads-label"
-                        htmlFor="ads-name"
-                    >
-                        State Name
-                    </label>
-
-                    <input
-                        id="ads-name"
-                        type="text"
-                        className="ads-input"
-                        value={adsName}
-                        onChange={(e) =>
-                            setAdsName(e.target.value)
-                        }
-                        placeholder="e.g. Assam"
-                        required
-                    />
-
-                </div>
-
-
-                <div className="ads-field">
-
-                    <label
-                        className="ads-label"
-                        htmlFor="ads-code"
-                    >
-                        State Code
-                    </label>
-
-                    <input
-                        id="ads-code"
-                        type="text"
-                        className="ads-input"
-                        value={adsCode}
-                        onChange={(e) =>
-                            setAdsCode(e.target.value)
-                        }
-                        placeholder="e.g. AS"
-                        maxLength={20}
-                    />
-
-                </div>
-
-
-                <div className="ads-field">
-
-                    <label
-                        className="ads-label"
-                        htmlFor="ads-status"
-                    >
-                        Status
-                    </label>
-
-                    <select
-                        id="ads-status"
-                        className="ads-select"
-                        value={adsStatus}
-                        onChange={(e) =>
-                            setAdsStatus(e.target.value)
-                        }
-                    >
-                        <option value="active">
-                            Active
-                        </option>
-
-                        <option value="inactive">
-                            Inactive
-                        </option>
-                    </select>
-
-                </div>
-
-
-                {adsMessage && (
-                    <div className="ads-success">
-                        {adsMessage}
-                    </div>
-                )}
-
-
-                {adsError && (
-                    <div className="ads-error">
-                        {adsError}
-                    </div>
-                )}
-
-
-                <button
-                    type="submit"
-                    className="ads-submit"
-                    disabled={adsLoading}
+                <label
+                    className="ads-label"
+                    htmlFor="ads-name"
                 >
-                    {adsLoading
-                        ? "Creating..."
-                        : "Create State"}
-                </button>
+                    State Name
+                </label>
 
-            </form>
+                <input
+                    id="ads-name"
+                    type="text"
+                    className="ads-input"
+                    value={adsName}
+                    onChange={(e) =>
+                        setAdsName(e.target.value)
+                    }
+                    placeholder="e.g. Assam"
+                    required
+                />
 
-        </div>
-    );
+            </div>
+
+
+            <div className="ads-field">
+
+                <label
+                    className="ads-label"
+                    htmlFor="ads-code"
+                >
+                    State Code
+                </label>
+
+                <input
+                    id="ads-code"
+                    type="text"
+                    className="ads-input"
+                    value={adsCode}
+                    onChange={(e) =>
+                        setAdsCode(e.target.value)
+                    }
+                    placeholder="e.g. AS"
+                    maxLength={20}
+                />
+
+            </div>
+
+
+            <div className="ads-field">
+
+                <label
+                    className="ads-label"
+                    htmlFor="ads-status"
+                >
+                    Status
+                </label>
+
+                <select
+                    id="ads-status"
+                    className="ads-select"
+                    value={adsStatus}
+                    onChange={(e) =>
+                        setAdsStatus(e.target.value)
+                    }
+                >
+
+                    <option value="active">
+                        Active
+                    </option>
+
+                    <option value="inactive">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            {adsMessage && (
+                <div className="ads-success">
+                    {adsMessage}
+                </div>
+            )}
+
+
+            {adsError && (
+                <div className="ads-error">
+                    {adsError}
+                </div>
+            )}
+
+
+            <button
+                type="submit"
+                className="ads-submit"
+                disabled={adsLoading}
+            >
+                {adsLoading
+                    ? "Creating..."
+                    : "Create State"}
+            </button>
+
+        </form>
+
+    </div>
+);
+
+
 };
 
 

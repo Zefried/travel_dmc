@@ -1,0 +1,315 @@
+/* ================================
+   ADD ROOM FORM
+   ================================ */
+
+.arrf-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+
+/* HEADER */
+
+.arrf-header {
+    margin-bottom: 24px;
+}
+
+.arrf-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+    color: #171717;
+}
+
+.arrf-subtitle {
+    margin: 6px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6b7280;
+}
+
+
+/* SELECTED ROOM TYPE */
+
+.arrf-selected-room-type {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 18px;
+    padding: 12px 14px;
+
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.arrf-selected-room-type strong {
+    color: #111827;
+    font-weight: 600;
+}
+
+
+/* FORM */
+
+.arrf-form {
+    width: 100%;
+
+    padding: 24px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+
+/* FIELD */
+
+.arrf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin-bottom: 18px;
+}
+
+.arrf-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* INPUT / SELECT */
+
+.arrf-input,
+.arrf-select {
+    width: 100%;
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #111827;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.arrf-input::placeholder {
+    color: #9ca3af;
+}
+
+.arrf-input:hover,
+.arrf-select:hover {
+    border-color: #b8bec8;
+}
+
+.arrf-input:focus,
+.arrf-select:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+
+/* MESSAGES */
+
+.arrf-success,
+.arrf-error {
+    padding: 11px 13px;
+    margin-bottom: 18px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.arrf-success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+}
+
+.arrf-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+
+/* SUBMIT */
+
+.arrf-submit {
+    width: 100%;
+    min-height: 43px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #111827;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.arrf-submit:hover:not(:disabled) {
+    background: #1f2937;
+}
+
+.arrf-submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.arrf-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+/* ================================
+   DARK MODE
+   ================================ */
+
+.dark .arrf-title {
+    color: #f9fafb;
+}
+
+.dark .arrf-subtitle {
+    color: #9ca3af;
+}
+
+.dark .arrf-selected-room-type {
+    background: #0f172a;
+    border-color: #1f2937;
+    color: #9ca3af;
+}
+
+.dark .arrf-selected-room-type strong {
+    color: #f9fafb;
+}
+
+.dark .arrf-form {
+    background: #111827;
+    border-color: #1f2937;
+}
+
+.dark .arrf-label {
+    color: #d1d5db;
+}
+
+.dark .arrf-input,
+.dark .arrf-select {
+    background: #0f172a;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark .arrf-input::placeholder {
+    color: #6b7280;
+}
+
+.dark .arrf-input:hover,
+.dark .arrf-select:hover {
+    border-color: #4b5563;
+}
+
+.dark .arrf-input:focus,
+.dark .arrf-select:focus {
+    border-color: #818cf8;
+
+    box-shadow:
+        0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.dark .arrf-success {
+    background: #052e16;
+    border-color: #166534;
+    color: #86efac;
+}
+
+.dark .arrf-error {
+    background: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+
+.dark .arrf-submit {
+    background: #f9fafb;
+    color: #111827;
+}
+
+.dark .arrf-submit:hover:not(:disabled) {
+    background: #e5e7eb;
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 767px) {
+
+    .arrf-container {
+        padding: 16px;
+    }
+
+    .arrf-header {
+        margin-bottom: 18px;
+    }
+
+    .arrf-title {
+        font-size: 21px;
+    }
+
+    .arrf-subtitle {
+        font-size: 13px;
+    }
+
+    .arrf-selected-room-type {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .arrf-form {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .arrf-input,
+    .arrf-select {
+        min-height: 44px;
+    }
+
+    .arrf-submit {
+        min-height: 44px;
+    }
+}

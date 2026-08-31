@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import api from "../../../../api/axios";
+import './Styles/SelectPropertyRoomType.css';
 
 
 type Property = {
@@ -137,170 +138,173 @@ const SelectProperty = ({
 
     // Step 5 — return()
 
-    return (
-        <div className="sp-container">
+   return (
+    <div className="sprt-container">
 
-            <div className="sp-header">
+        <div className="sprt-header">
 
-                <h2 className="sp-title">
-                    Select Property
-                </h2>
+            <h2 className="sprt-title">
+                Select Property
+            </h2>
 
-                <p className="sp-subtitle">
-                    Search by property name, hotel admin phone or email.
-                </p>
-
-            </div>
-
-
-            <div className="sp-search">
-
-                <input
-                    id="sp-search"
-                    type="text"
-                    className="sp-input"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                    placeholder="Search property, phone or email"
-                />
-
-            </div>
-
-
-            {loading && (
-                <div className="sp-loading">
-                    Searching...
-                </div>
-            )}
-
-
-            {error && (
-                <div className="sp-error">
-                    {error}
-                </div>
-            )}
-
-
-            {!loading &&
-                !error &&
-                properties.length === 0 &&
-                searchQuery.trim().length >= 3 && (
-                    <div className="sp-empty">
-                        No properties found.
-                    </div>
-                )}
-
-
-            {properties.length > 0 && (
-                <div className="sp-results">
-
-                    {properties.map((property) => (
-
-                        <div
-                            key={property.id}
-                            className="sp-result"
-                        >
-
-                            <div className="sp-info">
-
-                                <h3 className="sp-name">
-                                    {property.name}
-                                </h3>
-
-                                <p className="sp-location">
-                                    {property.country.name},{" "}
-                                    {property.city.name}
-                                </p>
-
-                                <p className="sp-admin">
-                                    Hotel Admin:{" "}
-                                    {property.hotel_admin.name}
-                                </p>
-
-                                {property.hotel_admin.phone && (
-                                    <p className="sp-phone">
-                                        {property.hotel_admin.phone}
-                                    </p>
-                                )}
-
-                                {property.hotel_admin.email && (
-                                    <p className="sp-email">
-                                        {property.hotel_admin.email}
-                                    </p>
-                                )}
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                className="sp-select-button"
-                                onClick={() =>
-                                    handleSelect(property)
-                                }
-                            >
-                                Select
-                            </button>
-
-                        </div>
-
-                    ))}
-
-                </div>
-            )}
-
-
-            {selectedProperty && (
-                <div className="sp-selected">
-
-                    <div className="sp-selected-info">
-
-                        <div className="sp-selected-label">
-                            Selected Property
-                        </div>
-
-                        <h3 className="sp-name">
-                            {selectedProperty.name}
-                        </h3>
-
-                        <p className="sp-location">
-                            {selectedProperty.country.name},{" "}
-                            {selectedProperty.city.name}
-                        </p>
-
-                        <p className="sp-admin">
-                            Hotel Admin:{" "}
-                            {selectedProperty.hotel_admin.name}
-                        </p>
-
-                        {selectedProperty.hotel_admin.phone && (
-                            <p className="sp-phone">
-                                {selectedProperty.hotel_admin.phone}
-                            </p>
-                        )}
-
-                        {selectedProperty.hotel_admin.email && (
-                            <p className="sp-email">
-                                {selectedProperty.hotel_admin.email}
-                            </p>
-                        )}
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        className="sp-remove-button"
-                        onClick={handleRemove}
-                    >
-                        Remove
-                    </button>
-
-                </div>
-            )}
+            <p className="sprt-subtitle">
+                Search by property name, hotel admin phone or email.
+            </p>
 
         </div>
-    );
+
+
+        <div className="sprt-search">
+
+            <input
+                id="sprt-search"
+                type="text"
+                className="sprt-input"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder="Search property, phone or email"
+            />
+
+        </div>
+
+
+        {loading && (
+            <div className="sprt-loading">
+                Searching...
+            </div>
+        )}
+
+
+        {error && (
+            <div className="sprt-error">
+                {error}
+            </div>
+        )}
+
+
+        {!loading &&
+            !error &&
+            properties.length === 0 &&
+            searchQuery.trim().length >= 3 && (
+                <div className="sprt-empty">
+                    No properties found.
+                </div>
+            )}
+
+
+        {properties.length > 0 && (
+            <div className="sprt-results">
+
+                {properties.map((property) => (
+
+                    <div
+                        key={property.id}
+                        className="sprt-result"
+                    >
+
+                        <div className="sprt-info">
+
+                            <h3 className="sprt-name">
+                                {property.name}
+                            </h3>
+
+                            <p className="sprt-location">
+                                {property.country.name},{" "}
+                                {property.city.name}
+                            </p>
+
+                            <p className="sprt-admin">
+                                Hotel Admin:{" "}
+                                {property.hotel_admin.name}
+                            </p>
+
+                            {property.hotel_admin.phone && (
+                                <p className="sprt-phone">
+                                    {property.hotel_admin.phone}
+                                </p>
+                            )}
+
+                            {property.hotel_admin.email && (
+                                <p className="sprt-email">
+                                    {property.hotel_admin.email}
+                                </p>
+                            )}
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            className="sprt-select-button"
+                            onClick={() =>
+                                handleSelect(property)
+                            }
+                        >
+                            Select
+                        </button>
+
+                    </div>
+
+                ))}
+
+            </div>
+        )}
+
+
+        {selectedProperty && (
+            <div className="sprt-selected">
+
+                <div className="sprt-selected-info">
+
+                    <div className="sprt-selected-label">
+                        Selected Property
+                    </div>
+
+                    <h3 className="sprt-name">
+                        {selectedProperty.name}
+                    </h3>
+
+                    <p className="sprt-location">
+                        {selectedProperty.country.name},{" "}
+                        {selectedProperty.city.name}
+                    </p>
+
+                    <p className="sprt-admin">
+                        Hotel Admin:{" "}
+                        {selectedProperty.hotel_admin.name}
+                    </p>
+
+                    {selectedProperty.hotel_admin.phone && (
+                        <p className="sprt-phone">
+                            {selectedProperty.hotel_admin.phone}
+                        </p>
+                    )}
+
+                    {selectedProperty.hotel_admin.email && (
+                        <p className="sprt-email">
+                            {selectedProperty.hotel_admin.email}
+                        </p>
+                    )}
+
+                </div>
+
+
+                <button
+                    type="button"
+                    className="sprt-remove-button"
+                    onClick={handleRemove}
+                >
+                    Remove
+                </button>
+
+            </div>
+        )}
+
+    </div>
+);
+
+
+
 };
 
 

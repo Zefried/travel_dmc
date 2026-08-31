@@ -1,0 +1,301 @@
+/* ================================
+   ADD AMENITY
+   ================================ */
+
+.aa-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+
+/* HEADER */
+
+.aa-header {
+    margin-bottom: 24px;
+}
+
+.aa-title {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+
+    color: #171717;
+}
+
+.aa-subtitle {
+    margin: 6px 0 0;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #6b7280;
+}
+
+
+/* FORM */
+
+.aa-form {
+    width: 100%;
+
+    padding: 24px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+
+/* FIELD */
+
+.aa-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin-bottom: 18px;
+}
+
+.aa-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* INPUT / SELECT / TEXTAREA */
+
+.aa-input,
+.aa-select,
+.aa-textarea {
+    width: 100%;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #111827;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.aa-input,
+.aa-select {
+    min-height: 42px;
+    padding: 9px 12px;
+}
+
+.aa-textarea {
+    min-height: 105px;
+    padding: 10px 12px;
+
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.aa-input::placeholder,
+.aa-textarea::placeholder {
+    color: #9ca3af;
+}
+
+.aa-input:hover,
+.aa-select:hover,
+.aa-textarea:hover {
+    border-color: #b8bec8;
+}
+
+.aa-input:focus,
+.aa-select:focus,
+.aa-textarea:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+
+/* MESSAGES */
+
+.aa-success,
+.aa-error {
+    padding: 11px 13px;
+    margin-bottom: 18px;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.aa-success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+}
+
+.aa-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+
+/* SUBMIT */
+
+.aa-submit {
+    width: 100%;
+    min-height: 43px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #111827;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.aa-submit:hover:not(:disabled) {
+    background: #1f2937;
+}
+
+.aa-submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.aa-submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+/* ================================
+   DARK MODE
+   ================================ */
+
+.dark .aa-title {
+    color: #f9fafb;
+}
+
+.dark .aa-subtitle {
+    color: #9ca3af;
+}
+
+.dark .aa-form {
+    background: #111827;
+    border-color: #1f2937;
+}
+
+.dark .aa-label {
+    color: #d1d5db;
+}
+
+.dark .aa-input,
+.dark .aa-select,
+.dark .aa-textarea {
+    background: #0f172a;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark .aa-input::placeholder,
+.dark .aa-textarea::placeholder {
+    color: #6b7280;
+}
+
+.dark .aa-input:hover,
+.dark .aa-select:hover,
+.dark .aa-textarea:hover {
+    border-color: #4b5563;
+}
+
+.dark .aa-input:focus,
+.dark .aa-select:focus,
+.dark .aa-textarea:focus {
+    border-color: #818cf8;
+
+    box-shadow:
+        0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.dark .aa-success {
+    background: #052e16;
+    border-color: #166534;
+    color: #86efac;
+}
+
+.dark .aa-error {
+    background: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+
+.dark .aa-submit {
+    background: #f9fafb;
+    color: #111827;
+}
+
+.dark .aa-submit:hover:not(:disabled) {
+    background: #e5e7eb;
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 767px) {
+
+    .aa-container {
+        padding: 16px;
+    }
+
+    .aa-header {
+        margin-bottom: 18px;
+    }
+
+    .aa-title {
+        font-size: 21px;
+    }
+
+    .aa-subtitle {
+        font-size: 13px;
+    }
+
+    .aa-form {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .aa-input,
+    .aa-select {
+        min-height: 44px;
+    }
+
+    .aa-textarea {
+        min-height: 110px;
+    }
+
+    .aa-submit {
+        min-height: 44px;
+    }
+}

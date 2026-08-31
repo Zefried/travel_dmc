@@ -1,0 +1,427 @@
+/* ================================
+   SELECT PROPERTY — ROOM TYPE
+   ================================ */
+
+.sprt-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+
+/* HEADER */
+
+.sprt-header {
+    margin-bottom: 24px;
+}
+
+.sprt-title {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+
+    color: #171717;
+}
+
+.sprt-subtitle {
+    margin: 6px 0 0;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #6b7280;
+}
+
+
+/* SEARCH */
+
+.sprt-search {
+    margin-bottom: 18px;
+}
+
+.sprt-input {
+    width: 100%;
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #111827;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.sprt-input::placeholder {
+    color: #9ca3af;
+}
+
+.sprt-input:hover {
+    border-color: #b8bec8;
+}
+
+.sprt-input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+
+/* LOADING */
+
+.sprt-loading {
+    margin-bottom: 16px;
+
+    font-size: 13px;
+    color: #6b7280;
+}
+
+
+/* ERROR */
+
+.sprt-error {
+    margin-bottom: 18px;
+    padding: 11px 13px;
+
+    border: 1px solid #fecaca;
+    border-radius: 9px;
+
+    background: #fef2f2;
+    color: #b91c1c;
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+
+/* EMPTY */
+
+.sprt-empty {
+    padding: 18px;
+
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+
+    text-align: center;
+
+    color: #6b7280;
+    font-size: 13px;
+}
+
+
+/* RESULTS */
+
+.sprt-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.sprt-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 14px 16px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 11px;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+.sprt-result:hover {
+    border-color: #cfd4dc;
+    background: #fafafa;
+}
+
+
+/* INFO */
+
+.sprt-info {
+    min-width: 0;
+}
+
+.sprt-name {
+    margin: 0 0 5px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #111827;
+}
+
+.sprt-location,
+.sprt-admin,
+.sprt-phone,
+.sprt-email {
+    margin: 2px 0;
+
+    font-size: 13px;
+    line-height: 1.4;
+
+    color: #6b7280;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* SELECT */
+
+.sprt-select-button {
+    flex-shrink: 0;
+
+    min-height: 36px;
+    padding: 7px 14px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #374151;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.sprt-select-button:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+
+/* SELECTED */
+
+.sprt-selected {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 16px;
+
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 11px;
+}
+
+.sprt-selected-info {
+    min-width: 0;
+}
+
+.sprt-selected-label {
+    margin-bottom: 8px;
+
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    color: #6b7280;
+}
+
+
+/* REMOVE */
+
+.sprt-remove-button {
+    flex-shrink: 0;
+
+    min-height: 36px;
+    padding: 7px 14px;
+
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+
+    background: #ffffff;
+    color: #b91c1c;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.sprt-remove-button:hover {
+    background: #fef2f2;
+    border-color: #fca5a5;
+}
+
+
+/* ================================
+   DARK MODE
+   ================================ */
+
+.dark .sprt-title {
+    color: #f9fafb;
+}
+
+.dark .sprt-subtitle {
+    color: #9ca3af;
+}
+
+.dark .sprt-input {
+    background: #0f172a;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark .sprt-input::placeholder {
+    color: #6b7280;
+}
+
+.dark .sprt-input:hover {
+    border-color: #4b5563;
+}
+
+.dark .sprt-input:focus {
+    border-color: #818cf8;
+
+    box-shadow:
+        0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.dark .sprt-loading {
+    color: #9ca3af;
+}
+
+.dark .sprt-error {
+    background: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+
+.dark .sprt-empty {
+    border-color: #374151;
+    color: #9ca3af;
+}
+
+.dark .sprt-result {
+    background: #111827;
+    border-color: #1f2937;
+}
+
+.dark .sprt-result:hover {
+    background: #162033;
+    border-color: #374151;
+}
+
+.dark .sprt-name {
+    color: #f9fafb;
+}
+
+.dark .sprt-location,
+.dark .sprt-admin,
+.dark .sprt-phone,
+.dark .sprt-email {
+    color: #9ca3af;
+}
+
+.dark .sprt-select-button {
+    background: #111827;
+    border-color: #374151;
+    color: #d1d5db;
+}
+
+.dark .sprt-select-button:hover {
+    background: #1f2937;
+    border-color: #4b5563;
+}
+
+.dark .sprt-selected {
+    background: #0f172a;
+    border-color: #1f2937;
+}
+
+.dark .sprt-selected-label {
+    color: #9ca3af;
+}
+
+.dark .sprt-remove-button {
+    background: #111827;
+    border-color: #7f1d1d;
+    color: #fca5a5;
+}
+
+.dark .sprt-remove-button:hover {
+    background: #450a0a;
+    border-color: #991b1b;
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 767px) {
+
+    .sprt-container {
+        padding: 16px;
+    }
+
+    .sprt-header {
+        margin-bottom: 18px;
+    }
+
+    .sprt-title {
+        font-size: 21px;
+    }
+
+    .sprt-subtitle {
+        font-size: 13px;
+    }
+
+    .sprt-input {
+        min-height: 44px;
+    }
+
+    .sprt-result {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .sprt-select-button {
+        width: 100%;
+    }
+
+    .sprt-selected {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .sprt-remove-button {
+        width: 100%;
+    }
+}
