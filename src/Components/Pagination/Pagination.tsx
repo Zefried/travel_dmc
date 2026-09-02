@@ -9,6 +9,7 @@ interface PaginationProps {
     onPageChange: (page: number) => void;
 }
 
+import './Pagination.css';
 
 // Step 3 — component
 
@@ -44,10 +45,11 @@ const Pagination = ({
 
 
     return (
-        <div>
+        <div className="pg-container">
 
             <button
                 type="button"
+                className="pg-button"
                 onClick={handlePrevious}
                 disabled={currentPage === 1}
             >
@@ -63,6 +65,7 @@ const Pagination = ({
                 <button
                     key={page}
                     type="button"
+                    className="pg-button"
                     onClick={() => onPageChange(page)}
                     disabled={page === currentPage}
                 >
@@ -74,6 +77,7 @@ const Pagination = ({
 
             <button
                 type="button"
+                className="pg-button"
                 onClick={handleNext}
                 disabled={currentPage === lastPage}
             >

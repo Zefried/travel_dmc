@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import api from "../../../../../../api/axios";
 import { Link } from "react-router-dom";
 import Pagination from "../../../../../../Components/Pagination/Pagination";
-
+import './StateCountryFilter.css';
 
 // Step 2 — types
 
@@ -174,59 +174,80 @@ const StateCountryFilter = () => {
     // Step 8 — return()
 
     return (
-        <div>
+        <div className="scf-container">
 
-            {loading && (
-                <p>
-                    Loading countries...
-                </p>
-            )}
+            <div className="scf-header">
 
+                <div className="scf-filter-section">
 
-            {error && (
-                <p>
-                    {error}
-                </p>
-            )}
+                    <label
+                        htmlFor="scf-country-select"
+                        className="scf-filter-label"
+                    >
+                        Country
+                    </label>
 
-
-            <Link to="/dashboard/states-search">
-                Search and edit States
-            </Link>
-
-
-            {!loading && !error && (
-                <select
-                    value={selectedCountryId}
-                    onChange={(e) =>
-                        handleCountryChange(e.target.value)
-                    }
-                >
-                    <option value="">
-                        Select Country
-                    </option>
-
-                    {countries.map((country) => (
-                        <option
-                            key={country.id}
-                            value={country.id}
+                    {!loading && !error && (
+                        <select
+                            id="scf-country-select"
+                            className="scf-country-select"
+                            value={selectedCountryId}
+                            onChange={(e) =>
+                                handleCountryChange(e.target.value)
+                            }
                         >
-                            {country.name}
-                        </option>
-                    ))}
-                </select>
-            )}
+                            <option value="">
+                                Select Country
+                            </option>
+
+                            {countries.map((country) => (
+                                <option
+                                    key={country.id}
+                                    value={country.id}
+                                >
+                                    {country.name}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+
+                    {loading && (
+                        <p className="scf-loading">
+                            Loading countries...
+                        </p>
+                    )}
+
+                    {error && (
+                        <p className="scf-error">
+                            {error}
+                        </p>
+                    )}
+
+                </div>
+
+
+                <Link
+                    to="/dashboard/states-search"
+                    className="scf-search-link"
+                >
+                    Search and edit states
+                    <span className="scf-search-arrow">
+                        →
+                    </span>
+                </Link>
+
+            </div>
 
 
             {statesLoading && (
-                <p>
+                <p className="scf-states-loading">
                     Loading states...
                 </p>
             )}
 
 
             {statesError && (
-                <p>
+                <p className="scf-states-error">
                     {statesError}
                 </p>
             )}
@@ -237,48 +258,57 @@ const StateCountryFilter = () => {
                 selectedCountryId &&
                 states.length > 0 && (
 
-                    <>
-                        <table>
+                    <div className="scf-table-wrapper">
 
-                            <thead>
+                        <table className="scf-table">
+
+                            <thead className="scf-table-head">
+
                                 <tr>
-                                    <th>
+
+                                    <th className="scf-table-heading">
                                         State
                                     </th>
 
-                                    <th>
+                                    <th className="scf-table-heading">
                                         Code
                                     </th>
 
-                                    <th>
+                                    <th className="scf-table-heading">
                                         Country
                                     </th>
 
-                                    <th>
+                                    <th className="scf-table-heading">
                                         Status
                                     </th>
+
                                 </tr>
+
                             </thead>
 
-                            <tbody>
+
+                            <tbody className="scf-table-body">
 
                                 {states.map((state) => (
 
-                                    <tr key={state.id}>
+                                    <tr
+                                        key={state.id}
+                                        className="scf-table-row"
+                                    >
 
-                                        <td>
+                                        <td className="scf-table-cell">
                                             {state.name}
                                         </td>
 
-                                        <td>
+                                        <td className="scf-table-cell">
                                             {state.code}
                                         </td>
 
-                                        <td>
+                                        <td className="scf-table-cell">
                                             {state.country.name}
                                         </td>
 
-                                        <td>
+                                        <td className="scf-table-cell">
                                             {state.status}
                                         </td>
 
@@ -291,13 +321,17 @@ const StateCountryFilter = () => {
                         </table>
 
 
-                        <Pagination
-                            currentPage={currentPage}
-                            lastPage={lastPage}
-                            onPageChange={handlePageChange}
-                        />
+                        <div className="scf-pagination">
 
-                    </>
+                            <Pagination
+                                currentPage={currentPage}
+                                lastPage={lastPage}
+                                onPageChange={handlePageChange}
+                            />
+
+                        </div>
+
+                    </div>
                 )}
 
 
@@ -306,7 +340,7 @@ const StateCountryFilter = () => {
                 selectedCountryId &&
                 states.length === 0 && (
 
-                    <p>
+                    <p className="scf-empty">
                         No states found for this country.
                     </p>
                 )}
