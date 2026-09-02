@@ -1,0 +1,143 @@
+.ssr-container {
+    width: 100%;
+    margin-top: 24px;
+}
+
+.ssr-result {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 18px 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+.ssr-details {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.ssr-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ssr-label {
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.ssr-value {
+    color: #111827;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.ssr-edit-button,
+.ssr-save-button,
+.ssr-cancel-button {
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.ssr-edit-button {
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #374151;
+}
+
+.ssr-edit-button:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+}
+
+.ssr-edit-mode {
+    align-items: flex-end;
+}
+
+.ssr-input {
+    width: 240px;
+    height: 38px;
+    box-sizing: border-box;
+    padding: 0 11px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #111827;
+    font-size: 14px;
+    outline: none;
+}
+
+.ssr-input:focus {
+    border-color: #9ca3af;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.15);
+}
+
+.ssr-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ssr-save-button {
+    border: 1px solid #374151;
+    background: #374151;
+    color: #ffffff;
+}
+
+.ssr-save-button:hover:not(:disabled) {
+    background: #111827;
+    border-color: #111827;
+}
+
+.ssr-cancel-button {
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #6b7280;
+}
+
+.ssr-cancel-button:hover:not(:disabled) {
+    background: #f9fafb;
+    color: #374151;
+}
+
+.ssr-edit-button:disabled,
+.ssr-save-button:disabled,
+.ssr-cancel-button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+    .ssr-result {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .ssr-details {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .ssr-input {
+        width: 100%;
+    }
+
+    .ssr-actions {
+        justify-content: flex-end;
+    }
+}

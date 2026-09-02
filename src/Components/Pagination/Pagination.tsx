@@ -1,5 +1,7 @@
 // Step 1 — imports
 
+import "./Pagination.css";
+
 
 // Step 2 — types
 
@@ -9,7 +11,6 @@ interface PaginationProps {
     onPageChange: (page: number) => void;
 }
 
-import './Pagination.css';
 
 // Step 3 — component
 

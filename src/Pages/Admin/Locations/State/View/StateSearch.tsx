@@ -1,5 +1,10 @@
 // Step 1 — imports
 
+import './Styles/StateSearch.css';
+
+
+// Step 2 — types
+
 interface State {
     id: number;
     country_id: number;
@@ -24,7 +29,7 @@ interface StateSearchProps {
 }
 
 
-// Step 2 — component
+// Step 3 — component
 
 const StateSearch = ({
     search,
@@ -35,33 +40,51 @@ const StateSearch = ({
     onSuggestionSelect,
 }: StateSearchProps) => {
 
-    // Step 3 — return()
+    // Step 4 — return()
 
     return (
-        <div>
+        <div className="ss-container">
 
-            <input
-                type="text"
-                value={search}
-                onChange={(e) => onSearchChange(e.target.value)}
-                placeholder="Search state..."
-            />
+            <div className="ss-search-wrapper">
+
+                <label className="ss-label">
+                    Search State
+                </label>
+
+                <input
+                    type="text"
+                    className="ss-input"
+                    value={search}
+                    onChange={(e) => onSearchChange(e.target.value)}
+                    placeholder="Search state..."
+                />
+
+            </div>
 
 
             {!selectedState &&
                 states.length > 0 &&
                 search.length >= 3 && (
 
-                    <div>
+                    <div className="ss-suggestions">
 
                         {states.map((state) => (
 
                             <button
                                 key={state.id}
                                 type="button"
+                                className="ss-suggestion"
                                 onClick={() => onSuggestionSelect(state)}
                             >
-                                {state.name} - {state.country.name}
+
+                                <span className="ss-state-name">
+                                    {state.name}
+                                </span>
+
+                                <span className="ss-country-name">
+                                    {state.country.name}
+                                </span>
+
                             </button>
 
                         ))}
@@ -71,7 +94,9 @@ const StateSearch = ({
 
 
             {loading && (
-                <p>Searching...</p>
+                <p className="ss-loading">
+                    Searching...
+                </p>
             )}
 
         </div>

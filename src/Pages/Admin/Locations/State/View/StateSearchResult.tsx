@@ -1,5 +1,7 @@
 // Step 1 — imports
 
+import './Styles/StateSearchResult.css';
+
 
 // Step 2 — types
 
@@ -45,58 +47,118 @@ const StateSearchResult = ({
     // Step 4 — return()
 
     return (
-        <div>
+        <div className="ssr-container">
 
             {!isEditing ? (
 
-                <>
-                    <p>
-                        {selectedState.name}
-                    </p>
+                <div className="ssr-result">
 
-                    <p>
-                        {selectedState.country.name}
-                    </p>
+                    <div className="ssr-details">
+
+                        <div className="ssr-field">
+
+                            <span className="ssr-label">
+                                State
+                            </span>
+
+                            <span className="ssr-value">
+                                {selectedState.name}
+                            </span>
+
+                        </div>
+
+
+                        <div className="ssr-field">
+
+                            <span className="ssr-label">
+                                Country
+                            </span>
+
+                            <span className="ssr-value">
+                                {selectedState.country.name}
+                            </span>
+
+                        </div>
+
+                    </div>
+
 
                     <button
                         type="button"
+                        className="ssr-edit-button"
                         onClick={onEditClick}
                     >
                         Edit
                     </button>
-                </>
+
+                </div>
 
             ) : (
 
-                <>
-                    <input
-                        type="text"
-                        value={editName}
-                        onChange={(e) =>
-                            onEditNameChange(e.target.value)
-                        }
-                    />
+                <div className="ssr-result ssr-edit-mode">
 
-                    <p>
-                        {selectedState.country.name}
-                    </p>
+                    <div className="ssr-details">
 
-                    <button
-                        type="button"
-                        onClick={onSave}
-                        disabled={updating}
-                    >
-                        {updating ? "Saving..." : "Save"}
-                    </button>
+                        <div className="ssr-field">
 
-                    <button
-                        type="button"
-                        onClick={onCancel}
-                        disabled={updating}
-                    >
-                        Cancel
-                    </button>
-                </>
+                            <label
+                                htmlFor="ssr-state-name"
+                                className="ssr-label"
+                            >
+                                State
+                            </label>
+
+                            <input
+                                id="ssr-state-name"
+                                type="text"
+                                className="ssr-input"
+                                value={editName}
+                                onChange={(e) =>
+                                    onEditNameChange(e.target.value)
+                                }
+                            />
+
+                        </div>
+
+
+                        <div className="ssr-field">
+
+                            <span className="ssr-label">
+                                Country
+                            </span>
+
+                            <span className="ssr-value">
+                                {selectedState.country.name}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div className="ssr-actions">
+
+                        <button
+                            type="button"
+                            className="ssr-save-button"
+                            onClick={onSave}
+                            disabled={updating}
+                        >
+                            {updating ? "Saving..." : "Save"}
+                        </button>
+
+                        <button
+                            type="button"
+                            className="ssr-cancel-button"
+                            onClick={onCancel}
+                            disabled={updating}
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </div>
 
             )}
 

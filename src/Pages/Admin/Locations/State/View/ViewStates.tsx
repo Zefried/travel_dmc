@@ -51,7 +51,7 @@ const ViewStates = () => {
             },
         });
 
-        setStates(response.data.data.data);
+        setStates(response.data.data);
     };
 
 
@@ -205,7 +205,9 @@ const ViewStates = () => {
     return (
         <div>
 
-            <h1>States</h1>
+            <h1>
+                States
+            </h1>
 
 
             <StateSearch
