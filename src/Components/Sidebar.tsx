@@ -45,7 +45,7 @@ export const Sidebar = ({
         </div>
 
         {sidebarOpen && (
-          <span className="brand-name">ASIAN HOLIDAYS</span>
+          <span className="brand-name">Asian Holidays</span>
         )}
       </div>
 

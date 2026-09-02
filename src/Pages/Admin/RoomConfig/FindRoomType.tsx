@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import api from "../../../api/axios";
+import './Styles/FindRoomType.css';
 
 
 type RoomType = {

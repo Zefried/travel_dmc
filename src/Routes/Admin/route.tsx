@@ -132,8 +132,7 @@ export const adminRoutes = [
         ),
       },
       // Amenity Assigning routes ends here
-
-       // Room Configuration routes
+      // Room Configuration routes
       {
         path: "add-room-configuration", // this becomes dashboard home for admin users
         element: (

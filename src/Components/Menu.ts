@@ -32,6 +32,16 @@ import {
   MapPin,
   Globe,
   Calendar,
+  FileBarChart,
+  CreditCard,
+  Star,
+  Target,
+  TrendingUp,
+  HardDrive,
+  Boxes,
+  Briefcase,
+  MessageSquare,
+  Store,
 } from "lucide-react";
 
 export type Role = "admin" | "subadmin" | "department";
@@ -48,6 +58,7 @@ export type MenuItem = {
 };
 
 export const menus: Record<Role, MenuItem[]> = {
+
   admin: [
     {
       name: "Home",
@@ -68,6 +79,11 @@ export const menus: Record<Role, MenuItem[]> = {
           name: "States",
           icon: MapPin,
           path: "/dashboard/add-state",
+        },
+        {
+          name: "View States",
+          icon: MapPin,
+          path: "/dashboard/states",
         },
         {
           name: "Cities",
@@ -149,24 +165,267 @@ export const menus: Record<Role, MenuItem[]> = {
       icon: Compass,
       path: "/dashboard/admin/activities",
     },
+
     {
-    name: "Team",
-    icon: Users,
-    children: [
-      {
-        name: "Add Team",
-        icon: Users,
-        path: "/dashboard/add-team",
-      },
-      {
-        name: "Team Types",
-        icon: UserCog,
-        path: "/dashboard/admin/team-types",
-      },
-    ],
-  },
+      name: "Team",
+      icon: Users,
+      children: [
+        {
+          name: "Add Team",
+          icon: Users,
+          path: "/dashboard/add-team",
+        },
+        {
+          name: "Team Types",
+          icon: UserCog,
+          path: "/dashboard/admin/team-types",
+        },
+      ],
+    },
   ],
 
+
+  // admin:[
+  // {
+  //   name: "Home",
+  //   icon: Home,
+  //   path: "/dashboard/admin",
+  // },
+
+  // {
+  //   name: "Businesses",
+  //   icon: Building2,
+  //   children: [
+  //     {
+  //       name: "Businesses",
+  //       icon: Store,
+  //       path: "/dashboard/admin/businesses",
+  //     },
+  //     {
+  //       name: "Pending Approval",
+  //       icon: Clock,
+  //       path: "/dashboard/admin/businesses/pending",
+  //     },
+  //     {
+  //       name: "Categories",
+  //       icon: List,
+  //       path: "/dashboard/admin/business-categories",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Locations",
+  //   icon: MapPin,
+  //   children: [
+  //     {
+  //       name: "Countries",
+  //       icon: Globe,
+  //       path: "/dashboard/add-country",
+  //     },
+  //     {
+  //       name: "States",
+  //       icon: MapPin,
+  //       path: "/dashboard/add-state",
+  //     },
+  //     {
+  //       name: "Cities",
+  //       icon: Building2,
+  //       path: "/dashboard/add-city",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Services",
+  //   icon: Camera,
+  //   children: [
+  //     {
+  //       name: "Services",
+  //       icon: List,
+  //       path: "/dashboard/admin/services",
+  //     },
+  //     {
+  //       name: "Service Types",
+  //       icon: Settings,
+  //       path: "/dashboard/admin/service-types",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Leads",
+  //   icon: UserPlus,
+  //   children: [
+  //     {
+  //       name: "All Leads",
+  //       icon: Users,
+  //       path: "/dashboard/admin/leads",
+  //     },
+  //     {
+  //       name: "New Leads",
+  //       icon: Sparkles,
+  //       path: "/dashboard/admin/leads/new",
+  //     },
+  //     {
+  //       name: "Assigned Leads",
+  //       icon: UserCheck,
+  //       path: "/dashboard/admin/leads/assigned",
+  //     },
+  //     {
+  //       name: "Converted Leads",
+  //       icon: CheckCircle,
+  //       path: "/dashboard/admin/leads/converted",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Customers",
+  //   icon: Users,
+  //   children: [
+  //     {
+  //       name: "Customers",
+  //       icon: Users,
+  //       path: "/dashboard/admin/customers",
+  //     },
+  //     {
+  //       name: "Requests",
+  //       icon: MessageSquare,
+  //       path: "/dashboard/admin/customer-requests",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Jobs",
+  //   icon: Briefcase,
+  //   children: [
+  //     {
+  //       name: "Installations",
+  //       icon: Camera,
+  //       path: "/dashboard/admin/jobs/installations",
+  //     },
+  //     {
+  //       name: "Maintenance",
+  //       icon: Wrench,
+  //       path: "/dashboard/admin/jobs/maintenance",
+  //     },
+  //     {
+  //       name: "Service Requests",
+  //       icon: ClipboardList,
+  //       path: "/dashboard/admin/jobs/service-requests",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Products",
+  //   icon: Package,
+  //   children: [
+  //     {
+  //       name: "Cameras",
+  //       icon: Camera,
+  //       path: "/dashboard/admin/products/cameras",
+  //     },
+  //     {
+  //       name: "DVR / NVR",
+  //       icon: Monitor,
+  //       path: "/dashboard/admin/products/dvr-nvr",
+  //     },
+  //     {
+  //       name: "Storage",
+  //       icon: HardDrive,
+  //       path: "/dashboard/admin/products/storage",
+  //     },
+  //     {
+  //       name: "Accessories",
+  //       icon: Boxes,
+  //       path: "/dashboard/admin/products/accessories",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Performance",
+  //   icon: BarChart3,
+  //   children: [
+  //     {
+  //       name: "Business Performance",
+  //       icon: TrendingUp,
+  //       path: "/dashboard/admin/business-performance",
+  //     },
+  //     {
+  //       name: "Lead Performance",
+  //       icon: Target,
+  //       path: "/dashboard/admin/lead-performance",
+  //     },
+  //     {
+  //       name: "Response Time",
+  //       icon: Clock,
+  //       path: "/dashboard/admin/response-time",
+  //     },
+  //     {
+  //       name: "Customer Satisfaction",
+  //       icon: Star,
+  //       path: "/dashboard/admin/customer-satisfaction",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Reviews",
+  //   icon: Star,
+  //   path: "/dashboard/admin/reviews",
+  // },
+
+  // {
+  //   name: "Subscriptions",
+  //   icon: CreditCard,
+  //   children: [
+  //     {
+  //       name: "Plans",
+  //       icon: Package,
+  //       path: "/dashboard/admin/plans",
+  //     },
+  //     {
+  //       name: "Subscriptions",
+  //       icon: CreditCard,
+  //       path: "/dashboard/admin/subscriptions",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Team",
+  //   icon: Users,
+  //   children: [
+  //     {
+  //       name: "Staff",
+  //       icon: Users,
+  //       path: "/dashboard/admin/team",
+  //     },
+  //     {
+  //       name: "Roles",
+  //       icon: UserCog,
+  //       path: "/dashboard/admin/roles",
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   name: "Reports",
+  //   icon: FileBarChart,
+  //   path: "/dashboard/admin/reports",
+  // },
+
+  // {
+  //   name: "Settings",
+  //   icon: Settings,
+  //   path: "/dashboard/admin/settings",
+  // },
+  // ],
+  
   department: [
     {
       name: "Dashboard",

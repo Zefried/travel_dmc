@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import api from "../../../../api/axios";
-
+import '../Styles/AddTeam.css';
 
 // Step 2 — state
 

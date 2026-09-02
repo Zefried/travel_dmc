@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import api from "../../../../api/axios";
+import '../Styles/AddBedConfigForm.css';
 
 
 type RoomType = {

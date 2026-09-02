@@ -8,6 +8,7 @@ import { departmentRoutes } from "./Department/route";
 import { adminRoutes } from "./Admin/route";
 import PackageBuilderPage from "../Pages/Website/PackageBuilder/PackageBuilderPage";
 import AgentSearch from "../Pages/Website/Home/AgentSearch";
+import { adminViewRoutes } from "./Admin/viewRoutes";
 
 
 const router = createBrowserRouter([
@@ -47,6 +48,7 @@ const router = createBrowserRouter([
       
       // plug modular routes
       ...adminRoutes,
+      ...adminViewRoutes,
       ...departmentRoutes,
     ],
   },

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import api from "../../../api/axios";
+import './Styles/SelectPropertyRoomConfig.css';
 
 
 type Property = {
@@ -134,160 +135,160 @@ const SelectProperty = ({
     // Step 5 — return()
 
     return (
-        <div className="sp-container">
+    <div className="sprc-container">
 
-            <div className="sp-header">
+        <div className="sprc-header">
 
-                <h2 className="sp-title">
-                    Select Property
-                </h2>
+            <h2 className="sprc-title">
+                Select Property
+            </h2>
 
-                <p className="sp-subtitle">
-                    Search for the property for this room configuration.
-                </p>
+            <p className="sprc-subtitle">
+                Search for the property for this room configuration.
+            </p>
+
+        </div>
+
+
+        {!selectedProperty && (
+            <div className="sprc-search">
+
+                <input
+                    type="text"
+                    className="sprc-input"
+                    value={searchQuery}
+                    onChange={(e) =>
+                        setSearchQuery(e.target.value)
+                    }
+                    placeholder="Search property, phone or email"
+                />
 
             </div>
+        )}
 
 
-            {!selectedProperty && (
-                <div className="sp-search">
+        {loading && (
+            <div className="sprc-loading">
+                Searching...
+            </div>
+        )}
 
-                    <input
-                        type="text"
-                        className="sp-input"
-                        value={searchQuery}
-                        onChange={(e) =>
-                            setSearchQuery(e.target.value)
-                        }
-                        placeholder="Search property, phone or email"
-                    />
 
+        {error && (
+            <div className="sprc-error">
+                {error}
+            </div>
+        )}
+
+
+        {!loading &&
+            !error &&
+            searchQuery.trim().length >= 3 &&
+            properties.length === 0 && (
+                <div className="sprc-empty">
+                    No properties found.
                 </div>
             )}
 
 
-            {loading && (
-                <div className="sp-loading">
-                    Searching...
-                </div>
-            )}
+        {!selectedProperty &&
+            properties.length > 0 && (
+                <div className="sprc-results">
 
+                    {properties.map((property) => (
 
-            {error && (
-                <div className="sp-error">
-                    {error}
-                </div>
-            )}
+                        <div
+                            key={property.id}
+                            className="sprc-result"
+                        >
 
+                            <div className="sprc-info">
 
-            {!loading &&
-                !error &&
-                searchQuery.trim().length >= 3 &&
-                properties.length === 0 && (
-                    <div className="sp-empty">
-                        No properties found.
-                    </div>
-                )}
+                                <h3 className="sprc-name">
+                                    {property.name}
+                                </h3>
 
+                                <p className="sprc-location">
+                                    {property.country.name},{" "}
+                                    {property.city.name}
+                                </p>
 
-            {!selectedProperty &&
-                properties.length > 0 && (
-                    <div className="sp-results">
+                                <p className="sprc-admin">
+                                    Hotel Admin:{" "}
+                                    {property.hotel_admin.name}
+                                </p>
 
-                        {properties.map((property) => (
-
-                            <div
-                                key={property.id}
-                                className="sp-result"
-                            >
-
-                                <div className="sp-info">
-
-                                    <h3 className="sp-name">
-                                        {property.name}
-                                    </h3>
-
-                                    <p className="sp-location">
-                                        {property.country.name},{" "}
-                                        {property.city.name}
+                                {property.hotel_admin.phone && (
+                                    <p className="sprc-phone">
+                                        {property.hotel_admin.phone}
                                     </p>
-
-                                    <p className="sp-admin">
-                                        Hotel Admin:{" "}
-                                        {property.hotel_admin.name}
-                                    </p>
-
-                                    {property.hotel_admin.phone && (
-                                        <p className="sp-phone">
-                                            {property.hotel_admin.phone}
-                                        </p>
-                                    )}
-
-                                </div>
-
-
-                                <button
-                                    type="button"
-                                    className="sp-select-button"
-                                    onClick={() =>
-                                        handleSelect(property)
-                                    }
-                                >
-                                    Select
-                                </button>
+                                )}
 
                             </div>
 
-                        ))}
 
-                    </div>
-                )}
+                            <button
+                                type="button"
+                                className="sprc-select-button"
+                                onClick={() =>
+                                    handleSelect(property)
+                                }
+                            >
+                                Select
+                            </button>
 
-
-            {selectedProperty && (
-                <div className="sp-selected">
-
-                    <div className="sp-selected-info">
-
-                        <div className="sp-selected-label">
-                            Selected Property
                         </div>
 
-                        <h3 className="sp-name">
-                            {selectedProperty.name}
-                        </h3>
-
-                        <p className="sp-location">
-                            {selectedProperty.country.name},{" "}
-                            {selectedProperty.city.name}
-                        </p>
-
-                        <p className="sp-admin">
-                            Hotel Admin:{" "}
-                            {selectedProperty.hotel_admin.name}
-                        </p>
-
-                        {selectedProperty.hotel_admin.phone && (
-                            <p className="sp-phone">
-                                {selectedProperty.hotel_admin.phone}
-                            </p>
-                        )}
-
-                    </div>
-
-
-                    <button
-                        type="button"
-                        className="sp-remove-button"
-                        onClick={handleRemove}
-                    >
-                        Remove
-                    </button>
+                    ))}
 
                 </div>
             )}
 
-        </div>
+
+        {selectedProperty && (
+            <div className="sprc-selected">
+
+                <div className="sprc-selected-info">
+
+                    <div className="sprc-selected-label">
+                        Selected Property
+                    </div>
+
+                    <h3 className="sprc-name">
+                        {selectedProperty.name}
+                    </h3>
+
+                    <p className="sprc-location">
+                        {selectedProperty.country.name},{" "}
+                        {selectedProperty.city.name}
+                    </p>
+
+                    <p className="sprc-admin">
+                        Hotel Admin:{" "}
+                        {selectedProperty.hotel_admin.name}
+                    </p>
+
+                    {selectedProperty.hotel_admin.phone && (
+                        <p className="sprc-phone">
+                            {selectedProperty.hotel_admin.phone}
+                        </p>
+                    )}
+
+                </div>
+
+
+                <button
+                    type="button"
+                    className="sprc-remove-button"
+                    onClick={handleRemove}
+                >
+                    Remove
+                </button>
+
+            </div>
+        )}
+
+    </div>
     );
 };
 

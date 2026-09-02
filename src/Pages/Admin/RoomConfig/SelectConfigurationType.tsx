@@ -1,5 +1,5 @@
 // Step 1 — imports
-
+import './Styles/SelectConfigurationType.css';
 
 type ConfigurationType = "bed" | "meal";
 
