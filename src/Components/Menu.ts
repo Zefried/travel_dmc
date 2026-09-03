@@ -120,12 +120,17 @@ export const menus: Record<Role, MenuItem[]> = {
         {
           name: "View Room Types",
           icon: BedDouble,
-          path: "/dashboard/add-room-type",
+          path: "/dashboard/room-types",
         },
         {
           name: "Rooms",
           icon: DoorOpen,
           path: "/dashboard/add-room",
+        },
+        {
+          name: "View Rooms",
+          icon: DoorOpen,
+          path: "/dashboard/rooms",
         },
       ],
     },

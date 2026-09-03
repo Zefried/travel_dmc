@@ -10,6 +10,7 @@ import PropertyList from "../../Pages/Admin/Property/View/PropertyList";
 import PropertyDetails from "../../Pages/Admin/Property/View/PropertyDetails";
 import RoomTypeList from "../../Pages/Admin/RoomType/View/RoomTypeList";
 import RoomTypeDetails from "../../Pages/Admin/RoomType/View/RoomTypeDetails";
+import RoomList from "../../Pages/Admin/Rooms/View/RoomList";
 
 
 export const adminViewRoutes = [
@@ -32,6 +33,7 @@ export const adminViewRoutes = [
                     </ProtectedRoute>
                 ),
             },
+
             {
                 path: "cities",
                 element: (
@@ -48,6 +50,7 @@ export const adminViewRoutes = [
                     </ProtectedRoute>
                 ),
             },
+            
             {
                 path: "amenities",
                 element: (
@@ -56,6 +59,8 @@ export const adminViewRoutes = [
                     </ProtectedRoute>
                 ),
             },
+
+
             {
                 path: "Properties",
                 element: (
@@ -74,18 +79,14 @@ export const adminViewRoutes = [
             },
 
 
-
-
             {
-                path: "test",
+                path: "room-types",
                 element: (
                     <ProtectedRoute allowedRoles={["admin"]}>
                         <RoomTypeList />
                     </ProtectedRoute>
                 ),
             },
-
-            
             {
                 path: "room-type/details/:id",
                 element: (
@@ -94,8 +95,15 @@ export const adminViewRoutes = [
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: "rooms",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <RoomList />
+                    </ProtectedRoute>
+                ),
+            },
 
-          
 
 
 
