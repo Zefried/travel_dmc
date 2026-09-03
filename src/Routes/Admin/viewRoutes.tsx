@@ -11,6 +11,8 @@ import PropertyDetails from "../../Pages/Admin/Property/View/PropertyDetails";
 import RoomTypeList from "../../Pages/Admin/RoomType/View/RoomTypeList";
 import RoomTypeDetails from "../../Pages/Admin/RoomType/View/RoomTypeDetails";
 import RoomList from "../../Pages/Admin/Rooms/View/RoomList";
+import ViewBedConfig from "../../Pages/Admin/RoomConfig/View/ViewBedConfig";
+import ViewMealConfig from "../../Pages/Admin/RoomConfig/View/ViewMealConfig";
 
 
 export const adminViewRoutes = [
@@ -105,6 +107,22 @@ export const adminViewRoutes = [
             },
 
 
+            {
+                path: "view-bed-config",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <ViewBedConfig />
+                    </ProtectedRoute>
+                ),
+            },
+  {
+                path: "view-Meal-config",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <ViewMealConfig />
+                    </ProtectedRoute>
+                ),
+            },
 
 
 
@@ -117,12 +135,6 @@ export const adminViewRoutes = [
 
 
         ],
-
-
-
-
-
-
 
 
     },

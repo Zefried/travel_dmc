@@ -42,6 +42,7 @@ import {
   Briefcase,
   MessageSquare,
   Store,
+  Car,
 } from "lucide-react";
 
 export type Role = "admin" | "subadmin" | "department";
@@ -64,6 +65,23 @@ export const menus: Record<Role, MenuItem[]> = {
       name: "Home",
       icon: Home,
       path: "/dashboard/admin",
+    },
+
+    {
+      name: "Team",
+      icon: Users,
+      children: [
+        {
+          name: "Add Team",
+          icon: Users,
+          path: "/dashboard/add-team",
+        },
+        {
+          name: "Team Types",
+          icon: UserCog,
+          path: "/dashboard/admin/team-types",
+        },
+      ],
     },
 
     {
@@ -153,24 +171,51 @@ export const menus: Record<Role, MenuItem[]> = {
     },
 
     {
+    name: "Vehicles",
+      icon: Car,
+        children: [
+            {
+                name: "Add Vehicle",
+                icon: Plus,
+                path: "/dashboard/add-vehicle",
+            },
+            {
+                name: "View Vehicles",
+                icon: List,
+                path: "/dashboard/view-vehicles",
+            },
+        ],
+    },
+
+    {
       name: "Setup",
       icon: Settings,
       children: [
-        {
-          name: "Assign Amenities to Property",
-          icon: List,
-          path: "/dashboard/assign-property-amenities",
-        },
-        {
-          name: "Assign Amenities to Room Type",
-          icon: List,
-          path: "/dashboard/assign-room-type-amenities",
-        },
           {
-      name: "Add Room Configuration",
-      icon: Settings,
-      path: "/dashboard/add-room-configuration",
-    },
+              name: "Property Amenities",
+              icon: List,
+              path: "/dashboard/assign-property-amenities",
+          },
+          {
+              name: "Room Amenities",
+              icon: List,
+              path: "/dashboard/assign-room-type-amenities",
+          },
+          {
+              name: "Room Configuration",
+              icon: Settings,
+              path: "/dashboard/add-room-configuration",
+          },
+          {
+              name: "Meal Config",
+              icon: Settings,
+              path: "/dashboard/view-meal-config",
+          },
+          {
+              name: "Bed Config",
+              icon: Settings,
+              path: "/dashboard/view-bed-config",
+          },
       ],
     },
 
@@ -180,28 +225,8 @@ export const menus: Record<Role, MenuItem[]> = {
       path: "/dashboard/admin/bookings",
     },
 
-    {
-      name: "Activities",
-      icon: Compass,
-      path: "/dashboard/admin/activities",
-    },
 
-    {
-      name: "Team",
-      icon: Users,
-      children: [
-        {
-          name: "Add Team",
-          icon: Users,
-          path: "/dashboard/add-team",
-        },
-        {
-          name: "Team Types",
-          icon: UserCog,
-          path: "/dashboard/admin/team-types",
-        },
-      ],
-    },
+   
   ],
 
 
