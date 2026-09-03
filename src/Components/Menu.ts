@@ -90,6 +90,11 @@ export const menus: Record<Role, MenuItem[]> = {
           icon: Building2,
           path: "/dashboard/add-city",
         },
+        {
+          name: "View Cities",
+          icon: Building2,
+          path: "/dashboard/cities",
+        },
       ],
     },
 
