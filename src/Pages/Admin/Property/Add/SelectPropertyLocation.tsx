@@ -2,8 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import api from "../../../../api/axios";
-import '../Styles/SelectPropertyLocation.css';
+import "../Styles/SelectPropertyLocation.css";
 
+
+// Step 2 — types
 
 type PropertyLocation = {
     countryId: string;
@@ -64,20 +66,29 @@ const SelectPropertyLocation = ({
     const fetchStates = async (countryId: string) => {
 
         const response = await api.get(
-            `/admin/states?country_id=${countryId}`
+            "/admin/states/options",
+            {
+                params: {
+                    country_id: countryId,
+                },
+            }
         );
 
-        setStates(response.data.data.data);
+        setStates(response.data.data);
     };
-
 
     const fetchCities = async (stateId: string) => {
 
         const response = await api.get(
-            `/admin/cities?state_id=${stateId}`
+            "/admin/cities/options",
+            {
+                params: {
+                    state_id: stateId,
+                },
+            }
         );
 
-        setCities(response.data.data.data);
+        setCities(response.data.data);
     };
 
 

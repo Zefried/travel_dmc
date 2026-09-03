@@ -6,6 +6,7 @@ import ViewAmenities from "../../Pages/Admin/Amenity/View/ViewAmenities";
 import StateCountryFilter from "../../Pages/Admin/Locations/State/View/List/StateCountryFilter";
 import CityList from "../../Pages/Admin/Locations/City/View/CityList";
 import ViewCities from "../../Pages/Admin/Locations/City/View/ViewCities";
+import PropertyList from "../../Pages/Admin/Property/View/PropertyList";
 
 
 export const adminViewRoutes = [
@@ -49,6 +50,24 @@ export const adminViewRoutes = [
                 element: (
                     <ProtectedRoute allowedRoles={["admin"]}>
                         <ViewAmenities />
+                    </ProtectedRoute>
+                ),
+            },
+
+
+
+
+
+
+
+
+
+
+             {
+                path: "test",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <PropertyList />
                     </ProtectedRoute>
                 ),
             },

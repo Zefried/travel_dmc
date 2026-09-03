@@ -27,14 +27,6 @@ export const adminRoutes = [
           </ProtectedRoute>
         ),
       },
-      {
-        path: "test", // this becomes dashboard home for admin users
-        element: (
-          <ProtectedRoute allowedRoles={['admin']}>
-            <AddProperty />
-          </ProtectedRoute>
-        ),
-      },
       // location routes
       {
         path: "add-country", // this becomes dashboard home for admin users
