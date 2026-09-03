@@ -177,7 +177,7 @@ export const menus: Record<Role, MenuItem[]> = {
             {
                 name: "Add Vehicle",
                 icon: Plus,
-                path: "/dashboard/add-vehicle",
+                path: "/dashboard/add-vehicles",
             },
             {
                 name: "View Vehicles",

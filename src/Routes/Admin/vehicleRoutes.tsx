@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { ProtectedRoute } from "../ProtectedRoutes";
-import { DashboardHome } from "../../Pages/Panels/DashboardHome";
+import AddVehicle from "../../Pages/Admin/Vehicle/Add/AddVehicle";
+import ViewVehicle from "../../Pages/Admin/Vehicle/View/ViewVehicle";
 
 
 
@@ -10,14 +11,23 @@ export const adminVehicleRoutes = [
         children: [
 
             {
-                path: "add-vehicle",
+                path: "add-vehicles",
                 element: (
                     <ProtectedRoute allowedRoles={["admin"]}>
-                        <DashboardHome />
+                        <AddVehicle />
                     </ProtectedRoute>
                 ),
             },
 
+            
+            {
+                path: "view-vehicles",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <ViewVehicle />
+                    </ProtectedRoute>
+                ),
+            },
 
         ],
     },
