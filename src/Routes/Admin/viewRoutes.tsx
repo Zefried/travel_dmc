@@ -7,6 +7,9 @@ import StateCountryFilter from "../../Pages/Admin/Locations/State/View/List/Stat
 import CityList from "../../Pages/Admin/Locations/City/View/CityList";
 import ViewCities from "../../Pages/Admin/Locations/City/View/ViewCities";
 import PropertyList from "../../Pages/Admin/Property/View/PropertyList";
+import PropertyDetails from "../../Pages/Admin/Property/View/PropertyDetails";
+import RoomTypeList from "../../Pages/Admin/RoomType/View/RoomTypeList";
+import RoomTypeDetails from "../../Pages/Admin/RoomType/View/RoomTypeDetails";
 
 
 export const adminViewRoutes = [
@@ -53,24 +56,66 @@ export const adminViewRoutes = [
                     </ProtectedRoute>
                 ),
             },
-
-
-
-
-
-
-
-
-
-
-             {
-                path: "test",
+            {
+                path: "Properties",
                 element: (
                     <ProtectedRoute allowedRoles={["admin"]}>
                         <PropertyList />
                     </ProtectedRoute>
                 ),
             },
+            {
+                path: "properties/details/:id",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <PropertyDetails />
+                    </ProtectedRoute>
+                ),
+            },
+
+
+
+
+            {
+                path: "test",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <RoomTypeList />
+                    </ProtectedRoute>
+                ),
+            },
+
+            
+            {
+                path: "room-type/details/:id",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <RoomTypeDetails />
+                    </ProtectedRoute>
+                ),
+            },
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
         ],
+
+
+
+
+
+
+
+
     },
 ];

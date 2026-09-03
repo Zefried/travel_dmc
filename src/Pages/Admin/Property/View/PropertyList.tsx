@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import api from "../../../../api/axios";
+import { Link } from "react-router-dom";
 
 
 // Step 2 — types
@@ -359,15 +360,15 @@ const PropertyList = () => {
                                                     {property.status}
                                                 </td>
 
-                                                <td>
+                                              <td>
 
-                                                    <button
-                                                        type="button"
-                                                    >
-                                                        Details →
-                                                    </button>
+                                                <Link
+                                                    to={`/dashboard/properties/details/${property.id}`}
+                                                >
+                                                    Details →
+                                                </Link>
 
-                                                </td>
+                                            </td>
 
                                             </tr>
                                         );
