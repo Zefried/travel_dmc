@@ -10,6 +10,7 @@ import PackageBuilderPage from "../Pages/Website/PackageBuilder/PackageBuilderPa
 import AgentSearch from "../Pages/Website/Home/AgentSearch";
 import { adminViewRoutes } from "./Admin/viewRoutes";
 import { adminVehicleRoutes } from "./Admin/vehicleRoutes";
+import { activityRoutes } from "./Admin/activityRoute";
 
 
 const router = createBrowserRouter([
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
       ...adminViewRoutes,
       ...departmentRoutes,
       ...adminVehicleRoutes,
+      ...activityRoutes,
     ],
   },
 ]);

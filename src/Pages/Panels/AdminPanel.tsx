@@ -5,59 +5,59 @@ const AdminPanel = () => {
   const navigate = useNavigate();
 
   const stats = [
-    { title: "Total Customers", value: 248 },
-    { title: "Total Equipment", value: 536 },
-    { title: "Open Tickets", value: 18 },
-    { title: "Pending Services", value: 12 },
-    { title: "Warranty Services", value: 9 },
-    { title: "Paid Services", value: 7 },
+    { title: "Total Properties", value: 48 },
+    { title: "Total Room Types", value: 126 },
+    { title: "Total Rooms", value: 536 },
+    { title: "Total Amenities", value: 84 },
+    { title: "Total Vehicles", value: 32 },
+    { title: "Hotel Admins", value: 18 },
   ];
 
-  const recentTickets = [
+  const recentProperties = [
     {
-      id: "TKT001",
-      customer: "ABC Security Solutions",
-      equipment: "Hikvision CCTV",
-      issue: "Camera not working",
-      technician: "Rahul Das",
-      service: "Warranty",
-      status: "In Progress",
+      id: "PROP001",
+      property: "Grand Palace Hotel",
+      city: "Guwahati",
+      country: "India",
+      roomTypes: 8,
+      rooms: 64,
+      status: "Active",
     },
     {
-      id: "TKT002",
-      customer: "City Mall",
-      equipment: "DVR System",
-      issue: "Recording issue",
-      technician: "Amit Sharma",
-      service: "Paid",
-      status: "Assigned",
+      id: "PROP002",
+      property: "Royal Orchid Resort",
+      city: "Shillong",
+      country: "India",
+      roomTypes: 6,
+      rooms: 42,
+      status: "Active",
     },
     {
-      id: "TKT003",
-      customer: "Royal Hotel",
-      equipment: "CCTV Camera",
-      issue: "No display",
-      technician: "Sanjay Roy",
-      service: "Warranty",
-      status: "Completed",
+      id: "PROP003",
+      property: "The Riverside Inn",
+      city: "Jaipur",
+      country: "India",
+      roomTypes: 5,
+      rooms: 38,
+      status: "Active",
     },
     {
-      id: "TKT004",
-      customer: "XYZ Industries",
-      equipment: "NVR System",
-      issue: "Network connection issue",
-      technician: "Rahul Das",
-      service: "Paid",
-      status: "Pending",
+      id: "PROP004",
+      property: "Blue Horizon Resort",
+      city: "Goa",
+      country: "India",
+      roomTypes: 10,
+      rooms: 82,
+      status: "Inactive",
     },
     {
-      id: "TKT005",
-      customer: "Green Valley School",
-      equipment: "CCTV Camera",
-      issue: "Camera replacement",
-      technician: "Amit Sharma",
-      service: "Paid",
-      status: "Completed",
+      id: "PROP005",
+      property: "City View Hotel",
+      city: "Delhi",
+      country: "India",
+      roomTypes: 7,
+      rooms: 55,
+      status: "Active",
     },
   ];
 
@@ -68,25 +68,30 @@ const AdminPanel = () => {
       <div className="adp__cards">
         {stats.map((item, index) => (
           <div key={index} className="adp__card">
-            <p className="adp__card-title">{item.title}</p>
-            <h2 className="adp__card-value">{item.value}</h2>
+            <p className="adp__card-title">
+              {item.title}
+            </p>
+
+            <h2 className="adp__card-value">
+              {item.value}
+            </h2>
           </div>
         ))}
       </div>
 
-      {/* Recent Tickets */}
+      {/* Recent Properties */}
       <div className="adp__orders">
 
         <div className="links">
           <h3 className="adp__section-title">
-            Recent Service Tickets
+            Recent Properties
           </h3>
 
           <h4
             className="adp-view-all-link"
-            onClick={() => navigate('/dashboard/tickets')}
+            onClick={() => navigate('/dashboard/properties')}
           >
-            View All Tickets →
+            View All Properties →
           </h4>
         </div>
 
@@ -95,60 +100,52 @@ const AdminPanel = () => {
 
             <thead>
               <tr>
-                <th>Ticket ID</th>
-                <th>Customer</th>
-                <th>Equipment</th>
-                <th>Issue</th>
-                <th>Technician</th>
-                <th>Service</th>
+                <th>Property ID</th>
+                <th>Property</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Room Types</th>
+                <th>Rooms</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
 
             <tbody>
-              {recentTickets.map((ticket) => (
-                <tr key={ticket.id}>
+              {recentProperties.map((property) => (
+                <tr key={property.id}>
 
                   <td className="adp-id">
-                    {ticket.id}
+                    {property.id}
                   </td>
 
                   <td>
-                    {ticket.customer}
+                    {property.property}
                   </td>
 
                   <td>
-                    {ticket.equipment}
+                    {property.city}
                   </td>
 
                   <td>
-                    {ticket.issue}
+                    {property.country}
                   </td>
 
                   <td>
-                    {ticket.technician}
+                    {property.roomTypes}
                   </td>
 
                   <td>
-                    <span
-                      className={`adp-status ${
-                        ticket.service.toLowerCase()
-                      }`}
-                    >
-                      {ticket.service}
-                    </span>
+                    {property.rooms}
                   </td>
 
                   <td>
                     <span
                       className={`adp-status ${
-                        ticket.status
-                          .toLowerCase()
-                          .replace(/\s+/g, '-')
+                        property.status.toLowerCase()
                       }`}
                     >
-                      {ticket.status}
+                      {property.status}
                     </span>
                   </td>
 
@@ -156,7 +153,9 @@ const AdminPanel = () => {
                     <button
                       className="adp-view-btn"
                       onClick={() =>
-                        navigate(`/dashboard/tickets/${ticket.id}`)
+                        navigate(
+                          `/dashboard/properties/${property.id}`
+                        )
                       }
                     >
                       View

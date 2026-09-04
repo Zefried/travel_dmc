@@ -171,23 +171,6 @@ export const menus: Record<Role, MenuItem[]> = {
     },
 
     {
-    name: "Vehicles",
-      icon: Car,
-        children: [
-            {
-                name: "Add Vehicle",
-                icon: Plus,
-                path: "/dashboard/add-vehicles",
-            },
-            {
-                name: "View Vehicles",
-                icon: List,
-                path: "/dashboard/view-vehicles",
-            },
-        ],
-    },
-
-    {
       name: "Setup",
       icon: Settings,
       children: [
@@ -218,14 +201,52 @@ export const menus: Record<Role, MenuItem[]> = {
           },
       ],
     },
+ 
+    {
+    name: "Vehicles",
+      icon: Car,
+        children: [
+            {
+                name: "Add Vehicle",
+                icon: Plus,
+                path: "/dashboard/add-vehicles",
+            },
+            {
+                name: "View Vehicles",
+                icon: List,
+                path: "/dashboard/view-vehicles",
+            },
+        ],
+    },
+
+    
+    {
+    name: "Activities",
+    icon: Calendar,
+    children: [
+        {
+            name: "Add Activity",
+            icon: Plus,
+            path: "/dashboard/add-activity",
+        },
+        {
+            name: "View Activities",
+            icon: List,
+            path: "/dashboard/view-activities",
+        },
+        {
+            name: "Manage Transfers",
+            icon: Car,
+            path: "/dashboard/admin/add-activity/transfers",
+        },
+    ],
+    },
 
     {
       name: "Bookings",
       icon: Calendar,
       path: "/dashboard/admin/bookings",
     },
-
-
    
   ],
 
