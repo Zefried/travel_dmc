@@ -1,0 +1,265 @@
+.vwactivity {
+  width: 100%;
+  padding: 8px 0 0;
+  color: #111827;
+}
+
+.vwactivity__title {
+  margin: 0 0 18px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.vwactivity__loading,
+.vwactivity__error,
+.vwactivity__empty {
+  margin: 12px 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.vwactivity__error {
+  color: #dc2626;
+}
+
+.vwactivity__table-wrap {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+}
+
+.vwactivity__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 820px;
+  background: #ffffff;
+}
+
+.vwactivity__thead {
+  display: table-header-group;
+}
+
+.vwactivity__tbody {
+  display: table-row-group;
+}
+
+.vwactivity__row-head {
+  background: #f8fafc;
+}
+
+.vwactivity__th,
+.vwactivity__td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eef2f7;
+  vertical-align: top;
+}
+
+.vwactivity__th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.vwactivity__td {
+  font-size: 0.94rem;
+  color: #374151;
+}
+
+.vwactivity__row:last-child .vwactivity__td {
+  border-bottom: none;
+}
+
+.vwactivity__row:hover {
+  background: #f9fafb;
+}
+
+.vwactivity__name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.vwactivity__category {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.vwactivity__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.vwactivity__status.active {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.vwactivity__status.inactive {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.dark .vwactivity {
+  color: #f3f4f6;
+}
+
+.dark .vwactivity__title {
+  color: #f9fafb;
+}
+
+.dark .vwactivity__loading,
+.dark .vwactivity__error,
+.dark .vwactivity__empty,
+.dark .vwactivity__category {
+  color: #9ca3af;
+}
+
+.dark .vwactivity__table-wrap {
+  background: #111827;
+  border-color: #1f2937;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.35);
+}
+
+.dark .vwactivity__table {
+  background: #111827;
+}
+
+.dark .vwactivity__row-head {
+  background: #0f172a;
+}
+
+.dark .vwactivity__th,
+.dark .vwactivity__td {
+  border-bottom-color: #1f2937;
+  color: #e5e7eb;
+}
+
+.dark .vwactivity__row:hover {
+  background: #0f172a;
+}
+
+.dark .vwactivity__name {
+  color: #f9fafb;
+}
+
+.dark .vwactivity__status.active {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+
+.dark .vwactivity__status.inactive {
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+}
+
+@media (max-width: 768px) {
+  .vwactivity {
+    padding-top: 4px;
+  }
+
+  .vwactivity__title {
+    font-size: 1.35rem;
+  }
+
+  .vwactivity__table-wrap {
+    border-radius: 12px;
+    overflow-x: visible;
+  }
+
+  .vwactivity__table,
+  .vwactivity__thead,
+  .vwactivity__tbody,
+  .vwactivity__row,
+  .vwactivity__th,
+  .vwactivity__td {
+    display: block;
+    width: 100%;
+  }
+
+  .vwactivity__table {
+    min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  .vwactivity__thead {
+    display: none;
+  }
+
+  .vwactivity__row {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+  }
+
+  .dark .vwactivity__row {
+    background: #0f172a;
+    border-color: #1f2937;
+  }
+
+  .vwactivity__td {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.82rem;
+  }
+
+  .dark .vwactivity__td {
+    border-bottom-color: #1f2937;
+  }
+
+  .vwactivity__td:last-child {
+    border-bottom: none;
+  }
+
+  .vwactivity__td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #6b7280;
+    flex: 0 0 42%;
+  }
+
+  .dark .vwactivity__td::before {
+    color: #9ca3af;
+  }
+
+  .vwactivity__td > * {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .vwactivity__name {
+    margin-bottom: 0;
+  }
+
+  .vwactivity__category {
+    margin-top: 2px;
+  }
+
+  .vwactivity__status {
+    min-width: 0;
+    padding: 5px 8px;
+    white-space: nowrap;
+  }
+}

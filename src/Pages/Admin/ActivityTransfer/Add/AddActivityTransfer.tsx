@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../../../api/axios";
+import "./AddActivityTransfer.css";
 
 type Activity = {
     id: number;
@@ -172,9 +173,11 @@ const AddActivityTransfer = () => {
     return (
         <div className="add-activity-transfer">
 
-            <h2 className="add-activity-transfer__title">
-                Add Activity Transfer
-            </h2>
+            <div className="add-activity-transfer__header">
+                <h2 className="add-activity-transfer__title">
+                    Add Activity Transfer
+                </h2>
+            </div>
 
 
             <form

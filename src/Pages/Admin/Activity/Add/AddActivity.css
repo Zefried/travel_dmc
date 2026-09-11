@@ -1,0 +1,231 @@
+/* ================================
+   ADD ACTIVITY
+   ================================ */
+
+.add-activity {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.add-activity__header {
+    margin-bottom: 22px;
+}
+
+.add-activity__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+    color: #171717;
+}
+
+.add-activity__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-activity__section {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.add-activity__section-title {
+    margin: 0 0 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.add-activity__location,
+.add-activity__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.add-activity__field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.add-activity__field--full {
+    grid-column: 1 / -1;
+    margin-top: 4px;
+}
+
+.add-activity__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.add-activity__input,
+.add-activity__select,
+.add-activity__textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #111827;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.add-activity__textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.add-activity__input::placeholder,
+.add-activity__textarea::placeholder {
+    color: #9ca3af;
+}
+
+.add-activity__input:hover,
+.add-activity__select:hover,
+.add-activity__textarea:hover {
+    border-color: #b8bec8;
+}
+
+.add-activity__input:focus,
+.add-activity__select:focus,
+.add-activity__textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+.add-activity__actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-activity__submit {
+    width: 100%;
+    max-width: 220px;
+    min-height: 44px;
+    border: 0;
+    border-radius: 9px;
+    background: #111827;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+
+.add-activity__submit:hover:not(:disabled) {
+    background: #1f2937;
+}
+
+.add-activity__submit:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.add-activity__submit:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ================================
+   DARK MODE
+   ================================ */
+
+.dark .add-activity__title {
+    color: #f9fafb;
+}
+
+.dark .add-activity__section {
+    background: #111827;
+    border-color: #1f2937;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.32);
+}
+
+.dark .add-activity__section-title {
+    color: #f3f4f6;
+}
+
+.dark .add-activity__label {
+    color: #d1d5db;
+}
+
+.dark .add-activity__input,
+.dark .add-activity__select,
+.dark .add-activity__textarea {
+    background: #0f172a;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark .add-activity__input::placeholder,
+.dark .add-activity__textarea::placeholder {
+    color: #6b7280;
+}
+
+.dark .add-activity__input:hover,
+.dark .add-activity__select:hover,
+.dark .add-activity__textarea:hover {
+    border-color: #4b5563;
+}
+
+.dark .add-activity__input:focus,
+.dark .add-activity__select:focus,
+.dark .add-activity__textarea:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.dark .add-activity__submit {
+    background: #f9fafb;
+    color: #111827;
+}
+
+.dark .add-activity__submit:hover:not(:disabled) {
+    background: #e5e7eb;
+}
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 767px) {
+    .add-activity {
+        padding: 16px;
+    }
+
+    .add-activity__title {
+        font-size: 21px;
+    }
+
+    .add-activity__section {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .add-activity__location,
+    .add-activity__grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .add-activity__actions {
+        justify-content: stretch;
+    }
+
+    .add-activity__submit {
+        max-width: none;
+        width: 100%;
+        min-height: 44px;
+    }
+}

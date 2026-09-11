@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../../../api/axios";
+import "./AddActivity.css";
 
 type Country = {
     id: number;
@@ -245,9 +246,11 @@ const AddActivity = () => {
     return (
         <div className="add-activity">
 
-            <h2 className="add-activity__title">
-                Add Activity
-            </h2>
+            <div className="add-activity__header">
+                <h2 className="add-activity__title">
+                    Add Activity
+                </h2>
+            </div>
 
 
             <form
@@ -270,11 +273,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 Country
                             </label>
 
                             <select
+                                className="add-activity__input add-activity__select"
                                 value={countryId}
                                 onChange={handleCountryChange}
                                 disabled={loadingCountries}
@@ -303,11 +307,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 State
                             </label>
 
                             <select
+                                className="add-activity__input add-activity__select"
                                 value={stateId}
                                 onChange={handleStateChange}
                                 disabled={
@@ -339,11 +344,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 City
                             </label>
 
                             <select
+                                className="add-activity__input add-activity__select"
                                 value={cityId}
                                 onChange={handleCityChange}
                                 disabled={
@@ -390,11 +396,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 Activity Name
                             </label>
 
                             <input
+                                className="add-activity__input"
                                 type="text"
                                 value={name}
                                 onChange={(event) =>
@@ -411,11 +418,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 Category
                             </label>
 
                             <input
+                                className="add-activity__input"
                                 type="text"
                                 value={category}
                                 onChange={(event) =>
@@ -431,11 +439,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 Duration
                             </label>
 
                             <input
+                                className="add-activity__input"
                                 type="number"
                                 min="0.1"
                                 step="0.1"
@@ -454,11 +463,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 Duration Unit
                             </label>
 
                             <select
+                                className="add-activity__input add-activity__select"
                                 value={durationUnit}
                                 onChange={(event) =>
                                     setDurationUnit(event.target.value)
@@ -485,11 +495,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 Base Price
                             </label>
 
                             <input
+                                className="add-activity__input"
                                 type="number"
                                 min="0"
                                 step="0.01"
@@ -508,11 +519,12 @@ const AddActivity = () => {
 
                         <div className="add-activity__field">
 
-                            <label>
+                            <label className="add-activity__label">
                                 Status
                             </label>
 
                             <select
+                                className="add-activity__input add-activity__select"
                                 value={status}
                                 onChange={(event) =>
                                     setStatus(event.target.value)
@@ -536,11 +548,12 @@ const AddActivity = () => {
 
                     <div className="add-activity__field add-activity__field--full">
 
-                        <label>
+                        <label className="add-activity__label">
                             Description
                         </label>
 
                         <textarea
+                            className="add-activity__textarea"
                             value={description}
                             onChange={(event) =>
                                 setDescription(event.target.value)
@@ -560,6 +573,7 @@ const AddActivity = () => {
 
                     <button
                         type="submit"
+                        className="add-activity__submit"
                         disabled={saving}
                     >
                         {saving

@@ -1,0 +1,245 @@
+/* ================================
+   VIEW ACTIVITY TRANSFERS
+   ================================ */
+
+.vat {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.vat__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.vat__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+    color: #111827;
+}
+
+.vat__filter {
+    display: flex;
+    align-items: end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.vat__field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 220px;
+}
+
+.vat__label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #6b7280;
+}
+
+.vat__select {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #111827;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.vat__select:hover {
+    border-color: #b8bec8;
+}
+
+.vat__select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+.vat__table-wrap {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
+}
+
+.vat__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+    background: #ffffff;
+}
+
+.vat__thead {
+    background: #f8fafc;
+}
+
+.vat__th,
+.vat__td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eef2f7;
+    vertical-align: top;
+}
+
+.vat__th {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6b7280;
+}
+
+.vat__td {
+    font-size: 0.94rem;
+    color: #374151;
+}
+
+.vat__row:last-child .vat__td {
+    border-bottom: none;
+}
+
+.vat__row:hover {
+    background: #f9fafb;
+}
+
+.vat__name {
+    display: block;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.vat__status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 88px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.vat__status.active {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.vat__status.inactive {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.vat__loading,
+.vat__empty,
+.vat__error {
+    margin: 14px 0 0;
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+.vat__error {
+    color: #dc2626;
+}
+
+.dark .vat__title {
+    color: #f9fafb;
+}
+
+.dark .vat__label {
+    color: #9ca3af;
+}
+
+.dark .vat__select {
+    background: #0f172a;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark .vat__select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.dark .vat__table-wrap {
+    background: #111827;
+    border-color: #1f2937;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.32);
+}
+
+.dark .vat__table {
+    background: #111827;
+}
+
+.dark .vat__thead {
+    background: #0f172a;
+}
+
+.dark .vat__th,
+.dark .vat__td {
+    border-bottom-color: #1f2937;
+    color: #e5e7eb;
+}
+
+.dark .vat__row:hover {
+    background: #0f172a;
+}
+
+.dark .vat__name {
+    color: #f9fafb;
+}
+
+.dark .vat__status.active {
+    background: rgba(16, 185, 129, 0.15);
+    color: #6ee7b7;
+}
+
+.dark .vat__status.inactive {
+    background: rgba(239, 68, 68, 0.12);
+    color: #fca5a5;
+}
+
+@media (max-width: 768px) {
+    .vat {
+        padding: 16px;
+    }
+
+    .vat__header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .vat__title {
+        font-size: 21px;
+    }
+
+    .vat__field {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .vat__table-wrap {
+        overflow-x: auto;
+    }
+
+    .vat__table {
+        min-width: 760px;
+    }
+}
