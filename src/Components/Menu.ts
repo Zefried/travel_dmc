@@ -237,7 +237,7 @@ export const menus: Record<Role, MenuItem[]> = {
         {
             name: "Manage Transfers",
             icon: Car,
-            path: "/dashboard/admin/add-activity/transfers",
+            path: "/dashboard/add-activity/transfers",
         },
     ],
     },

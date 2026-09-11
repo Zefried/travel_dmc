@@ -11,6 +11,7 @@ import AgentSearch from "../Pages/Website/Home/AgentSearch";
 import { adminViewRoutes } from "./Admin/viewRoutes";
 import { adminVehicleRoutes } from "./Admin/vehicleRoutes";
 import { activityRoutes } from "./Admin/activityRoute";
+import { imageRoutes } from "./Admin/imagesRoute";
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
       ...departmentRoutes,
       ...adminVehicleRoutes,
       ...activityRoutes,
+      ...imageRoutes,
     ],
   },
 ]);
