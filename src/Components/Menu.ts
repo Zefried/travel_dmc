@@ -21,8 +21,7 @@ import {
   Monitor,
   Camera,
   Package,
-  Compass,
-  Building,
+
   List,
   Sparkles,
   DoorOpen,
@@ -32,16 +31,6 @@ import {
   MapPin,
   Globe,
   Calendar,
-  FileBarChart,
-  CreditCard,
-  Star,
-  Target,
-  TrendingUp,
-  HardDrive,
-  Boxes,
-  Briefcase,
-  MessageSquare,
-  Store,
   Car,
 } from "lucide-react";
 
@@ -239,6 +228,34 @@ export const menus: Record<Role, MenuItem[]> = {
             icon: Car,
             path: "/dashboard/add-activity/transfers",
         },
+    ],
+    },
+
+    {
+    name: "Manage Images",
+    icon: Calendar,
+    children: [
+        {
+            name: "Property Images",
+            icon: Plus,
+            path: "/dashboard/property-images",
+        },
+        {
+            name: "Room Type Images",
+            icon: Plus,
+            path: "/dashboard/room-type-images",
+        },
+        {
+            name: "View Property Images",
+            icon: List,
+            path: "/dashboard/view-property-images",
+        },
+        {
+            name: "View Room Type Images",
+            icon: List,
+            path: "/dashboard/view-room-type-images",
+        },
+      
     ],
     },
 

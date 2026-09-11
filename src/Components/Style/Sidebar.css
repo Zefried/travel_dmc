@@ -1,10 +1,16 @@
-.sidebar{
-    background: #1b2448;
-    color: #bbbcbd;
-    padding: 12px;
-    height: 100vh;
-    transition: width 0.3s ease;
-    overflow: hidden;
+.sidebar {
+  background: #1b2448;
+  color: #bbbcbd;
+  width: 240px;
+  height: 100vh;
+  padding: 12px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: width 0.3s ease;
+  overflow: hidden;
 }
 .sidebar.open {
   width: 240px;
@@ -17,10 +23,24 @@
 /* Nav */
 .nav {
   display: flex;
+  flex: 1;
+  min-height: 0;
   flex-direction: column;
   gap: 6px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 4px;
+}
+.nav::-webkit-scrollbar {
+  width: 6px;
 }
 
+.nav::-webkit-scrollbar-thumb {
+  background: #526080;
+  border-radius: 999px;
+}
 /* Menu Item */
 .menu-item {
   display: flex;
