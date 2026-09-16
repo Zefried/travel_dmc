@@ -34,7 +34,7 @@ import {
   Car,
 } from "lucide-react";
 
-export type Role = "admin" | "subadmin" | "department";
+export type Role = "admin" | "subadmin" | "department" | "vehicle_admin";
 
 export type MenuItem = {
   name: string;
@@ -48,6 +48,35 @@ export type MenuItem = {
 };
 
 export const menus: Record<Role, MenuItem[]> = {
+
+  vehicle_admin: [
+    {
+      name: "Vehicle Management",
+      icon: Car,
+      children: [
+        {
+          name: "Dashboard",
+          icon: Home,
+          path: "/dashboard/vehicle-admin",
+        },
+        {
+          name: "Vehicle Calendar",
+          icon: Calendar,
+          path: "/dashboard/vehicle-schedule",
+        },
+        {
+          name: "View Schedule",
+          icon: List,
+          path: "/dashboard/view-schedule",
+        },
+        {
+          name: "View Bookings",
+          icon: TicketCheck,
+          path: "/dashboard/view-bookings",
+        },
+      ],
+    },
+  ],
 
   admin: [
     {
@@ -204,6 +233,21 @@ export const menus: Record<Role, MenuItem[]> = {
                 name: "View Vehicles",
                 icon: List,
                 path: "/dashboard/view-vehicles",
+            },
+            {
+              name: "Fleet Availability",
+              icon: CheckCircle,
+              path: "/dashboard/vehicle-availability",
+            },
+            {
+              name: "Vehicle Calendar",
+              icon: Calendar,
+              path: "/dashboard/vehicle-schedule",
+            },
+            {
+              name: "View Schedule",
+              icon: List,
+              path: "/dashboard/view-schedule",
             },
         ],
     },

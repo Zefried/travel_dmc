@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 
 const AdminPanel = lazy(() => import("./AdminPanel"));
+const VehiclePanelDB = lazy(() => import("./VehiclePanelDB"));
 
 export const DashboardHome = () => {
   const auth = useContext(AuthContext);
@@ -20,6 +21,7 @@ export const DashboardHome = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       {role === "admin" && <AdminPanel />}
+      {role === "vehicle_admin" && <VehiclePanelDB />}
 
     </Suspense>
   );
