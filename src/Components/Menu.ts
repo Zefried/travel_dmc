@@ -249,6 +249,11 @@ export const menus: Record<Role, MenuItem[]> = {
               icon: List,
               path: "/dashboard/view-schedule",
             },
+            {
+              name: "Vehicle Bookings",
+              icon: TicketCheck,
+              path: "/dashboard/view-bookings",
+            },
         ],
     },
 

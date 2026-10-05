@@ -6,13 +6,7 @@ import VehiclePanelDB from "../../Pages/Panels/VehiclePanelDB";
 import VehicleCalendar from "../../Pages/Admin/Vehicle/Calendar/VehicleCalendar";
 import VehicleSchedule from "../../Pages/Admin/Vehicle/Schedule/VehicleSchedule";
 import VehicleAvailability from "../../Pages/Admin/Vehicle/Availability/VehicleAvailability";
-
-const ViewBookingsPage = () => (
-    <div className="p-6">
-        <h2 className="text-2xl font-semibold mb-2">View Bookings</h2>
-        <p className="text-gray-600">This page will show bookings related to the vehicle admin.</p>
-    </div>
-);
+import VehicleBookings from "../../Pages/Admin/Vehicle/Bookings/VehicleBookings";
 
 export const adminVehicleRoutes = [
     {
@@ -76,8 +70,8 @@ export const adminVehicleRoutes = [
             {
                 path: "view-bookings",
                 element: (
-                    <ProtectedRoute allowedRoles={["vehicle_admin"]}>
-                        <ViewBookingsPage />
+                    <ProtectedRoute allowedRoles={["admin", "vehicle_admin"]}>
+                        <VehicleBookings />
                     </ProtectedRoute>
                 ),
             },
