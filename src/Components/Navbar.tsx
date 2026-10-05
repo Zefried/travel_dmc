@@ -1,8 +1,9 @@
 import { Bell, Moon, Sun, PanelLeft, User, LogOut } from "lucide-react";
 import "./Style/Navbar.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
+import Axios from "../api/axios";
 
 type NavbarProps = {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,6 +41,52 @@ export const Navbar = ({
 
   const pageTitle = pageTitles[location.pathname] || "Dashboard";
 
+  // Notifications State
+  const [notifications, setNotifications] = useState<any[]>([]);
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  useEffect(() => {
+    fetchNotifications();
+    // Poll every 30 seconds for new notifications
+    const interval = setInterval(fetchNotifications, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const fetchNotifications = async () => {
+    try {
+      const res = await Axios.get("/notifications");
+      if (res.data.status) {
+        setNotifications(res.data.data);
+        setUnreadCount(res.data.data.length);
+      }
+    } catch (error) {
+      console.error("Failed to fetch notifications", error);
+    }
+  };
+
+  const markAsRead = async (id: string, link: string) => {
+    try {
+      await Axios.patch(`/notifications/${id}/read`);
+      setNotifications((prev) => prev.filter((n) => n.id !== id));
+      setUnreadCount((prev) => Math.max(0, prev - 1));
+      setShowNotif(false);
+      navigate(link);
+    } catch (error) {
+      console.error("Failed to mark as read", error);
+    }
+  };
+
+  const markAllAsRead = async () => {
+    try {
+      await Axios.patch(`/notifications/read-all`);
+      setNotifications([]);
+      setUnreadCount(0);
+      setShowNotif(false);
+    } catch (error) {
+      console.error("Failed to mark all as read", error);
+    }
+  };
+
   return (
     <div
       className={`navbar ${dark ? "dark" : ""}`}
@@ -65,16 +112,49 @@ export const Navbar = ({
         </button>
 
         <div className="relative">
-          <Bell
-            size={18}
-            className="icon-btn-bell"
-            onClick={() => setShowNotif((prev) => !prev)}
-          />
+          <div className="relative">
+            <Bell
+              size={18}
+              className="icon-btn-bell"
+              onClick={() => setShowNotif((prev) => !prev)}
+            />
+            {unreadCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full flex items-center justify-center">
+                {unreadCount}
+              </span>
+            )}
+          </div>
 
           {showNotif && (
-            <div className="notif-box">
-              <h3 className="font-semibold mb-2">Notifications</h3>
-              <p className="text-sm opacity-70">No new notifications</p>
+            <div className="notif-box absolute right-0 mt-2 w-80 bg-white border border-gray-100 shadow-lg rounded-xl overflow-hidden z-50">
+              <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                <h3 className="font-bold text-gray-900">Notifications</h3>
+                {notifications.length > 0 && (
+                  <button onClick={markAllAsRead} className="text-xs text-blue-600 hover:text-blue-800 font-medium">
+                    Mark all read
+                  </button>
+                )}
+              </div>
+              <div className="max-h-[300px] overflow-y-auto">
+                {notifications.length === 0 ? (
+                  <div className="p-6 text-center text-gray-500 text-sm">
+                    No new notifications
+                  </div>
+                ) : (
+                  notifications.map((notif) => (
+                    <div
+                      key={notif.id}
+                      onClick={() => markAsRead(notif.id, notif.data.link)}
+                      className="p-4 border-b border-gray-50 hover:bg-gray-50 cursor-pointer transition-colors"
+                    >
+                      <p className="text-sm text-gray-800 font-medium">{notif.data.message}</p>
+                      <span className="text-xs text-gray-400 mt-1 block">
+                        {new Date(notif.created_at).toLocaleDateString()} {new Date(notif.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                  ))
+                )}
+              </div>
             </div>
           )}
         </div>

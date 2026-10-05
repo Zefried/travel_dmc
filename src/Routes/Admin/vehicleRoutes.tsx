@@ -3,6 +3,8 @@ import { ProtectedRoute } from "../ProtectedRoutes";
 import AddVehicle from "../../Pages/Admin/Vehicle/Add/AddVehicle";
 import ViewVehicle from "../../Pages/Admin/Vehicle/View/ViewVehicle";
 import VehiclePanelDB from "../../Pages/Panels/VehiclePanelDB";
+import RequestVehicleBooking from "../../Pages/Admin/Vehicle/RequestBooking/RequestVehicleBooking";
+import RequestBookingStatus from "../../Pages/Admin/Vehicle/RequestBookingStatus/RequestBookingStatus";
 
 export const adminVehicleRoutes = [
     {
@@ -35,7 +37,22 @@ export const adminVehicleRoutes = [
                     </ProtectedRoute>
                 ),
             },
-
+            {
+                path: "request-vehicle-booking",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <RequestVehicleBooking />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: "vehicle-booking-status",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <RequestBookingStatus />
+                    </ProtectedRoute>
+                ),
+            },
         ],
     },
 ];

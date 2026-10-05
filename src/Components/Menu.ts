@@ -69,6 +69,11 @@ export const menus: Record<Role, MenuItem[]> = {
           icon: List,
           path: "/dashboard/view-busy",
         },
+        {
+          name: "Booking Requests",
+          icon: List,
+          path: "/dashboard/booking-requests",
+        },
       ],
     },
   ],
@@ -233,6 +238,16 @@ export const menus: Record<Role, MenuItem[]> = {
           name: "View Vehicles",
           icon: List,
           path: "/dashboard/view-vehicles",
+        },
+        {
+          name: "Request Booking",
+          icon: Plus,
+          path: "/dashboard/request-vehicle-booking",
+        },
+        {
+          name: "Booking Status",
+          icon: List,
+          path: "/dashboard/vehicle-booking-status",
         },
       ],
     },
