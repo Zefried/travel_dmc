@@ -60,19 +60,14 @@ export const menus: Record<Role, MenuItem[]> = {
           path: "/dashboard/vehicle-admin",
         },
         {
-          name: "Vehicle Calendar",
-          icon: Calendar,
-          path: "/dashboard/vehicle-schedule",
+          name: "Mark Busy",
+          icon: Clock,
+          path: "/dashboard/mark-busy",
         },
         {
-          name: "View Schedule",
+          name: "View Busy",
           icon: List,
-          path: "/dashboard/view-schedule",
-        },
-        {
-          name: "View Bookings",
-          icon: TicketCheck,
-          path: "/dashboard/view-bookings",
+          path: "/dashboard/view-busy",
         },
       ],
     },
@@ -197,125 +192,105 @@ export const menus: Record<Role, MenuItem[]> = {
       name: "Setup",
       icon: Settings,
       children: [
-          {
-              name: "Property Amenities",
-              icon: List,
-              path: "/dashboard/assign-property-amenities",
-          },
-          {
-              name: "Room Amenities",
-              icon: List,
-              path: "/dashboard/assign-room-type-amenities",
-          },
-          {
-              name: "Room Configuration",
-              icon: Settings,
-              path: "/dashboard/add-room-configuration",
-          },
-          {
-              name: "Meal Config",
-              icon: Settings,
-              path: "/dashboard/view-meal-config",
-          },
-          {
-              name: "Bed Config",
-              icon: Settings,
-              path: "/dashboard/view-bed-config",
-          },
+        {
+          name: "Property Amenities",
+          icon: List,
+          path: "/dashboard/assign-property-amenities",
+        },
+        {
+          name: "Room Amenities",
+          icon: List,
+          path: "/dashboard/assign-room-type-amenities",
+        },
+        {
+          name: "Room Configuration",
+          icon: Settings,
+          path: "/dashboard/add-room-configuration",
+        },
+        {
+          name: "Meal Config",
+          icon: Settings,
+          path: "/dashboard/view-meal-config",
+        },
+        {
+          name: "Bed Config",
+          icon: Settings,
+          path: "/dashboard/view-bed-config",
+        },
       ],
     },
- 
+
     {
-    name: "Vehicles",
+      name: "Vehicles",
       icon: Car,
-        children: [
-            {
-                name: "Add Vehicle",
-                icon: Plus,
-                path: "/dashboard/add-vehicles",
-            },
-            {
-                name: "View Vehicles",
-                icon: List,
-                path: "/dashboard/view-vehicles",
-            },
-            {
-              name: "Fleet Availability",
-              icon: CheckCircle,
-              path: "/dashboard/vehicle-availability",
-            },
-            {
-              name: "Vehicle Calendar",
-              icon: Calendar,
-              path: "/dashboard/vehicle-schedule",
-            },
-            {
-              name: "View Schedule",
-              icon: List,
-              path: "/dashboard/view-schedule",
-            },
-            {
-              name: "Vehicle Bookings",
-              icon: TicketCheck,
-              path: "/dashboard/view-bookings",
-            },
-        ],
+      children: [
+        {
+          name: "Add Vehicle",
+          icon: Plus,
+          path: "/dashboard/add-vehicles",
+        },
+        {
+          name: "View Vehicles",
+          icon: List,
+          path: "/dashboard/view-vehicles",
+        },
+      ],
     },
 
-    
+
     {
-    name: "Activities",
-    icon: Calendar,
-    children: [
+      name: "Activities",
+      icon: Calendar,
+      children: [
         {
-            name: "Add Activity",
-            icon: Plus,
-            path: "/dashboard/add-activity",
+          name: "Add Activity",
+          icon: Plus,
+          path: "/dashboard/add-activity",
         },
         {
-            name: "View Activities",
-            icon: List,
-            path: "/dashboard/view-activities",
+          name: "View Activities",
+          icon: List,
+          path: "/dashboard/view-activities",
         },
         {
-            name: "Manage Transfers",
-            icon: Car,
-            path: "/dashboard/add-activity/transfers",
+          name: "Manage Transfers",
+          icon: Car,
+          path: "/dashboard/add-activity/transfers",
         },
         {
-            name: "View Transfers",
-            icon: List,
-            path: "/dashboard/view-transfers",
+          name: "View Transfers",
+          icon: List,
+          path: "/dashboard/view-transfers",
         },
-    ],
+      ],
     },
 
     {
-    name: "Manage Images",
-    icon: Calendar,
-    children: [
+      name: "Manage Images",
+      icon: Calendar,
+      children: [
         {
-            name: "Property Images",
-            icon: Plus,
-            path: "/dashboard/property-images",
+          name: "Property Images",
+          icon: Plus,
+          path: "/dashboard/property-images",
         },
         {
-            name: "Room Type Images",
-            icon: Plus,
-            path: "/dashboard/room-type-images",
+          name: "Room Type Images",
+          icon: Plus,
+          path: "/dashboard/room-type-images",
         },
         {
-            name: "View Property Images",
-            icon: List,
-            path: "/dashboard/view-property-images",
+          name: "View Property Images",
+          icon: List,
+          path: "/dashboard/view-property-images",
         },
         {
-            name: "View Room Type Images",
-            icon: List,
-            path: "/dashboard/view-room-type-images",
+          name: "View Room Type Images",
+          icon: List,
+          path: "/dashboard/view-room-type-images",
         },
-      
-    ],
+
+      ],
     },
 
     {
@@ -323,7 +298,7 @@ export const menus: Record<Role, MenuItem[]> = {
       icon: Calendar,
       path: "/dashboard/admin/bookings",
     },
-   
+
   ],
 
 
@@ -567,7 +542,7 @@ export const menus: Record<Role, MenuItem[]> = {
   //   path: "/dashboard/admin/settings",
   // },
   // ],
-  
+
   department: [
     {
       name: "Dashboard",
