@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import api from "../../../../../api/axios";
 import { Link } from "react-router-dom";
 import Pagination from "../../../../../Components/Pagination/Pagination";
+import "./CityList.css";
 
 
 // Step 2 — types

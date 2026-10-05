@@ -69,11 +69,16 @@ export const Login = () => {
         setError("");
 
         try {
-          const payload: LoginPayload = {
-            email: email,
-            phone: email,
+          const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          const payload: Partial<LoginPayload> = {
             password,
           };
+          
+          if (isEmail) {
+            payload.email = email;
+          } else {
+            payload.phone = email;
+          }
 
           const res = await api.post<LoginResponse>("/login", payload);
         

@@ -1,0 +1,176 @@
+/* ================================
+   VIEW TEAM
+   ================================ */
+
+.vwt-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.vwt-loading, .vwt-error {
+    padding: 24px;
+    text-align: center;
+    font-size: 16px;
+    color: #6b7280;
+}
+
+.vwt-error {
+    color: #b91c1c;
+}
+
+/* HEADER */
+.vwt-header {
+    margin-bottom: 22px;
+}
+
+.vwt-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+    color: #171717;
+}
+
+.vwt-subtitle {
+    margin: 6px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6b7280;
+}
+
+/* TABLE */
+.vwt-table-container {
+    overflow-x: auto;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.vwt-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.vwt-table th,
+.vwt-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.vwt-table th {
+    background: #f9fafb;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.vwt-table td {
+    font-size: 14px;
+    color: #111827;
+}
+
+.vwt-table tr:last-child td {
+    border-bottom: none;
+}
+
+.vwt-table tr:hover {
+    background: #f3f4f6;
+}
+
+/* BADGES */
+.vwt-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.vwt-role-badge {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.vwt-status-active {
+    background: #dcfce3;
+    color: #166534;
+}
+
+.vwt-status-inactive {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ACTIONS */
+.vwt-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.vwt-btn-delete {
+    padding: 6px 12px;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.vwt-btn-delete:hover {
+    background: #fee2e2;
+}
+
+.vwt-empty {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    padding: 32px !important;
+}
+
+/* DARK MODE */
+.dark .vwt-title { color: #f9fafb; }
+.dark .vwt-subtitle { color: #9ca3af; }
+.dark .vwt-table-container { 
+    background: #111827;
+    border-color: #374151;
+}
+.dark .vwt-table th {
+    background: #1f2937;
+    color: #d1d5db;
+    border-bottom-color: #374151;
+}
+.dark .vwt-table td {
+    color: #f9fafb;
+    border-bottom-color: #374151;
+}
+.dark .vwt-table tr:hover { background: #1f2937; }
+.dark .vwt-role-badge {
+    background: #312e81;
+    color: #c7d2fe;
+}
+.dark .vwt-status-active {
+    background: #064e3b;
+    color: #6ee7b7;
+}
+.dark .vwt-status-inactive {
+    background: #7f1d1d;
+    color: #fca5a5;
+}
+.dark .vwt-btn-delete {
+    background: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+.dark .vwt-btn-delete:hover {
+    background: #7f1d1d;
+}

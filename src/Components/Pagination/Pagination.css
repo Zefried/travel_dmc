@@ -6,6 +6,13 @@
     margin-top: 24px;
 }
 
+.pg-ellipsis {
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 4px;
+}
+
 .pg-button {
     min-width: 36px;
     height: 36px;

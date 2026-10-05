@@ -172,6 +172,7 @@ const ViewBedConfig = () => {
             {
                 params: {
                     room_type_id: roomTypeId,
+                    type: 'bed',
                 },
             }
         );

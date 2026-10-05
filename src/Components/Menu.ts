@@ -95,6 +95,11 @@ export const menus: Record<Role, MenuItem[]> = {
           path: "/dashboard/add-team",
         },
         {
+          name: "View Team",
+          icon: Users,
+          path: "/dashboard/view-team",
+        },
+        {
           name: "Team Types",
           icon: UserCog,
           path: "/dashboard/admin/team-types",

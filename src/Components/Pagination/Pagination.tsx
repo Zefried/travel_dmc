@@ -45,6 +45,20 @@ const Pagination = ({
     }
 
 
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = startPage + maxVisiblePages - 1;
+
+    if (endPage > lastPage) {
+        endPage = lastPage;
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    const pagesToRender = [];
+    for (let i = startPage; i <= endPage; i++) {
+        pagesToRender.push(i);
+    }
+
     return (
         <div className="pg-container">
 
@@ -57,11 +71,11 @@ const Pagination = ({
                 Previous
             </button>
 
+            {startPage > 1 && (
+                <span className="pg-ellipsis">...</span>
+            )}
 
-            {Array.from(
-                { length: lastPage },
-                (_, index) => index + 1
-            ).map((page) => (
+            {pagesToRender.map((page) => (
 
                 <button
                     key={page}
@@ -74,6 +88,10 @@ const Pagination = ({
                 </button>
 
             ))}
+
+            {endPage < lastPage && (
+                <span className="pg-ellipsis">...</span>
+            )}
 
 
             <button

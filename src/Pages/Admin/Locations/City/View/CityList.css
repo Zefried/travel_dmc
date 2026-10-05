@@ -1,0 +1,260 @@
+/* ================================
+   CITY LIST
+   ================================ */
+
+.cl-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* HEADER */
+.cl-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.cl-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 650;
+    line-height: 1.3;
+    color: #171717;
+}
+
+.cl-search-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4f46e5;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.cl-search-link:hover {
+    color: #4338ca;
+    text-decoration: underline;
+}
+
+/* MESSAGES */
+.cl-loading {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #6b7280;
+    text-align: center;
+}
+
+.cl-error {
+    margin-top: 16px;
+    padding: 12px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #b91c1c;
+}
+
+.cl-empty {
+    margin-top: 24px;
+    padding: 32px;
+    text-align: center;
+    font-size: 15px;
+    color: #6b7280;
+    font-style: italic;
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+}
+
+/* FORM FIELDS */
+.cl-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    max-width: 400px;
+}
+
+.cl-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.cl-select {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #111827;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cl-select:hover {
+    border-color: #b8bec8;
+}
+
+.cl-select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.10);
+}
+
+/* TABLE */
+.cl-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.cl-table-head {
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.cl-table-heading {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cl-table-body .cl-table-row {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.15s ease;
+}
+
+.cl-table-body .cl-table-row:last-child {
+    border-bottom: none;
+}
+
+.cl-table-body .cl-table-row:hover {
+    background: #f3f4f6;
+}
+
+.cl-table-cell {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #111827;
+}
+
+/* ================================
+   DARK MODE
+   ================================ */
+
+.dark .cl-title {
+    color: #f9fafb;
+}
+
+.dark .cl-search-link {
+    color: #818cf8;
+}
+
+.dark .cl-search-link:hover {
+    color: #a5b4fc;
+}
+
+.dark .cl-loading,
+.dark .cl-empty {
+    color: #9ca3af;
+}
+
+.dark .cl-empty {
+    background: #111827;
+    border-color: #374151;
+}
+
+.dark .cl-error {
+    background: #450a0a;
+    border-color: #991b1b;
+    color: #fca5a5;
+}
+
+.dark .cl-label {
+    color: #d1d5db;
+}
+
+.dark .cl-select {
+    background: #111827;
+    border-color: #374151;
+    color: #f9fafb;
+}
+
+.dark .cl-select:hover {
+    border-color: #4b5563;
+}
+
+.dark .cl-select:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.12);
+}
+
+.dark .cl-table {
+    background: #111827;
+    border-color: #374151;
+}
+
+.dark .cl-table-head {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+.dark .cl-table-heading {
+    color: #d1d5db;
+}
+
+.dark .cl-table-body .cl-table-row {
+    border-color: #374151;
+}
+
+.dark .cl-table-body .cl-table-row:hover {
+    background: #1f2937;
+}
+
+.dark .cl-table-cell {
+    color: #f9fafb;
+}
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 767px) {
+    .cl-container {
+        padding: 16px;
+    }
+    
+    .cl-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .cl-title {
+        font-size: 21px;
+    }
+
+    .cl-field {
+        max-width: 100%;
+    }
+
+    .cl-table-heading,
+    .cl-table-cell {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+}
