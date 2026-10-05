@@ -126,18 +126,18 @@ export const Navbar = ({
           </div>
 
           {showNotif && (
-            <div className="notif-box absolute right-0 mt-2 w-80 bg-white border border-gray-100 shadow-lg rounded-xl overflow-hidden z-50">
-              <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-                <h3 className="font-bold text-gray-900">Notifications</h3>
+            <div className="notif-box">
+              <div className="notif-header">
+                <h3 className="notif-title">Notifications</h3>
                 {notifications.length > 0 && (
-                  <button onClick={markAllAsRead} className="text-xs text-blue-600 hover:text-blue-800 font-medium">
+                  <button onClick={markAllAsRead} className="notif-mark-read">
                     Mark all read
                   </button>
                 )}
               </div>
-              <div className="max-h-[300px] overflow-y-auto">
+              <div className="notif-list">
                 {notifications.length === 0 ? (
-                  <div className="p-6 text-center text-gray-500 text-sm">
+                  <div className="notif-empty">
                     No new notifications
                   </div>
                 ) : (
@@ -145,10 +145,10 @@ export const Navbar = ({
                     <div
                       key={notif.id}
                       onClick={() => markAsRead(notif.id, notif.data.link)}
-                      className="p-4 border-b border-gray-50 hover:bg-gray-50 cursor-pointer transition-colors"
+                      className="notif-item"
                     >
-                      <p className="text-sm text-gray-800 font-medium">{notif.data.message}</p>
-                      <span className="text-xs text-gray-400 mt-1 block">
+                      <p className="notif-message">{notif.data.message}</p>
+                      <span className="notif-time">
                         {new Date(notif.created_at).toLocaleDateString()} {new Date(notif.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </span>
                     </div>

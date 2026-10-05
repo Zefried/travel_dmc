@@ -1,0 +1,398 @@
+/* ================================
+   MAIN ADMIN BOOKING STATUS (Aesthetic, Modern, BEM)
+   ================================ */
+
+.req-status {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: inherit;
+}
+
+.req-status__header {
+    margin-bottom: 24px;
+}
+
+.req-status__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.req-status__title-icon {
+    width: 24px;
+    height: 24px;
+    color: #2563eb;
+}
+
+.req-status__subtitle {
+    margin: 6px 0 0;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Loading */
+.req-status__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+.req-status__spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Layout Grid */
+.req-status__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 1024px) {
+    .req-status__layout {
+        grid-template-columns: 320px 1fr;
+    }
+}
+
+/* Sidebar Panels */
+.req-status__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.req-status__panel {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.req-status__panel-title {
+    margin: 0 0 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.req-status__form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.req-status__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.req-status__label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.req-status__input {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    transition: all 0.2s;
+}
+.req-status__input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Sidebar Results (Cards) */
+.req-status__results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+
+.req-status__empty-text {
+    font-size: 0.85rem;
+    color: #64748b;
+    text-align: center;
+    margin: 16px 0;
+}
+
+.req-status__card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.req-status__card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+.req-status__card-icon {
+    width: 16px;
+    height: 16px;
+    color: #2563eb;
+}
+
+.req-status__card-reg {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 2px;
+    margin-left: 24px;
+}
+
+.req-status__card-dates {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.req-status__card-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.req-status__card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 0.75rem;
+}
+.req-status__card-meta span {
+    color: #64748b;
+    font-size: 0.7rem;
+}
+.req-status__card-meta strong {
+    color: #0f172a;
+    font-weight: 500;
+}
+.req-status__truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Custom Scrollbar for Sidebar */
+.req-status__scrollbar::-webkit-scrollbar { width: 6px; }
+.req-status__scrollbar::-webkit-scrollbar-track { background: transparent; }
+.req-status__scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+
+
+/* Main Table Panel */
+.req-status__table-panel {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+}
+
+.req-status__table-header {
+    background: #f8fafc;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.req-status__table-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.req-status__table-wrap {
+    overflow-x: auto;
+}
+
+.req-status__table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+}
+
+.req-status__row-head {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.req-status__th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.03em;
+}
+
+.req-status__td {
+    padding: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+    color: #334155;
+    vertical-align: top;
+}
+
+.req-status__row:last-child .req-status__td {
+    border-bottom: none;
+}
+.req-status__row:hover:not(.req-status__row-head) {
+    background: #f8fafc;
+}
+
+.req-status__empty {
+    padding: 40px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Data Cells */
+.req-status__date-primary,
+.req-status__vehicle-name {
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 2px;
+}
+.req-status__date-secondary,
+.req-status__vehicle-reg {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+.req-status__owner-name {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-top: 6px;
+}
+
+.req-status__detail-item {
+    font-size: 0.8rem;
+    color: #475569;
+    margin-bottom: 3px;
+}
+.req-status__detail-item span {
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.req-status__note,
+.req-status__rejection-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.75rem;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+.req-status__note {
+    color: #64748b;
+}
+.req-status__rejection-note {
+    color: #b91c1c;
+    background: #fef2f2;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #fee2e2;
+}
+.req-status__note-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Badges */
+.req-status__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    border: 1px solid transparent;
+}
+.req-status__badge-icon {
+    width: 12px;
+    height: 12px;
+}
+.req-status__badge--pending {
+    background: #fffbeb;
+    color: #b45309;
+    border-color: #fde68a;
+}
+.req-status__badge--accepted {
+    background: #f0fdf4;
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+.req-status__badge--rejected {
+    background: #fef2f2;
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+/* ================================
+   DARK MODE SUPPORT
+   ================================ */
+.dark .req-status__title { color: #f8fafc; }
+.dark .req-status__subtitle { color: #94a3b8; }
+.dark .req-status__panel { background: #1e293b; border-color: #334155; }
+.dark .req-status__panel-title { color: #f8fafc; }
+.dark .req-status__label { color: #cbd5e1; }
+.dark .req-status__input { background: #0f172a; border-color: #475569; color: #f8fafc; }
+.dark .req-status__card { background: #0f172a; border-color: #334155; }
+.dark .req-status__card-header { color: #f8fafc; }
+.dark .req-status__card-dates { background: #1e3a8a; color: #bfdbfe; }
+.dark .req-status__card-footer { border-color: #334155; }
+.dark .req-status__card-meta strong { color: #f8fafc; }
+.dark .req-status__scrollbar::-webkit-scrollbar-thumb { background-color: #475569; }
+
+.dark .req-status__table-panel { background: #1e293b; border-color: #334155; }
+.dark .req-status__table-header { background: #0f172a; border-color: #334155; }
+.dark .req-status__table-title { color: #f8fafc; }
+.dark .req-status__row-head { background: #0f172a; border-color: #334155; }
+.dark .req-status__th { color: #94a3b8; }
+.dark .req-status__td { border-color: #334155; color: #cbd5e1; }
+.dark .req-status__row:hover:not(.req-status__row-head) { background: #0f172a; }
+.dark .req-status__date-primary, .dark .req-status__vehicle-name { color: #f8fafc; }
+.dark .req-status__detail-item { color: #94a3b8; }
+.dark .req-status__detail-item span { color: #e2e8f0; }

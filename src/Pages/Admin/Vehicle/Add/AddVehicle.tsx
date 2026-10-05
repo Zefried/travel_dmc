@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import api from "../../../../api/axios";
+import "./AddVehicle.css";
 
 
 // Step 2 — types

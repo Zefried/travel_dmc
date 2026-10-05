@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import api from "../../../../api/axios";
 import Pagination from "../../../../Components/Pagination/Pagination";
+import "./ViewVehicle.css";
 
 
 // Step 2 — types
@@ -252,22 +253,22 @@ const ViewVehicles = () => {
     // Step 8 — return()
 
     return (
-        <div>
+        <main className="vv-page">
 
-            <h1>
+            <header className="vv-header"><p className="vv-eyebrow">Fleet directory</p><h1>
                 Vehicles
-            </h1>
+            </h1><p>Review vehicles assigned to each vehicle admin.</p></header>
 
 
             {loading && (
-                <p>
+                <p className="vv-state">
                     Loading vehicle admins...
                 </p>
             )}
 
 
             {error && (
-                <p>
+                <p className="vv-state vv-state--error">
                     {error}
                 </p>
             )}
@@ -277,13 +278,13 @@ const ViewVehicles = () => {
 
                 <>
 
-                    <div>
+                    <section className="vv-selector">
 
-                        <label>
+                        <label className="vv-label">
                             Vehicle Admin
                         </label>
 
-                        <select
+                        <select className="vv-select"
                             value={
                                 selectedVehicleAdminId
                             }
@@ -314,48 +315,48 @@ const ViewVehicles = () => {
 
                         </select>
 
-                    </div>
+                    </section>
 
 
                     {selectedVehicleAdmin && (
 
-                        <div>
+                        <section className="vv-admin-card">
 
-                            <h2>
+                            <h2 className="vv-admin-title">
                                 Vehicle Admin Details
                             </h2>
 
-                            <p>
+                            <p className="vv-admin-detail">
                                 Name: {
                                     selectedVehicleAdmin.name
                                 }
                             </p>
 
-                            <p>
+                            <p className="vv-admin-detail">
                                 Phone: {
                                     selectedVehicleAdmin.phone
                                 }
                             </p>
 
-                            <p>
+                            <p className="vv-admin-detail">
                                 Email: {
                                     selectedVehicleAdmin.email
                                 }
                             </p>
 
-                        </div>
+                        </section>
                     )}
 
 
                     {vehiclesLoading && (
-                        <p>
+                        <p className="vv-state">
                             Loading vehicles...
                         </p>
                     )}
 
 
                     {vehiclesError && (
-                        <p>
+                        <p className="vv-state vv-state--error">
                             {vehiclesError}
                         </p>
                     )}
@@ -368,7 +369,7 @@ const ViewVehicles = () => {
 
                             <>
 
-                                <table>
+                                <div className="vv-table-wrap"><table className="vv-table">
 
                                     <thead>
 
@@ -474,7 +475,7 @@ const ViewVehicles = () => {
 
                                     </tbody>
 
-                                </table>
+                                </table></div>
 
 
                                 <Pagination
@@ -498,7 +499,7 @@ const ViewVehicles = () => {
                         !vehiclesError &&
                         vehicles.length === 0 && (
 
-                            <p>
+                            <p className="vv-state vv-state--empty">
                                 No vehicles found for this vehicle admin.
                             </p>
                         )}
@@ -507,7 +508,7 @@ const ViewVehicles = () => {
 
             )}
 
-        </div>
+        </main>
     );
 };
 

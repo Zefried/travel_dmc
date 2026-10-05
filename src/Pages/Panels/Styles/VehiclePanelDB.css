@@ -124,6 +124,34 @@
 .vdb__spin { animation: vdb-spin 1s linear infinite; }
 @keyframes vdb-spin { to { transform: rotate(360deg); } }
 
+.vdb button:focus-visible,
+.vdb summary:focus-visible { outline: 3px solid rgba(64, 132, 115, .45); outline-offset: 3px; }
+
+.dark .vdb {
+	--vdb-ink: #e3eeea;
+	--vdb-muted: #9caea7;
+	--vdb-line: #364942;
+	--vdb-blue: #273b42;
+	--vdb-mint: #273d33;
+	--vdb-amber: #403725;
+	--vdb-coral: #412f29;
+	background: linear-gradient(145deg, #17231f 0%, #1b2924 62%, #1d2723 100%);
+}
+.dark .vdb__icon-button,
+.dark .vdb__quiet-button,
+.dark .vdb__filter-tab--selected,
+.dark .vdb__stat { color: var(--vdb-ink); border-color: var(--vdb-line); background: #22312c; }
+.dark .vdb__panel,
+.dark .vdb__overview { background: rgba(29, 43, 38, .92); }
+.dark .vdb__vehicle { border-color: var(--vdb-line); background: #202f2a; }
+.dark .vdb__filter-tabs { border-color: var(--vdb-line); background: #1d2b26; }
+.dark .vdb__filter-tab--selected { box-shadow: 0 1px 4px rgba(0, 0, 0, .28); }
+.dark .vdb__request { border-color: #30423b; }
+.dark .vdb__schedule-copy { border-color: #3a5047; }
+.dark .vdb__review-button { border-color: #3c594e; color: #9fc9ba; background: #23372f; }
+.dark .vdb__prototype-button { border-color: #3b5149; color: var(--vdb-muted); }
+.dark .vdb__prototype-button--selected { color: #a9d4c3; border-color: #527a6b; background: #263c32; }
+
 @media (max-width: 900px) {
 	.vdb__action-grid { grid-template-columns: 1fr; }
 	.vdb__vehicle-list { grid-template-columns: repeat(2, 1fr); }

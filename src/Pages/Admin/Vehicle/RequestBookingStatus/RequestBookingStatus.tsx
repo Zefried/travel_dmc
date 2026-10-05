@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Axios from '../../../../api/axios';
 import { toast } from 'react-hot-toast';
-import { Calendar as CalendarIcon, Car, CheckCircle, XCircle, Info, MessageSquare, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar as CalendarIcon, Car, CheckCircle, XCircle, Info, MessageSquare } from 'lucide-react';
+import './RequestBookingStatus.css';
 
 interface Vehicle {
     id: number;
@@ -61,19 +62,6 @@ const RequestBookingStatus = () => {
         }
     };
 
-    const getStatusBadge = (status: string) => {
-        switch (status) {
-            case 'pending':
-                return <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-50 text-yellow-700 text-sm font-medium border border-yellow-200"><Info className="w-4 h-4" /> Pending</span>;
-            case 'accepted':
-                return <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 text-green-700 text-sm font-medium border border-green-200"><CheckCircle className="w-4 h-4" /> Confirmed</span>;
-            case 'rejected':
-                return <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-red-700 text-sm font-medium border border-red-200"><XCircle className="w-4 h-4" /> Rejected</span>;
-            default:
-                return <span className="text-gray-500">{status}</span>;
-        }
-    };
-
     const getFilteredBookings = () => {
         if (!filterStartDate || !filterEndDate) return [];
         return requests.filter(req => 
@@ -85,79 +73,76 @@ const RequestBookingStatus = () => {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-[400px]">
-                <div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent"></div>
+            <div className="req-status__loading">
+                <div className="req-status__spinner"></div>
             </div>
         );
     }
 
     return (
-        <div className="p-6 max-w-7xl mx-auto space-y-8">
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
-                    <CalendarIcon className="h-8 w-8 text-blue-600" />
+        <div className="req-status">
+            <div className="req-status__header">
+                <h1 className="req-status__title">
+                    <CalendarIcon className="req-status__title-icon" />
                     Booking Request Status
                 </h1>
-                <p className="text-gray-500 mt-2">Track the status of your vehicle booking requests and view confirmed dates.</p>
+                <p className="req-status__subtitle">Track the status of your vehicle booking requests and view confirmed dates.</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Filter Section (Left side) */}
-                <div className="lg:col-span-1 space-y-6">
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                        <h2 className="text-lg font-bold text-gray-900 mb-4">Check Availability Range</h2>
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+            <div className="req-status__layout">
+                {/* Left Side: Filters & Results */}
+                <div className="req-status__sidebar">
+                    <div className="req-status__panel">
+                        <h2 className="req-status__panel-title">Check Availability Range</h2>
+                        <div className="req-status__form">
+                            <div className="req-status__field">
+                                <label className="req-status__label">Start Date</label>
                                 <input
                                     type="date"
                                     value={filterStartDate}
                                     onChange={(e) => setFilterStartDate(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="req-status__input"
                                 />
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+                            <div className="req-status__field">
+                                <label className="req-status__label">End Date</label>
                                 <input
                                     type="date"
                                     value={filterEndDate}
                                     onChange={(e) => setFilterEndDate(e.target.value)}
                                     min={filterStartDate}
-                                    className="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="req-status__input"
                                 />
                             </div>
                         </div>
                     </div>
 
-                    {/* Filtered Results */}
                     {filterStartDate && filterEndDate && (
-                        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-                            <h3 className="text-md font-bold text-gray-900 mb-4">
-                                Bookings in Range
-                            </h3>
+                        <div className="req-status__panel">
+                            <h3 className="req-status__panel-title">Bookings in Range</h3>
                             
                             {getFilteredBookings().length === 0 ? (
-                                <p className="text-sm text-gray-500 text-center py-4">No confirmed bookings in this date range.</p>
+                                <p className="req-status__empty-text">No confirmed bookings in this date range.</p>
                             ) : (
-                                <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+                                <div className="req-status__results req-status__scrollbar">
                                     {getFilteredBookings().map(req => (
-                                        <div key={req.id} className="p-4 rounded-lg bg-gray-50 border border-gray-100">
-                                            <div className="font-semibold text-gray-900 flex items-center gap-2">
-                                                <Car className="w-4 h-4 text-blue-600" />
+                                        <div key={req.id} className="req-status__card">
+                                            <div className="req-status__card-header">
+                                                <Car className="req-status__card-icon" />
                                                 {req.vehicle?.name}
                                             </div>
-                                            <div className="text-sm text-gray-500 mt-1">{req.vehicle?.registration_no}</div>
-                                            <div className="text-xs text-blue-600 mt-2 font-medium bg-blue-50 w-fit px-2 py-1 rounded">
+                                            <div className="req-status__card-reg">{req.vehicle?.registration_no}</div>
+                                            <div className="req-status__card-dates">
                                                 {new Date(req.start_date).toLocaleDateString()} to {new Date(req.end_date).toLocaleDateString()}
                                             </div>
-                                            <div className="mt-3 pt-3 border-t border-gray-200 grid grid-cols-2 gap-2 text-sm">
-                                                <div>
-                                                    <span className="text-gray-500 block text-xs">Passengers</span>
-                                                    <span className="font-medium">{req.passenger_count}</span>
+                                            <div className="req-status__card-footer">
+                                                <div className="req-status__card-meta">
+                                                    <span>Passengers</span>
+                                                    <strong>{req.passenger_count}</strong>
                                                 </div>
-                                                <div>
-                                                    <span className="text-gray-500 block text-xs">Owner</span>
-                                                    <span className="font-medium truncate block">{req.vehicle_admin?.name || 'N/A'}</span>
+                                                <div className="req-status__card-meta">
+                                                    <span>Owner</span>
+                                                    <strong className="req-status__truncate">{req.vehicle_admin?.name || 'N/A'}</strong>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,69 +153,74 @@ const RequestBookingStatus = () => {
                     )}
                 </div>
 
-                {/* Data Table Section (Right side) */}
-                <div className="lg:col-span-2">
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                        <div className="p-6 border-b border-gray-100 bg-gray-50/50">
-                            <h2 className="text-lg font-bold text-gray-900">All Requests History</h2>
+                {/* Right Side: Data Table */}
+                <div className="req-status__content">
+                    <div className="req-status__table-panel">
+                        <div className="req-status__table-header">
+                            <h2 className="req-status__table-title">All Requests History</h2>
                         </div>
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse">
+                        <div className="req-status__table-wrap">
+                            <table className="req-status__table">
                                 <thead>
-                                    <tr className="bg-gray-50 text-gray-600 text-sm border-b border-gray-200">
-                                        <th className="p-4 font-medium">Date Range</th>
-                                        <th className="p-4 font-medium">Vehicle & Owner</th>
-                                        <th className="p-4 font-medium">Details</th>
-                                        <th className="p-4 font-medium">Status</th>
+                                    <tr className="req-status__row-head">
+                                        <th className="req-status__th">Date Range</th>
+                                        <th className="req-status__th">Vehicle & Owner</th>
+                                        <th className="req-status__th">Details</th>
+                                        <th className="req-status__th">Status</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-gray-100">
+                                <tbody>
                                     {requests.length === 0 ? (
                                         <tr>
-                                            <td colSpan={4} className="p-8 text-center text-gray-500">
+                                            <td colSpan={4} className="req-status__empty">
                                                 You haven't made any booking requests yet.
                                             </td>
                                         </tr>
                                     ) : (
                                         requests.map((req) => (
-                                            <tr key={req.id} className="hover:bg-gray-50 transition-colors">
-                                                <td className="p-4 align-top">
-                                                    <div className="font-medium text-gray-900 whitespace-nowrap">
+                                            <tr key={req.id} className="req-status__row">
+                                                <td className="req-status__td">
+                                                    <div className="req-status__date-primary">
                                                         {new Date(req.start_date).toLocaleDateString()}
                                                     </div>
-                                                    <div className="text-gray-500 text-sm whitespace-nowrap mt-0.5">
+                                                    <div className="req-status__date-secondary">
                                                         to {new Date(req.end_date).toLocaleDateString()}
                                                     </div>
                                                 </td>
-                                                <td className="p-4 align-top">
-                                                    <div className="font-semibold text-gray-900">{req.vehicle?.name}</div>
-                                                    <div className="text-sm text-gray-500">{req.vehicle?.registration_no}</div>
-                                                    <div className="text-xs text-gray-400 mt-2">Owner: {req.vehicle_admin?.name || 'N/A'}</div>
+                                                <td className="req-status__td">
+                                                    <div className="req-status__vehicle-name">{req.vehicle?.name}</div>
+                                                    <div className="req-status__vehicle-reg">{req.vehicle?.registration_no}</div>
+                                                    <div className="req-status__owner-name">Owner: {req.vehicle_admin?.name || 'N/A'}</div>
                                                 </td>
-                                                <td className="p-4 align-top">
-                                                    <div className="text-sm text-gray-700">
-                                                        <span className="font-medium">Passengers:</span> {req.passenger_count}
+                                                <td className="req-status__td">
+                                                    <div className="req-status__detail-item">
+                                                        <span>Passengers:</span> {req.passenger_count}
                                                     </div>
                                                     {req.requested_price && (
-                                                        <div className="text-sm text-gray-700">
-                                                            <span className="font-medium">Offered Price:</span> ₹{req.requested_price}
+                                                        <div className="req-status__detail-item">
+                                                            <span>Offered Price:</span> ₹{req.requested_price}
                                                         </div>
                                                     )}
                                                     {req.note && (
-                                                        <div className="text-sm text-gray-500 mt-1 flex items-start gap-1">
-                                                            <MessageSquare className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                                                            <span className="line-clamp-2" title={req.note}>{req.note}</span>
+                                                        <div className="req-status__note">
+                                                            <MessageSquare className="req-status__note-icon" />
+                                                            <span title={req.note}>{req.note}</span>
                                                         </div>
                                                     )}
                                                     {req.status === 'rejected' && req.rejection_note && (
-                                                        <div className="text-sm text-red-600 mt-1 p-2 bg-red-50 rounded-md border border-red-100 flex items-start gap-1">
-                                                            <Info className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                                                        <div className="req-status__rejection-note">
+                                                            <Info className="req-status__note-icon" />
                                                             <span>Reason: {req.rejection_note}</span>
                                                         </div>
                                                     )}
                                                 </td>
-                                                <td className="p-4 align-top whitespace-nowrap">
-                                                    {getStatusBadge(req.status)}
+                                                <td className="req-status__td">
+                                                    <span className={`req-status__badge req-status__badge--${req.status}`}>
+                                                        {req.status === 'pending' && <Info className="req-status__badge-icon" />}
+                                                        {req.status === 'accepted' && <CheckCircle className="req-status__badge-icon" />}
+                                                        {req.status === 'rejected' && <XCircle className="req-status__badge-icon" />}
+                                                        {req.status === 'accepted' ? 'Confirmed' : req.status}
+                                                    </span>
                                                 </td>
                                             </tr>
                                         ))

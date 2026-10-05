@@ -1,0 +1,353 @@
+/* ================================
+   VEHICLE ADMIN BOOKING REQUESTS (Aesthetic, Modern, BEM)
+   ================================ */
+
+.bk-reqs {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    font-family: inherit;
+}
+
+.bk-reqs__header {
+    margin-bottom: 24px;
+}
+
+.bk-reqs__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bk-reqs__title-icon {
+    width: 24px;
+    height: 24px;
+    color: #2563eb;
+}
+
+.bk-reqs__subtitle {
+    margin: 6px 0 0;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Loading */
+.bk-reqs__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+.bk-reqs__spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Table Wrapper */
+.bk-reqs__table-wrap {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    overflow-x: auto;
+}
+
+/* Table */
+.bk-reqs__table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+}
+
+.bk-reqs__row-head {
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.bk-reqs__th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.03em;
+}
+
+.bk-reqs__th--right,
+.bk-reqs__td--right {
+    text-align: right;
+}
+
+.bk-reqs__td {
+    padding: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+    color: #334155;
+    vertical-align: top;
+}
+
+.bk-reqs__row:last-child .bk-reqs__td {
+    border-bottom: none;
+}
+.bk-reqs__row:hover:not(.bk-reqs__row-head) {
+    background: #f8fafc;
+}
+
+.bk-reqs__empty {
+    padding: 40px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Data Cells */
+.bk-reqs__date-primary,
+.bk-reqs__vehicle-name {
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 2px;
+}
+.bk-reqs__date-secondary,
+.bk-reqs__vehicle-reg {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.bk-reqs__detail-item {
+    font-size: 0.8rem;
+    color: #475569;
+    margin-bottom: 3px;
+}
+.bk-reqs__detail-item span {
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.bk-reqs__note,
+.bk-reqs__rejection-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.75rem;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+.bk-reqs__note {
+    color: #64748b;
+}
+.bk-reqs__rejection-note {
+    color: #b91c1c;
+    background: #fef2f2;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #fee2e2;
+}
+.bk-reqs__note-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Status Badges */
+.bk-reqs__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    border: 1px solid transparent;
+}
+.bk-reqs__status-icon {
+    width: 12px;
+    height: 12px;
+}
+.bk-reqs__status--pending {
+    background: #fffbeb;
+    color: #b45309;
+    border-color: #fde68a;
+}
+.bk-reqs__status--accepted {
+    background: #f0fdf4;
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+.bk-reqs__status--rejected {
+    background: #fef2f2;
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+/* Actions */
+.bk-reqs__action-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+.bk-reqs__no-action {
+    color: #cbd5e1;
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+/* Modals & Forms */
+.bk-reqs__modal {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    overflow: hidden;
+}
+
+.bk-reqs__modal-header {
+    background: #f8fafc;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+.bk-reqs__modal-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+.bk-reqs__modal-subtitle {
+    margin: 4px 0 0;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.bk-reqs__modal-form {
+    padding: 20px;
+}
+.bk-reqs__form-group {
+    margin-bottom: 16px;
+}
+.bk-reqs__label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #334155;
+    margin-bottom: 6px;
+}
+.bk-reqs__required {
+    color: #ef4444;
+}
+
+.bk-reqs__textarea {
+    width: 100%;
+    min-height: 90px;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 0.85rem;
+    outline: none;
+    resize: vertical;
+    transition: all 0.2s;
+}
+.bk-reqs__textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+.bk-reqs__help-text {
+    margin: 4px 0 0;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.bk-reqs__modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+/* Buttons */
+.bk-reqs__btn {
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.bk-reqs__btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.bk-reqs__btn--accept {
+    background: #16a34a;
+    color: #ffffff;
+}
+.bk-reqs__btn--accept:hover:not(:disabled) {
+    background: #15803d;
+}
+
+.bk-reqs__btn--reject {
+    background: #ffffff;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+.bk-reqs__btn--reject:hover:not(:disabled) {
+    background: #fef2f2;
+}
+
+.bk-reqs__btn--danger {
+    background: #ef4444;
+    color: #ffffff;
+}
+.bk-reqs__btn--danger:hover:not(:disabled) {
+    background: #dc2626;
+}
+
+.bk-reqs__btn--cancel {
+    background: #f1f5f9;
+    color: #475569;
+}
+.bk-reqs__btn--cancel:hover:not(:disabled) {
+    background: #e2e8f0;
+}
+
+/* ================================
+   DARK MODE SUPPORT
+   ================================ */
+.dark .bk-reqs__title { color: #f8fafc; }
+.dark .bk-reqs__subtitle { color: #94a3b8; }
+.dark .bk-reqs__table-wrap { background: #1e293b; border-color: #334155; }
+.dark .bk-reqs__row-head { background: #0f172a; border-color: #334155; }
+.dark .bk-reqs__th { color: #94a3b8; }
+.dark .bk-reqs__td { border-color: #334155; color: #cbd5e1; }
+.dark .bk-reqs__row:hover:not(.bk-reqs__row-head) { background: #0f172a; }
+.dark .bk-reqs__date-primary, .dark .bk-reqs__vehicle-name { color: #f8fafc; }
+.dark .bk-reqs__detail-item { color: #94a3b8; }
+.dark .bk-reqs__detail-item span { color: #e2e8f0; }
+
+.dark .bk-reqs__modal { background: #1e293b; border-color: #334155; }
+.dark .bk-reqs__modal-header { background: #0f172a; border-color: #334155; }
+.dark .bk-reqs__modal-title { color: #f8fafc; }
+.dark .bk-reqs__label { color: #cbd5e1; }
+.dark .bk-reqs__textarea { background: #0f172a; border-color: #475569; color: #f8fafc; }
+.dark .bk-reqs__modal-actions { border-color: #334155; }
+.dark .bk-reqs__btn--cancel { background: #334155; color: #cbd5e1; }
+.dark .bk-reqs__btn--reject { background: #1e293b; }
