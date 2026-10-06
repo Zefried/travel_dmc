@@ -4,9 +4,10 @@ import { useState } from "react";
 import "./AgentSearch.css";
 
 import CustomTripModal from "./CustomTripModal";
-import type { CustomTripData } from "./CustomTripModal";
+
 
 import TripProposal from "./TripProposal";
+import { ItineraryProvider, useItinerary } from "../../../Context/ItineraryContext";
 
 
 // Step 2 — component
@@ -15,49 +16,38 @@ const AgentSearch = () => {
 
     // State
 
-    const [customTripOpen, setCustomTripOpen] =
-        useState(false);
+    const [customTripOpen, setCustomTripOpen] = useState(false);
 
-    const [proposalData, setProposalData] =
-        useState<CustomTripData | null>(null);
+    const { state, resetItinerary } = useItinerary();
 
 
     // Handlers
 
     const handleOpenCustomTrip = () => {
-
         setCustomTripOpen(true);
     };
 
 
     const handleCloseCustomTrip = () => {
-
         setCustomTripOpen(false);
     };
 
 
-    const handleCreateProposal = (
-        data: CustomTripData
-    ) => {
-
-        setProposalData(data);
+    const handleCreateProposal = () => {
         setCustomTripOpen(false);
     };
 
 
     const handleBackToSearch = () => {
-
-        setProposalData(null);
+        resetItinerary();
     };
 
 
     // Proposal page
 
-    if (proposalData) {
-
+    if (state.city) {
         return (
             <TripProposal
-                tripData={proposalData}
                 onBack={handleBackToSearch}
             />
         );
@@ -359,5 +349,10 @@ const AgentSearch = () => {
     );
 };
 
+const AgentSearchWrapper = () => (
+    <ItineraryProvider>
+        <AgentSearch />
+    </ItineraryProvider>
+);
 
-export default AgentSearch;
+export default AgentSearchWrapper;

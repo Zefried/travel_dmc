@@ -3,39 +3,34 @@
 import { useState } from "react";
 import "./TripProposal.css";
 
-import type { CustomTripData } from "./CustomTripModal";
-
-
-// Step 2 — types
-
-type TripDay = {
-    day: number;
-    date: string;
-    city: string;
-    title: string;
-    description: string;
-    activities: string[];
-    transfer?: string;
-    overnight: string;
-};
-
+import { useItinerary } from "../../../Context/ItineraryContext";
+import HotelSelection from "./HotelSelection";
+import RoomSelection from "./RoomSelection";
+import ActivitySelection from "./ActivitySelection";
 
 type TripProposalProps = {
-    tripData: CustomTripData;
     onBack?: () => void;
 };
+
 
 
 // Step 3 — component
 
 const TripProposal = ({
-    tripData,
     onBack,
 }: TripProposalProps) => {
 
-    // State
-
+    const { state, costs, setRoom, setHotel, removeActivity } = useItinerary();
     const [saved, setSaved] = useState(false);
+    const [activityDayIndex, setActivityDayIndex] = useState<number | null>(null);
+
+    const formatTime = (time: number) => {
+        const hours = Math.floor(time);
+        const mins = (time - hours) * 60;
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const displayHours = hours > 12 ? hours - 12 : (hours === 0 ? 12 : hours);
+        return `${displayHours}:${mins === 0 ? '00' : mins} ${ampm}`;
+    };
 
 
     // Functions
@@ -98,135 +93,45 @@ const TripProposal = ({
 
 
     const getTotalNights = () => {
-
-        return tripData.destinations.reduce(
-            (total, destination) =>
-                total + destination.nights,
-            0
-        );
+        return state.nights;
     };
-
 
     const getEndDate = () => {
-
-        if (!tripData.leavingOn) {
+        if (!state.leavingOn) {
             return "";
         }
-
         return formatDateObject(
-            addDays(
-                tripData.leavingOn,
-                getTotalNights()
-            )
+            addDays(state.leavingOn, state.nights)
         );
     };
-
 
     const getDestinationNames = () => {
+        return state.city?.name || "Guwahati";
+    };
 
-        return tripData.destinations
-            .map(
-                (destination) =>
-                    destination.city
-            )
-            .join(" → ");
+    const buildTripDays = () => {
+        return state.days.map((day, index) => {
+            const isFirstDay = index === 0;
+            const isLastDay = index === state.nights - 1;
+            const city = state.city?.name || "Guwahati";
+
+            return {
+                dayNumber: day.dayNumber,
+                index: index,
+                date: formatDate(day.date),
+                city: city,
+                title: isFirstDay ? `Arrival in ${city}` : isLastDay ? `Explore ${city}` : `${city} Experience`,
+                description: isFirstDay ? `Arrive in ${city} and settle into your accommodation. Enjoy the rest of the day at your own pace.` : `Enjoy a relaxed day exploring ${city}, with time for sightseeing, local experiences and leisure.`,
+                activities: day.activities || [],
+                availableSlots: day.availableSlots || [],
+                transfer: isFirstDay ? `Private transfer to your hotel in ${city}` : undefined,
+                overnight: state.hotel ? state.hotel.name : `${city} hotel`,
+            };
+        });
     };
 
 
-    const buildTripDays = (): TripDay[] => {
 
-        const days: TripDay[] = [];
-
-        let dayNumber = 1;
-
-        let currentDate = tripData.leavingOn;
-
-
-        tripData.destinations.forEach(
-            (destination, destinationIndex) => {
-
-                for (
-                    let night = 0;
-                    night < destination.nights;
-                    night++
-                ) {
-
-                    const isFirstDay =
-                        dayNumber === 1;
-
-                    const isLastDay =
-                        destinationIndex ===
-                            tripData.destinations.length - 1 &&
-                        night === destination.nights - 1;
-
-
-                    days.push({
-
-                        day: dayNumber,
-
-                        date: currentDate
-                            ? formatDate(currentDate)
-                            : `Day ${dayNumber}`,
-
-                        city: destination.city,
-
-                        title:
-                            isFirstDay
-                                ? `Arrival in ${destination.city}`
-                                : isLastDay
-                                    ? `Explore ${destination.city}`
-                                    : `${destination.city} Experience`,
-
-                        description:
-                            isFirstDay
-                                ? `Arrive in ${destination.city} and settle into your accommodation. Enjoy the rest of the day at your own pace.`
-                                : `Enjoy a relaxed day exploring ${destination.city}, with time for sightseeing, local experiences and leisure.`,
-
-                        activities:
-                            isFirstDay
-                                ? [
-                                    "Arrival and hotel check-in",
-                                    `${destination.city} orientation`,
-                                ]
-                                : [
-                                    `Explore ${destination.city}`,
-                                    "Local sightseeing and experiences",
-                                ],
-
-                        transfer:
-                            tripData.addTransfers && isFirstDay
-                                ? `Private transfer to your hotel in ${destination.city}`
-                                : undefined,
-
-                        overnight:
-                            `${destination.city} hotel`,
-                    });
-
-
-                    dayNumber++;
-
-
-                    if (currentDate) {
-
-                        const nextDate = addDays(
-                            currentDate,
-                            1
-                        );
-
-                        currentDate =
-                            nextDate
-                                .toISOString()
-                                .split("T")[0];
-                    }
-
-                }
-
-            }
-        );
-
-
-        return days;
-    };
 
 
     // Data
@@ -276,7 +181,7 @@ const TripProposal = ({
                         <p className="agentsearch-proposal-meta">
 
                             {formatDate(
-                                tripData.leavingOn
+                                state.leavingOn
                             )}
 
                             {" · "}
@@ -288,7 +193,7 @@ const TripProposal = ({
 
                             {" · "}
 
-                            {tripData.travelers}
+                            {state.travelers}
 
                         </p>
 
@@ -332,204 +237,140 @@ const TripProposal = ({
 
                 <div className="agentsearch-proposal-main">
 
-                    {/* ACCOMMODATION */}
+                    {!state.hotel ? (
+                        <HotelSelection />
+                    ) : !state.room ? (
+                        <RoomSelection />
+                    ) : (
+                        <>
+                            {/* ACCOMMODATION */}
 
-                    <section className="agentsearch-proposal-card">
+                            <section className="agentsearch-proposal-card">
 
-                        <div className="agentsearch-card-heading">
-
-                            <div>
-
-                                <span className="agentsearch-card-label">
-                                    ACCOMMODATION
-                                </span>
-
-                                <h2>
-                                    {destinationNames}
-                                </h2>
-
-                            </div>
-
-                        </div>
-
-
-                        <div className="agentsearch-hotel-card">
-
-                            <div className="agentsearch-hotel-image">
-
-                                <div className="agentsearch-hotel-placeholder">
-                                    HOTEL
-                                </div>
-
-                            </div>
-
-
-                            <div className="agentsearch-hotel-content">
-
-                                <div className="agentsearch-hotel-rating">
-
-                                    {tripData.starRating
-                                        ? "★".repeat(
-                                            Number(
-                                                tripData.starRating
-                                            )
-                                        )
-                                        : "★★★★★"}
-
-                                </div>
-
-
-                                <h3>
-                                    Recommended Hotel
-                                </h3>
-
-
-                                <p className="agentsearch-hotel-address">
-                                    Accommodation will be selected based
-                                    on your client's requirements.
-                                </p>
-
-
-                                <div className="agentsearch-hotel-score">
-
-                                    <strong>
-                                        —
-                                    </strong>
+                                <div className="agentsearch-card-heading">
 
                                     <div>
 
-                                        <span>
-                                            Awaiting selection
+                                        <span className="agentsearch-card-label">
+                                            ACCOMMODATION
                                         </span>
 
-                                        <small>
-                                            Hotel options available
-                                        </small>
+                                        <h2>
+                                            {destinationNames}
+                                        </h2>
 
                                     </div>
 
                                 </div>
 
 
-                                <div className="agentsearch-hotel-dates">
+                                <div className="agentsearch-hotel-card">
 
-                                    <div>
+                                    <div className="agentsearch-hotel-image">
 
-                                        <span>
-                                            Check-in
-                                        </span>
-
-                                        <strong>
-                                            {formatDate(
-                                                tripData.leavingOn
-                                            )}
-                                        </strong>
+                                        <div className="agentsearch-hotel-placeholder">
+                                            HOTEL
+                                        </div>
 
                                     </div>
 
 
-                                    <div>
+                                    <div className="agentsearch-hotel-content">
 
-                                        <span>
-                                            Check-out
-                                        </span>
+                                        <div className="agentsearch-hotel-rating">
 
-                                        <strong>
-                                            {endDate}
-                                        </strong>
+                                            {state.hotel
+                                                ? "★".repeat(
+                                                    Number(
+                                                        state.hotel.starRating
+                                                    )
+                                                )
+                                                : "★★★★★"}
 
-                                    </div>
-
-                                </div>
-
-
-                                <div className="agentsearch-hotel-features">
-
-                                    <p>
-                                        ✓{" "}
-                                        {tripData.travelers}
-                                    </p>
-
-                                    <p>
-                                        ✓{" "}
-                                        {tripData.starRating
-                                            ? `${tripData.starRating} star hotel preference`
-                                            : "Flexible hotel rating"}
-                                    </p>
-
-                                    <p>
-                                        ✓{" "}
-                                        {tripData.nationality} traveler
-                                    </p>
-
-                                </div>
+                                        </div>
 
 
-                                <button
-                                    type="button"
-                                    className="agentsearch-secondary-button"
-                                >
-                                    Change Room
-                                </button>
+                                        <h3>
+                                            Recommended Hotel
+                                        </h3>
 
 
-                                <button
-                                    type="button"
-                                    className="agentsearch-secondary-button"
-                                >
-                                    Change Hotel
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </section>
+                                        <p className="agentsearch-hotel-address">
+                                            Accommodation will be selected based
+                                            on your client's requirements.
+                                        </p>
 
 
-                    {/* ITINERARY */}
+                                        <div className="agentsearch-hotel-score">
 
-                    <section className="agentsearch-itinerary">
+                                            <strong>
+                                                {state.room ? `₹${state.room.pricePerNight}` : "—"}
+                                            </strong>
 
-                        <div className="agentsearch-itinerary-heading">
+                                            <div>
 
-                            <span className="agentsearch-card-label">
-                                ITINERARY
-                            </span>
+                                                <span>
+                                                    {state.room ? state.room.roomName : "Awaiting selection"}
+                                                </span>
 
-                            <h2>
-                                Your Trip
-                            </h2>
+                                                <small>
+                                                    {state.room ? "Selected room" : "Hotel options available"}
+                                                </small>
 
-                            <p>
-                                A day-by-day overview of your client's journey.
-                            </p>
+                                            </div>
 
-                        </div>
+                                        </div>
 
 
-                        {tripDays.map(
-                            (tripDay) => (
+                                        <div className="agentsearch-hotel-dates">
 
-                                <article
-                                    key={tripDay.day}
-                                    className="agentsearch-day-card"
-                                >
+                                            <div>
 
-                                    <div className="agentsearch-day-header">
+                                                <span>
+                                                    Check-in
+                                                </span>
 
-                                        <div>
+                                                <strong>
+                                                    {formatDate(
+                                                        state.leavingOn
+                                                    )}
+                                                </strong>
 
-                                            <span className="agentsearch-day-number">
-                                                DAY {tripDay.day}
-                                            </span>
+                                            </div>
 
-                                            <h3>
-                                                {tripDay.title}
-                                            </h3>
+
+                                            <div>
+
+                                                <span>
+                                                    Check-out
+                                                </span>
+
+                                                <strong>
+                                                    {endDate}
+                                                </strong>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div className="agentsearch-hotel-features">
 
                                             <p>
-                                                {tripDay.date}
+                                                ✓{" "}
+                                                {state.travelers}
+                                            </p>
+
+                                            <p>
+                                                ✓{" "}
+                                                {state.hotel
+                                                    ? `${state.hotel.starRating} star hotel preference`
+                                                    : "Flexible hotel rating"}
+                                            </p>
+
+                                            <p>
+                                                ✓{" "}
+                                                Indian traveler
                                             </p>
 
                                         </div>
@@ -537,172 +378,233 @@ const TripProposal = ({
 
                                         <button
                                             type="button"
-                                            className="agentsearch-change-day"
+                                            className="agentsearch-secondary-button"
+                                            onClick={() => setRoom(null)}
                                         >
-                                            Change Day
+                                            Change Room
+                                        </button>
+
+
+                                        <button
+                                            type="button"
+                                            className="agentsearch-secondary-button"
+                                            onClick={() => setHotel(null)}
+                                        >
+                                            Change Hotel
                                         </button>
 
                                     </div>
 
+                                </div>
 
-                                    <div className="agentsearch-day-content">
-
-                                        <p className="agentsearch-day-description">
-                                            {tripDay.description}
-                                        </p>
+                            </section>
 
 
-                                        <div className="agentsearch-activities">
+                            {/* ITINERARY */}
 
-                                            <div className="agentsearch-activity-period">
+                            <section className="agentsearch-itinerary">
 
-                                                <span>
-                                                    Morning
-                                                </span>
+                                <div className="agentsearch-itinerary-heading">
 
-                                                <button type="button">
-                                                    + Add Activity
-                                                </button>
+                                    <span className="agentsearch-card-label">
+                                        ITINERARY
+                                    </span>
 
-                                            </div>
+                                    <h2>
+                                        Your Trip
+                                    </h2>
 
+                                    <p>
+                                        A day-by-day overview of your client's journey.
+                                    </p>
 
-                                            <div className="agentsearch-activity-period">
-
-                                                <span>
-                                                    Afternoon
-                                                </span>
-
-                                                <button type="button">
-                                                    + Add Activity
-                                                </button>
-
-                                            </div>
+                                </div>
 
 
-                                            <div className="agentsearch-activity-period">
+                                {tripDays.map(
+                                    (tripDay) => (
 
-                                                <span>
-                                                    Evening
-                                                </span>
+                                        <article
+                                            key={tripDay.dayNumber}
+                                            className="agentsearch-day-card"
+                                        >
 
-                                                <button type="button">
-                                                    + Add Activity
-                                                </button>
-
-                                            </div>
-
-                                        </div>
-
-
-                                        <div className="agentsearch-day-activities">
-
-                                            {tripDay.activities.map(
-                                                (activity) => (
-
-                                                    <div
-                                                        key={activity}
-                                                        className="agentsearch-activity"
-                                                    >
-
-                                                        <span className="agentsearch-check">
-                                                            ✓
-                                                        </span>
-
-                                                        {activity}
-
-                                                    </div>
-
-                                                )
-                                            )}
-
-                                        </div>
-
-
-                                        {tripDay.transfer && (
-
-                                            <div className="agentsearch-transfer">
-
-                                                <span className="agentsearch-transfer-icon">
-                                                    ⇄
-                                                </span>
+                                            <div className="agentsearch-day-header">
 
                                                 <div>
 
-                                                    <strong>
-                                                        {tripDay.transfer}
-                                                    </strong>
+                                                    <span className="agentsearch-day-number">
+                                                        DAY {tripDay.dayNumber}
+                                                    </span>
+
+                                                    <h3>
+                                                        {tripDay.title}
+                                                    </h3>
 
                                                     <p>
-                                                        Private transfer
+                                                        {tripDay.date}
                                                     </p>
+
+                                                </div>
+
+
+                                                <button
+                                                    type="button"
+                                                    className="agentsearch-change-day"
+                                                >
+                                                    Change Day
+                                                </button>
+
+                                            </div>
+
+
+                                            <div className="agentsearch-day-content">
+
+                                                <p className="agentsearch-day-description">
+                                                    {tripDay.description}
+                                                </p>
+
+
+                                                <div className="agentsearch-activities" style={{ flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-start' }}>
+                                                    <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                        <span style={{ fontSize: '0.875rem', color: '#475569' }}>
+                                                            {tripDay.availableSlots.length > 0 ? (
+                                                                <><strong>Free Time:</strong> {tripDay.availableSlots.map(s => `${formatTime(s.start)} - ${formatTime(s.end)}`).join(", ")}</>
+                                                            ) : (
+                                                                <><strong>Free Time:</strong> None</>
+                                                            )}
+                                                        </span>
+
+                                                        <button 
+                                                            type="button" 
+                                                            className="agentsearch-secondary-button"
+                                                            onClick={() => setActivityDayIndex(tripDay.index)}
+                                                        >
+                                                            + Add Activity
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div className="agentsearch-day-activities" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
+                                                    {tripDay.activities.map((activity) => (
+                                                        <div
+                                                            key={activity.id}
+                                                            className="agentsearch-activity"
+                                                            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#f8fafc', border: '1px solid #e2e8f0', padding: '10px 14px', borderRadius: '8px' }}
+                                                        >
+                                                            <div>
+                                                                <span className="agentsearch-check">✓</span>
+                                                                <strong>{activity.name}</strong> 
+                                                                <span style={{ marginLeft: '0.5rem', color: '#64748b', fontSize: '0.875rem' }}>
+                                                                    ({formatTime(activity.startTime)} - {formatTime(activity.startTime + activity.duration)} | {activity.duration} hr{activity.duration > 1 ? 's' : ''})
+                                                                </span>
+                                                            </div>
+                                                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                                                <strong style={{ fontSize: '0.875rem' }}>₹{activity.price}</strong>
+                                                                <button 
+                                                                    type="button" 
+                                                                    onClick={() => removeActivity(tripDay.index, activity.id)}
+                                                                    style={{ border: 'none', background: 'transparent', color: '#ef4444', cursor: 'pointer', fontSize: '15px', fontWeight: 600, padding: '4px' }}
+                                                                >
+                                                                    Remove
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                    {tripDay.activities.length > 0 && (
+                                                        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '0.75rem 0 0 0', fontSize: '0.875rem', borderTop: '1px solid #e2e8f0', marginTop: '0.25rem' }}>
+                                                            <strong>Day {tripDay.dayNumber} Activity Cost: ₹{costs.dailyCosts[tripDay.index]}</strong>
+                                                        </div>
+                                                    )}
+                                                </div>
+
+
+                                                {tripDay.transfer && (
+
+                                                    <div className="agentsearch-transfer">
+
+                                                        <span className="agentsearch-transfer-icon">
+                                                            ⇄
+                                                        </span>
+
+                                                        <div>
+
+                                                            <strong>
+                                                                {tripDay.transfer}
+                                                            </strong>
+
+                                                            <p>
+                                                                Private transfer
+                                                            </p>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                )}
+
+
+                                                <div className="agentsearch-meals">
+
+                                                    <div>
+
+                                                        <span>
+                                                            ×
+                                                        </span>
+
+                                                        Lunch:{" "}
+                                                        <strong>
+                                                            Not Included
+                                                        </strong>
+
+                                                        <button type="button">
+                                                            + Add
+                                                        </button>
+
+                                                    </div>
+
+
+                                                    <div>
+
+                                                        <span>
+                                                            ×
+                                                        </span>
+
+                                                        Dinner:{" "}
+                                                        <strong>
+                                                            Not Included
+                                                        </strong>
+
+                                                        <button type="button">
+                                                            + Add
+                                                        </button>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div className="agentsearch-overnight">
+
+                                                    <span>
+                                                        🛏
+                                                    </span>
+
+                                                    Overnight at{" "}
+                                                    {tripDay.overnight}
 
                                                 </div>
 
                                             </div>
 
-                                        )}
+                                        </article>
 
+                                    )
+                                )}
 
-                                        <div className="agentsearch-meals">
-
-                                            <div>
-
-                                                <span>
-                                                    ×
-                                                </span>
-
-                                                Lunch:{" "}
-                                                <strong>
-                                                    Not Included
-                                                </strong>
-
-                                                <button type="button">
-                                                    + Add
-                                                </button>
-
-                                            </div>
-
-
-                                            <div>
-
-                                                <span>
-                                                    ×
-                                                </span>
-
-                                                Dinner:{" "}
-                                                <strong>
-                                                    Not Included
-                                                </strong>
-
-                                                <button type="button">
-                                                    + Add
-                                                </button>
-
-                                            </div>
-
-                                        </div>
-
-
-                                        <div className="agentsearch-overnight">
-
-                                            <span>
-                                                🛏
-                                            </span>
-
-                                            Overnight at{" "}
-                                            {tripDay.overnight}
-
-                                        </div>
-
-                                    </div>
-
-                                </article>
-
-                            )
-                        )}
-
-                    </section>
+                            </section>
+                        </>
+                    )}
 
                 </div>
 
@@ -728,29 +630,19 @@ const TripProposal = ({
                         </div>
 
 
-                        <div className="agentsearch-summary-row">
-
-                            <span>
-                                Price per adult
-                            </span>
-
-                            <strong>
-                                To be calculated
-                            </strong>
-
+                        <div className="agentsearch-summary-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.875rem' }}>
+                            <span>Hotel ({totalNights} night{totalNights > 1 ? 's' : ''})</span>
+                            <strong>₹{costs.hotelTotal}</strong>
                         </div>
 
+                        <div className="agentsearch-summary-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e2e8f0', fontSize: '0.875rem' }}>
+                            <span>Activities</span>
+                            <strong>₹{costs.activitiesTotal}</strong>
+                        </div>
 
-                        <div className="agentsearch-summary-total">
-
-                            <span>
-                                Total Price
-                            </span>
-
-                            <strong>
-                                To be calculated
-                            </strong>
-
+                        <div className="agentsearch-summary-total" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.125rem' }}>
+                            <span>Total Price</span>
+                            <strong>₹{costs.grandTotal}</strong>
                         </div>
 
 
@@ -793,32 +685,29 @@ const TripProposal = ({
 
                             <li>
                                 Departing from{" "}
-                                {tripData.leavingFrom ||
-                                    "Not specified"}
+                                "Not specified"
                             </li>
 
 
                             <li>
-                                {tripData.travelers}
+                                {state.travelers || "Not specified"}
                             </li>
 
 
-                            <li>
-                                {tripData.nationality}
-                            </li>
+                            {/* <li>
+                                Nationality not in state
+                            </li> */}
 
 
                             <li>
-                                {tripData.starRating
-                                    ? `${tripData.starRating} star hotel preference`
+                                {state.hotel?.starRating
+                                    ? `${state.hotel.starRating} star hotel preference`
                                     : "Flexible hotel rating"}
                             </li>
 
 
                             <li>
-                                {tripData.addTransfers
-                                    ? "Private transfers included"
-                                    : "Transfers not included"}
+                                Transfers not included
                             </li>
 
                         </ul>
@@ -828,6 +717,13 @@ const TripProposal = ({
                 </aside>
 
             </main>
+
+            {/* Activity Selection Modal */}
+            <ActivitySelection 
+                isOpen={activityDayIndex !== null}
+                dayIndex={activityDayIndex}
+                onClose={() => setActivityDayIndex(null)}
+            />
 
         </div>
     );
