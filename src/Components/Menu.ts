@@ -192,6 +192,11 @@ export const menus: Record<Role, MenuItem[]> = {
           icon: DoorOpen,
           path: "/dashboard/rooms",
         },
+        {
+          name: "Room Availability",
+          icon: Clock,
+          path: "/dashboard/room-availability",
+        },
       ],
     },
 

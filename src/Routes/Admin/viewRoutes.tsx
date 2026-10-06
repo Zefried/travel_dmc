@@ -14,6 +14,7 @@ import RoomList from "../../Pages/Admin/Rooms/View/RoomList";
 import ViewBedConfig from "../../Pages/Admin/RoomConfig/View/ViewBedConfig";
 import ViewMealConfig from "../../Pages/Admin/RoomConfig/View/ViewMealConfig";
 import ViewTeam from "../../Pages/Admin/Team/View/ViewTeam";
+import RoomAvailability from "../../Pages/Admin/Rooms/Availability/RoomAvailability";
 
 
 export const adminViewRoutes = [
@@ -103,6 +104,14 @@ export const adminViewRoutes = [
                 element: (
                     <ProtectedRoute allowedRoles={["admin"]}>
                         <RoomList />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: "room-availability",
+                element: (
+                    <ProtectedRoute allowedRoles={["admin"]}>
+                        <RoomAvailability />
                     </ProtectedRoute>
                 ),
             },
