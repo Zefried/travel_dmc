@@ -34,7 +34,7 @@ import {
   Car,
 } from "lucide-react";
 
-export type Role = "admin" | "subadmin" | "department" | "vehicle_admin";
+export type Role = "admin" | "subadmin" | "department" | "vehicle_admin" | "hotel_admin";
 
 export type MenuItem = {
   name: string;
@@ -73,6 +73,25 @@ export const menus: Record<Role, MenuItem[]> = {
           name: "Booking Requests",
           icon: List,
           path: "/dashboard/booking-requests",
+        },
+      ],
+    },
+  ],
+
+  hotel_admin: [
+    {
+      name: "Inventory Management",
+      icon: Hotel,
+      children: [
+        {
+          name: "Mark Room Busy",
+          icon: Clock,
+          path: "/dashboard/hotel-admin/mark-busy",
+        },
+        {
+          name: "View Busy Rooms",
+          icon: List,
+          path: "/dashboard/hotel-admin/view-busy",
         },
       ],
     },

@@ -13,6 +13,7 @@ import { adminVehicleRoutes } from "./Admin/vehicleRoutes";
 import { vehicleAdminRoutes } from "./VehicleAdmin/vehicleAdminRoutes";
 import { activityRoutes } from "./Admin/activityRoute";
 import { imageRoutes } from "./Admin/imagesRoute";
+import { hotelAdminRoutes } from "./HotelAdmin/hotelAdminRoutes";
 
 
 const router = createBrowserRouter([
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <ProtectedRoute allowedRoles={["admin", "subadmin", "agent", "vehicle_admin"]}>
+      <ProtectedRoute allowedRoles={["admin", "subadmin", "agent", "vehicle_admin", "hotel_admin"]}>
         <DashboardLayout />
       </ProtectedRoute>
     ),
@@ -56,6 +57,7 @@ const router = createBrowserRouter([
       ...departmentRoutes,
       ...adminVehicleRoutes,
       ...vehicleAdminRoutes,
+      ...hotelAdminRoutes,
       ...activityRoutes,
       ...imageRoutes,
     ],

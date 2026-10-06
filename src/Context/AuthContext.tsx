@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 
 
-type Role = "admin" | "subadmin" | "department" | "vehicle_admin";
+type Role = "admin" | "subadmin" | "department" | "vehicle_admin" | "hotel_admin";
 
 type User = {
   id: number;
