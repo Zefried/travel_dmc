@@ -43,6 +43,7 @@
     align-items: center;
     min-height: 300px;
 }
+
 .req-status__spinner {
     width: 28px;
     height: 28px;
@@ -51,7 +52,12 @@
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 /* Layout Grid */
 .req-status__layout {
@@ -82,10 +88,16 @@
 }
 
 .req-status__panel-title {
-    margin: 0 0 16px;
+    margin: 0;
     font-size: 1rem;
     font-weight: 600;
     color: #0f172a;
+}
+
+.req-status__panel-subtitle {
+    margin: 4px 0 16px;
+    font-size: 0.8rem;
+    color: #64748b;
 }
 
 .req-status__form {
@@ -119,6 +131,7 @@
     outline: none;
     transition: all 0.2s;
 }
+
 .req-status__input:focus {
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
@@ -156,6 +169,7 @@
     font-weight: 600;
     color: #0f172a;
 }
+
 .req-status__card-icon {
     width: 16px;
     height: 16px;
@@ -195,14 +209,17 @@
     gap: 2px;
     font-size: 0.75rem;
 }
+
 .req-status__card-meta span {
     color: #64748b;
     font-size: 0.7rem;
 }
+
 .req-status__card-meta strong {
     color: #0f172a;
     font-weight: 500;
 }
+
 .req-status__truncate {
     white-space: nowrap;
     overflow: hidden;
@@ -210,9 +227,18 @@
 }
 
 /* Custom Scrollbar for Sidebar */
-.req-status__scrollbar::-webkit-scrollbar { width: 6px; }
-.req-status__scrollbar::-webkit-scrollbar-track { background: transparent; }
-.req-status__scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+.req-status__scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.req-status__scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.req-status__scrollbar::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 10px;
+}
 
 
 /* Main Table Panel */
@@ -273,6 +299,7 @@
 .req-status__row:last-child .req-status__td {
     border-bottom: none;
 }
+
 .req-status__row:hover:not(.req-status__row-head) {
     background: #f8fafc;
 }
@@ -291,11 +318,13 @@
     color: #0f172a;
     margin-bottom: 2px;
 }
+
 .req-status__date-secondary,
 .req-status__vehicle-reg {
     font-size: 0.75rem;
     color: #64748b;
 }
+
 .req-status__owner-name {
     font-size: 0.7rem;
     color: #94a3b8;
@@ -307,6 +336,7 @@
     color: #475569;
     margin-bottom: 3px;
 }
+
 .req-status__detail-item span {
     font-weight: 500;
     color: #1e293b;
@@ -321,9 +351,11 @@
     margin-top: 6px;
     line-height: 1.4;
 }
+
 .req-status__note {
     color: #64748b;
 }
+
 .req-status__rejection-note {
     color: #b91c1c;
     background: #fef2f2;
@@ -331,6 +363,7 @@
     border-radius: 6px;
     border: 1px solid #fee2e2;
 }
+
 .req-status__note-icon {
     width: 14px;
     height: 14px;
@@ -350,20 +383,24 @@
     text-transform: capitalize;
     border: 1px solid transparent;
 }
+
 .req-status__badge-icon {
     width: 12px;
     height: 12px;
 }
+
 .req-status__badge--pending {
     background: #fffbeb;
     color: #b45309;
     border-color: #fde68a;
 }
+
 .req-status__badge--accepted {
     background: #f0fdf4;
     color: #15803d;
     border-color: #bbf7d0;
 }
+
 .req-status__badge--rejected {
     background: #fef2f2;
     color: #b91c1c;
@@ -373,26 +410,104 @@
 /* ================================
    DARK MODE SUPPORT
    ================================ */
-.dark .req-status__title { color: #f8fafc; }
-.dark .req-status__subtitle { color: #94a3b8; }
-.dark .req-status__panel { background: #1e293b; border-color: #334155; }
-.dark .req-status__panel-title { color: #f8fafc; }
-.dark .req-status__label { color: #cbd5e1; }
-.dark .req-status__input { background: #0f172a; border-color: #475569; color: #f8fafc; }
-.dark .req-status__card { background: #0f172a; border-color: #334155; }
-.dark .req-status__card-header { color: #f8fafc; }
-.dark .req-status__card-dates { background: #1e3a8a; color: #bfdbfe; }
-.dark .req-status__card-footer { border-color: #334155; }
-.dark .req-status__card-meta strong { color: #f8fafc; }
-.dark .req-status__scrollbar::-webkit-scrollbar-thumb { background-color: #475569; }
+.dark .req-status__title {
+    color: #f8fafc;
+}
 
-.dark .req-status__table-panel { background: #1e293b; border-color: #334155; }
-.dark .req-status__table-header { background: #0f172a; border-color: #334155; }
-.dark .req-status__table-title { color: #f8fafc; }
-.dark .req-status__row-head { background: #0f172a; border-color: #334155; }
-.dark .req-status__th { color: #94a3b8; }
-.dark .req-status__td { border-color: #334155; color: #cbd5e1; }
-.dark .req-status__row:hover:not(.req-status__row-head) { background: #0f172a; }
-.dark .req-status__date-primary, .dark .req-status__vehicle-name { color: #f8fafc; }
-.dark .req-status__detail-item { color: #94a3b8; }
-.dark .req-status__detail-item span { color: #e2e8f0; }
+.dark .req-status__subtitle {
+    color: #94a3b8;
+}
+
+.dark .req-status__panel {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.dark .req-status__panel-title {
+    color: #f8fafc;
+}
+
+.dark .req-status__panel-subtitle {
+    color: #94a3b8;
+}
+
+.dark .req-status__label {
+    color: #cbd5e1;
+}
+
+.dark .req-status__input {
+    background: #0f172a;
+    border-color: #475569;
+    color: #f8fafc;
+}
+
+.dark .req-status__card {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.dark .req-status__card-header {
+    color: #f8fafc;
+}
+
+.dark .req-status__card-dates {
+    background: #1e3a8a;
+    color: #bfdbfe;
+}
+
+.dark .req-status__card-footer {
+    border-color: #334155;
+}
+
+.dark .req-status__card-meta strong {
+    color: #f8fafc;
+}
+
+.dark .req-status__scrollbar::-webkit-scrollbar-thumb {
+    background-color: #475569;
+}
+
+.dark .req-status__table-panel {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.dark .req-status__table-header {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.dark .req-status__table-title {
+    color: #f8fafc;
+}
+
+.dark .req-status__row-head {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.dark .req-status__th {
+    color: #94a3b8;
+}
+
+.dark .req-status__td {
+    border-color: #334155;
+    color: #cbd5e1;
+}
+
+.dark .req-status__row:hover:not(.req-status__row-head) {
+    background: #0f172a;
+}
+
+.dark .req-status__date-primary,
+.dark .req-status__vehicle-name {
+    color: #f8fafc;
+}
+
+.dark .req-status__detail-item {
+    color: #94a3b8;
+}
+
+.dark .req-status__detail-item span {
+    color: #e2e8f0;
+}

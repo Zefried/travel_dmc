@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Axios from '../../../../api/axios';
 import { toast } from 'react-hot-toast';
 import { Calendar as CalendarIcon, Car, CheckCircle, XCircle, Info, MessageSquare } from 'lucide-react';
@@ -64,9 +64,9 @@ const RequestBookingStatus = () => {
 
     const getFilteredBookings = () => {
         if (!filterStartDate || !filterEndDate) return [];
-        return requests.filter(req => 
-            req.status === 'accepted' && 
-            req.start_date <= filterEndDate && 
+        return requests.filter(req =>
+            req.status === 'accepted' &&
+            req.start_date <= filterEndDate &&
             req.end_date >= filterStartDate
         );
     };
@@ -94,6 +94,7 @@ const RequestBookingStatus = () => {
                 <div className="req-status__sidebar">
                     <div className="req-status__panel">
                         <h2 className="req-status__panel-title">Check Availability Range</h2>
+                        <p className="req-status__panel-subtitle">Verify if you already have confirmed vehicles assigned for specific dates.</p>
                         <div className="req-status__form">
                             <div className="req-status__field">
                                 <label className="req-status__label">Start Date</label>
@@ -120,7 +121,7 @@ const RequestBookingStatus = () => {
                     {filterStartDate && filterEndDate && (
                         <div className="req-status__panel">
                             <h3 className="req-status__panel-title">Bookings in Range</h3>
-                            
+
                             {getFilteredBookings().length === 0 ? (
                                 <p className="req-status__empty-text">No confirmed bookings in this date range.</p>
                             ) : (

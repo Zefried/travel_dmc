@@ -122,7 +122,7 @@ const RequestVehicleBooking = () => {
             };
 
             const response = await Axios.post('/admin/vehicles/booking-requests', payload);
-            
+
             if (response.data.status) {
                 toast.success(response.data.message || 'Booking request submitted successfully.');
                 alert(response.data.message || 'Booking request submitted successfully.');
@@ -300,7 +300,7 @@ const RequestVehicleBooking = () => {
                                 {selectedVehicleForBooking.name} ({selectedVehicleForBooking.registration_no})
                             </p>
                         </div>
-                        <button 
+                        <button
                             onClick={handleCloseBookingModal}
                             className="req-book__close-btn"
                             title="Cancel Booking"
@@ -308,7 +308,7 @@ const RequestVehicleBooking = () => {
                             <X className="req-book__close-icon" />
                         </button>
                     </div>
-                    
+
                     <form onSubmit={submitBooking} className="req-book__form">
                         <div className="req-book__form-group">
                             <div className="req-book__label-row">

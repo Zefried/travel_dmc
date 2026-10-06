@@ -119,7 +119,7 @@ export const Navbar = ({
               onClick={() => setShowNotif((prev) => !prev)}
             />
             {unreadCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full flex items-center justify-center">
+              <span className="notif-badge">
                 {unreadCount}
               </span>
             )}
